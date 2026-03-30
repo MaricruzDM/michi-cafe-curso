@@ -20,10 +20,13 @@ theme:
         icon: material/brightness-4
         name: Modo claro
   features:
-    - navigation.tabs
     - navigation.sections
+    - navigation.expand
     - navigation.top
+    - navigation.indexes
+    - toc.follow
     - search.highlight
+    - search.suggest
     - content.code.copy
   icon:
     repo: fontawesome/brands/github
@@ -42,18 +45,23 @@ markdown_extensions:
 
 nav:
   - Inicio: README.md
-  - Módulo 01 — Introducción: modulo-01-introduccion.md
-  - Módulo 02 — Java desde Cero: modulo-02-java-desde-cero.md
-  - Módulo 03 — POO: modulo-03-poo.md
-  - Módulo 04 — Spring Boot: modulo-04-spring-boot.md
-  - Módulo 05 — APIs REST: modulo-05-apis-rest.md
-  - Módulo 06 — MongoDB: modulo-06-mongodb.md
-  - Módulo 07 — Spring + MongoDB: modulo-07-spring-mongodb.md
-  - Módulo 08 — Microservicios: modulo-08-microservicios.md
-  - Módulo 09 — Servicio Clientes: modulo-09-servicio-clientes.md
-  - Módulo 10 — Servicio Pedidos: modulo-10-servicio-pedidos.md
-  - Módulo 11 — Servicio Bebidas: modulo-11-servicio-bebidas.md
-  - Módulo 12 — Comunicación: modulo-12-comunicacion.md
-  - Módulo 13 — API Gateway: modulo-13-api-gateway.md
-  - Módulo 14 — Docker: modulo-14-docker.md
-  - Módulo 15 — Proyecto Final: modulo-15-proyecto-final.md
+  - "🐣 Fundamentos":
+    - Módulo 01 — Introducción: modulo-01-introduccion.md
+    - Módulo 02 — Java desde Cero: modulo-02-java-desde-cero.md
+    - Módulo 03 — POO: modulo-03-poo.md
+  - "☕ Spring Boot y APIs":
+    - Módulo 04 — Spring Boot: modulo-04-spring-boot.md
+    - Módulo 05 — APIs REST: modulo-05-apis-rest.md
+  - "🗄️ Base de Datos":
+    - Módulo 06 — MongoDB: modulo-06-mongodb.md
+    - Módulo 07 — Spring + MongoDB: modulo-07-spring-mongodb.md
+  - "🏗️ Microservicios":
+    - Módulo 08 — ¿Qué son?: modulo-08-microservicios.md
+    - Módulo 09 — Servicio Clientes: modulo-09-servicio-clientes.md
+    - Módulo 10 — Servicio Pedidos: modulo-10-servicio-pedidos.md
+    - Módulo 11 — Servicio Bebidas: modulo-11-servicio-bebidas.md
+    - Módulo 12 — Comunicación: modulo-12-comunicacion.md
+    - Módulo 13 — API Gateway: modulo-13-api-gateway.md
+  - "🚀 Producción":
+    - Módulo 14 — Docker: modulo-14-docker.md
+    - Módulo 15 — Proyecto Final: modulo-15-proyecto-final.md
