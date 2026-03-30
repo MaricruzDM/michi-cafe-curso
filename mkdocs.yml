@@ -1,0 +1,59 @@
+site_name: "☕🐱 Michi Café — Java + Spring Boot + MongoDB"
+site_description: "Curso de microservicios con Java para no programadores"
+site_author: "Michi Café"
+docs_dir: curso
+
+theme:
+  name: material
+  language: es
+  palette:
+    - scheme: default
+      primary: brown
+      accent: orange
+      toggle:
+        icon: material/brightness-7
+        name: Modo oscuro
+    - scheme: slate
+      primary: brown
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Modo claro
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Inicio: README.md
+  - Módulo 01 — Introducción: modulo-01-introduccion.md
+  - Módulo 02 — Java desde Cero: modulo-02-java-desde-cero.md
+  - Módulo 03 — POO: modulo-03-poo.md
+  - Módulo 04 — Spring Boot: modulo-04-spring-boot.md
+  - Módulo 05 — APIs REST: modulo-05-apis-rest.md
+  - Módulo 06 — MongoDB: modulo-06-mongodb.md
+  - Módulo 07 — Spring + MongoDB: modulo-07-spring-mongodb.md
+  - Módulo 08 — Microservicios: modulo-08-microservicios.md
+  - Módulo 09 — Servicio Clientes: modulo-09-servicio-clientes.md
+  - Módulo 10 — Servicio Pedidos: modulo-10-servicio-pedidos.md
+  - Módulo 11 — Servicio Bebidas: modulo-11-servicio-bebidas.md
+  - Módulo 12 — Comunicación: modulo-12-comunicacion.md
+  - Módulo 13 — API Gateway: modulo-13-api-gateway.md
+  - Módulo 14 — Docker: modulo-14-docker.md
+  - Módulo 15 — Proyecto Final: modulo-15-proyecto-final.md

@@ -1,0 +1,27 @@
+name: Deploy Michi Café Curso a GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Se ejecuta cada vez que haces push a main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Instalar MkDocs y tema Material
+        run: pip install mkdocs-material
+
+      - name: Construir y publicar en GitHub Pages
+        run: mkdocs gh-deploy --force
