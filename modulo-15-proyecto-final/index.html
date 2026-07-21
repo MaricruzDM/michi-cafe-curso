@@ -1,0 +1,2918 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Curso de microservicios con Java para no programadores">
+      
+      
+        <meta name="author" content="Michi Café">
+      
+      
+      
+        <link rel="prev" href="../modulo-14-docker/">
+      
+      
+        <link rel="next" href="../proyecto-01-instalacion/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Módulo 15 — Proyecto Final - ☕🐱 Michi Café — Java + Spring Boot + MongoDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modulo-15-proyecto-final-el-michi-cafe-completo" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-header__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Módulo 15 — Proyecto Final
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-nav__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐣 Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐣 Fundamentos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-01-introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 01 — Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-02-java-desde-cero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 02 — Java desde Cero
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-03-poo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 03 — POO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ☕ Spring Boot y APIs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ☕ Spring Boot y APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-04-spring-boot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 04 — Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-05-apis-rest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 05 — APIs REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗄️ Base de Datos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🗄️ Base de Datos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-06-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 06 — MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-07-spring-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 07 — Spring + MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏗️ Microservicios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🏗️ Microservicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-08-microservicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 08 — ¿Qué son?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-09-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 09 — Servicio Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-10-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 10 — Servicio Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-11-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 11 — Servicio Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-12-comunicacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 12 — Comunicación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-13-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 13 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚀 Producción
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚀 Producción
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-14-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 14 — Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 15 — Proyecto Final
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 15 — Proyecto Final
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-michi-cafe-abre-sus-puertas-al-mundo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐱 El Michi Café abre sus puertas al mundo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-final-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Arquitectura final del sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flujo-completo-de-un-pedido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Flujo completo de un pedido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-de-archivos-del-proyecto-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Checklist de archivos del proyecto completo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Checklist de archivos del proyecto completo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servicio-bebidas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        servicio-bebidas/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servicio-clientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        servicio-clientes/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servicio-pedidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        servicio-pedidos/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        api-gateway/
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pruebas-end-to-end-el-dia-de-apertura-del-michi-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Pruebas end-to-end: el día de apertura del Michi Café
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Pruebas end-to-end: el día de apertura del Michi Café">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-levantar-todo-el-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1: Levantar todo el sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-verificar-el-menu-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2: Verificar el menú inicial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-registrar-los-primeros-clientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3: Registrar los primeros clientes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-hacer-el-primer-pedido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4: Hacer el primer pedido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-procesar-el-pedido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5: Procesar el pedido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-6-verificar-los-puntos-de-sofia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 6: Verificar los puntos de Sofía
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-7-ver-todos-los-pedidos-del-dia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 7: Ver todos los pedidos del día
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coleccion-de-postman-para-el-proyecto-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Colección de Postman para el proyecto final
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoreo-saber-que-todo-esta-bien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Monitoreo: saber que todo está bien
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Monitoreo: saber que todo está bien">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#health-checks-de-todos-los-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Health checks de todos los servicios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ver-logs-en-tiempo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ver logs en tiempo real
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejo-de-errores-casos-de-prueba-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Manejo de errores: casos de prueba importantes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Manejo de errores: casos de prueba importantes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pedido-con-cliente-inexistente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pedido con cliente inexistente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pedido-con-bebida-no-disponible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pedido con bebida no disponible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registrar-cliente-con-correo-duplicado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registrar cliente con correo duplicado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejoras-opcionales-para-seguir-aprendiendo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Mejoras opcionales para seguir aprendiendo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Mejoras opcionales para seguir aprendiendo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seguridad-con-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seguridad con JWT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notificaciones-con-eventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notificaciones con eventos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-con-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caché con Redis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-automatica-con-swagger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentación automática con Swagger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#despliegue-en-la-nube" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Despliegue en la nube
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proyecto-final-reto-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Proyecto Final: Reto completo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Proyecto Final: Reto completo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-reto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El reto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-exito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Criterios de éxito
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-del-curso-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Resumen del Curso Completo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ Resumen del Curso Completo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lo-que-construiste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lo que construiste
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#las-habilidades-que-adquiriste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Las habilidades que adquiriste
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-camino-que-recorriste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El camino que recorriste
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-sigue-despues-de-este-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 ¿Qué sigue después de este curso?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎓 ¿Qué sigue después de este curso?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proximos-pasos-recomendados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximos pasos recomendados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-para-seguir-aprendiendo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursos para seguir aprendiendo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Proyecto Guiado
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Proyecto Guiado
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-01-instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P01 — Instalación del entorno
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-02-primer-proyecto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P02 — Primer proyecto Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-03-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P03 — Servicio de Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-04-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P04 — Servicio de Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-05-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P05 — Servicio de Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-06-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P06 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-07-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P07 — Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-michi-cafe-abre-sus-puertas-al-mundo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐱 El Michi Café abre sus puertas al mundo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arquitectura-final-del-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Arquitectura final del sistema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flujo-completo-de-un-pedido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Flujo completo de un pedido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-de-archivos-del-proyecto-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Checklist de archivos del proyecto completo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Checklist de archivos del proyecto completo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servicio-bebidas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        servicio-bebidas/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servicio-clientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        servicio-clientes/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servicio-pedidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        servicio-pedidos/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        api-gateway/
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pruebas-end-to-end-el-dia-de-apertura-del-michi-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Pruebas end-to-end: el día de apertura del Michi Café
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Pruebas end-to-end: el día de apertura del Michi Café">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-levantar-todo-el-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1: Levantar todo el sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-verificar-el-menu-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2: Verificar el menú inicial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-registrar-los-primeros-clientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3: Registrar los primeros clientes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-hacer-el-primer-pedido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4: Hacer el primer pedido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-procesar-el-pedido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5: Procesar el pedido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-6-verificar-los-puntos-de-sofia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 6: Verificar los puntos de Sofía
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-7-ver-todos-los-pedidos-del-dia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 7: Ver todos los pedidos del día
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coleccion-de-postman-para-el-proyecto-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Colección de Postman para el proyecto final
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoreo-saber-que-todo-esta-bien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Monitoreo: saber que todo está bien
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Monitoreo: saber que todo está bien">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#health-checks-de-todos-los-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Health checks de todos los servicios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ver-logs-en-tiempo-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ver logs en tiempo real
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejo-de-errores-casos-de-prueba-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Manejo de errores: casos de prueba importantes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Manejo de errores: casos de prueba importantes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pedido-con-cliente-inexistente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pedido con cliente inexistente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pedido-con-bebida-no-disponible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pedido con bebida no disponible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registrar-cliente-con-correo-duplicado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Registrar cliente con correo duplicado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mejoras-opcionales-para-seguir-aprendiendo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Mejoras opcionales para seguir aprendiendo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Mejoras opcionales para seguir aprendiendo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seguridad-con-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seguridad con JWT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notificaciones-con-eventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notificaciones con eventos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-con-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caché con Redis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacion-automatica-con-swagger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentación automática con Swagger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#despliegue-en-la-nube" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Despliegue en la nube
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proyecto-final-reto-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Proyecto Final: Reto completo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Proyecto Final: Reto completo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-reto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El reto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-exito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Criterios de éxito
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-del-curso-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Resumen del Curso Completo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ Resumen del Curso Completo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lo-que-construiste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lo que construiste
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#las-habilidades-que-adquiriste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Las habilidades que adquiriste
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-camino-que-recorriste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El camino que recorriste
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-sigue-despues-de-este-curso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 ¿Qué sigue después de este curso?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎓 ¿Qué sigue después de este curso?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proximos-pasos-recomendados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximos pasos recomendados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursos-para-seguir-aprendiendo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recursos para seguir aprendiendo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="modulo-15-proyecto-final-el-michi-cafe-completo">Módulo 15 — Proyecto Final: El Michi Café Completo<a class="headerlink" href="#modulo-15-proyecto-final-el-michi-cafe-completo" title="Permanent link">&para;</a></h1>
+<h2 id="el-michi-cafe-abre-sus-puertas-al-mundo">🐱 El Michi Café abre sus puertas al mundo<a class="headerlink" href="#el-michi-cafe-abre-sus-puertas-al-mundo" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="introduccion">🏠 Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>¡Llegaste al módulo final! A lo largo de este curso aprendiste:</p>
+<ul>
+<li>✅ Java desde cero: variables, condiciones, ciclos, métodos</li>
+<li>✅ Programación Orientada a Objetos: clases, herencia, polimorfismo</li>
+<li>✅ Spring Boot: servidores, controllers, services</li>
+<li>✅ APIs REST: GET, POST, PUT, PATCH, DELETE</li>
+<li>✅ MongoDB: documentos, colecciones, consultas</li>
+<li>✅ Spring Data MongoDB: repositories, consultas automáticas</li>
+<li>✅ Microservicios: arquitectura, independencia, responsabilidad única</li>
+<li>✅ Comunicación entre servicios: RestTemplate, WebClient</li>
+<li>✅ API Gateway: enrutamiento, filtros, CORS</li>
+<li>✅ Docker: contenedores, imágenes, Docker Compose</li>
+</ul>
+<p>En este módulo final vamos a <strong>integrar todo</strong> y construir el Michi Café completo, funcional y listo para producción.</p>
+<hr />
+<h2 id="arquitectura-final-del-sistema">💡 Arquitectura final del sistema<a class="headerlink" href="#arquitectura-final-del-sistema" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>                         Internet
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                            │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                            ▼
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>              ┌─────────────────────────────┐
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>              │      API Gateway  :8080      │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>              │  - Enrutamiento              │
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>              │  - Logging                   │
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>              │  - CORS                      │
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>              └──────────────┬──────────────┘
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>                             │
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>         ┌───────────────────┼───────────────────┐
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>         │                   │                   │
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>         ▼                   ▼                   ▼
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│ servicio-bebidas│ │servicio-clientes│ │ servicio-pedidos│
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│     :8081       │ │     :8082       │ │     :8083       │
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│                 │ │                 │ │  (llama a       │
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│  - CRUD bebidas │ │  - CRUD clientes│ │   bebidas y     │
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│  - Filtros      │ │  - Puntos       │ │   clientes)     │
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>└────────┬────────┘ └────────┬────────┘ └────────┬────────┘
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>         │                   │                   │
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>         ▼                   ▼                   ▼
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    [MongoDB]           [MongoDB]           [MongoDB]
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>  michicafe_           michicafe_          michicafe_
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>   bebidas              clientes            pedidos
+</code></pre></div>
+<hr />
+<h2 id="flujo-completo-de-un-pedido">💡 Flujo completo de un pedido<a class="headerlink" href="#flujo-completo-de-un-pedido" title="Permanent link">&para;</a></h2>
+<p>Vamos a trazar el camino completo de un pedido en el Michi Café:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>1. El cliente abre la app y ve el menú
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>   GET /api/bebidas → Gateway → servicio-bebidas → MongoDB
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>2. El cliente se registra (o ya tiene cuenta)
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>   POST /api/clientes → Gateway → servicio-clientes → MongoDB
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>3. El cliente hace un pedido
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>   POST /api/pedidos → Gateway → servicio-pedidos
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>     ├── Verifica que el cliente existe → llama a servicio-clientes
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>     ├── Verifica que las bebidas existen → llama a servicio-bebidas
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>     ├── Calcula el total
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>     └── Guarda el pedido → MongoDB
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>4. El pedido se procesa
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>   PATCH /api/pedidos/{id}/estado?valor=preparando → Gateway → servicio-pedidos
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>5. El pedido se entrega
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>   PATCH /api/pedidos/{id}/estado?valor=entregado → Gateway → servicio-pedidos
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>     └── Agrega puntos al cliente → llama a servicio-clientes
+</code></pre></div>
+<hr />
+<h2 id="checklist-de-archivos-del-proyecto-completo">💡 Checklist de archivos del proyecto completo<a class="headerlink" href="#checklist-de-archivos-del-proyecto-completo" title="Permanent link">&para;</a></h2>
+<p>Antes de integrar todo, verifica que tienes estos archivos en cada servicio:</p>
+<h3 id="servicio-bebidas">servicio-bebidas/<a class="headerlink" href="#servicio-bebidas" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>servicio-bebidas/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── Dockerfile
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── pom.xml
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>└── src/main/
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    ├── java/com/michicafe/bebidas/
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    │   ├── BebidasApplication.java
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    │   ├── config/DataLoader.java
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    │   ├── controller/BebidaController.java
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    │   ├── service/BebidaService.java
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    │   ├── repository/BebidaRepository.java
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    │   ├── model/Bebida.java
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    │   └── exception/GlobalExceptionHandler.java
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    └── resources/application.properties
+</code></pre></div>
+<h3 id="servicio-clientes">servicio-clientes/<a class="headerlink" href="#servicio-clientes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>servicio-clientes/
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── Dockerfile
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>├── pom.xml
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>└── src/main/
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    ├── java/com/michicafe/clientes/
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    │   ├── ClientesApplication.java
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    │   ├── controller/ClienteController.java
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    │   ├── service/ClienteService.java
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    │   ├── repository/ClienteRepository.java
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    │   ├── model/Cliente.java
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    │   └── exception/GlobalExceptionHandler.java
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    └── resources/application.properties
+</code></pre></div>
+<h3 id="servicio-pedidos">servicio-pedidos/<a class="headerlink" href="#servicio-pedidos" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>servicio-pedidos/
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── Dockerfile
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>├── pom.xml
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>└── src/main/
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    ├── java/com/michicafe/pedidos/
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    │   ├── PedidosApplication.java
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    │   ├── config/WebClientConfig.java
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    │   ├── controller/PedidoController.java
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    │   ├── service/PedidoService.java
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    │   ├── repository/PedidoRepository.java
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    │   ├── model/
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    │   │   ├── Pedido.java
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    │   │   └── ItemPedido.java
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    │   └── exception/GlobalExceptionHandler.java
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    └── resources/application.properties
+</code></pre></div>
+<h3 id="api-gateway">api-gateway/<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>api-gateway/
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>├── Dockerfile
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>├── pom.xml
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>└── src/main/
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    ├── java/com/michicafe/gateway/
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    │   ├── ApiGatewayApplication.java
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    │   ├── filter/LoggingFilter.java
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    │   └── handler/GatewayErrorHandler.java
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    └── resources/application.yml
+</code></pre></div>
+<hr />
+<h2 id="pruebas-end-to-end-el-dia-de-apertura-del-michi-cafe">💡 Pruebas end-to-end: el día de apertura del Michi Café<a class="headerlink" href="#pruebas-end-to-end-el-dia-de-apertura-del-michi-cafe" title="Permanent link">&para;</a></h2>
+<p>Vamos a simular el primer día de operación del Michi Café completo.</p>
+<h3 id="paso-1-levantar-todo-el-sistema">Paso 1: Levantar todo el sistema<a class="headerlink" href="#paso-1-levantar-todo-el-sistema" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>michi-cafe
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build<span class="w"> </span>-d
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Esperar ~30 segundos a que todo inicie</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>docker<span class="w"> </span>compose<span class="w"> </span>ps
+</code></pre></div>
+<p>Todos los servicios deben mostrar <code>Up</code>.</p>
+<h3 id="paso-2-verificar-el-menu-inicial">Paso 2: Verificar el menú inicial<a class="headerlink" href="#paso-2-verificar-el-menu-inicial" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>GET http://localhost:8080/api/bebidas
+</code></pre></div>
+<p>Respuesta esperada: lista de 6 bebidas cargadas por el DataLoader.</p>
+<h3 id="paso-3-registrar-los-primeros-clientes">Paso 3: Registrar los primeros clientes<a class="headerlink" href="#paso-3-registrar-los-primeros-clientes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>POST http://localhost:8080/api/clientes
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Content-Type: application/json
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>{ &quot;nombre&quot;: &quot;Sofía&quot;, &quot;correo&quot;: &quot;sofia@email.com&quot; }
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>POST http://localhost:8080/api/clientes
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Content-Type: application/json
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>{ &quot;nombre&quot;: &quot;Carlos&quot;, &quot;correo&quot;: &quot;carlos@email.com&quot; }
+</code></pre></div>
+<p>Guarda los IDs que devuelve MongoDB (los necesitarás para los pedidos).</p>
+<h3 id="paso-4-hacer-el-primer-pedido">Paso 4: Hacer el primer pedido<a class="headerlink" href="#paso-4-hacer-el-primer-pedido" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>POST http://localhost:8080/api/pedidos
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>Content-Type: application/json
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>{
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>  &quot;clienteId&quot;: &quot;[id de Sofía]&quot;,
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  &quot;items&quot;: [
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    { &quot;bebidaId&quot;: &quot;[id del Latte de vainilla]&quot;, &quot;cantidad&quot;: 1 },
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    { &quot;bebidaId&quot;: &quot;[id del Matcha Latte]&quot;,      &quot;cantidad&quot;: 2 }
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>  ],
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>  &quot;paraLlevar&quot;: false,
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>  &quot;notas&quot;: &quot;Sin azúcar en el matcha por favor&quot;
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>}
+</code></pre></div>
+<p>Respuesta esperada (201 Created):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;64a1b2c3...&quot;</span><span class="p">,</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="nt">&quot;clienteId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span><span class="nt">&quot;clienteNombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sofía&quot;</span><span class="p">,</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">  </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;bebidaId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Latte de vainilla&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">45.50</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;bebidaId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Matcha Latte&quot;</span><span class="p">,</span><span class="w">      </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">55.00</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cantidad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">  </span><span class="p">],</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">  </span><span class="nt">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">155.50</span><span class="p">,</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">  </span><span class="nt">&quot;estado&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pendiente&quot;</span><span class="p">,</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">  </span><span class="nt">&quot;paraLlevar&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">  </span><span class="nt">&quot;notas&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sin azúcar en el matcha por favor&quot;</span><span class="p">,</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">  </span><span class="nt">&quot;fecha&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-15T11:30:00&quot;</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="p">}</span>
+</code></pre></div></p>
+<h3 id="paso-5-procesar-el-pedido">Paso 5: Procesar el pedido<a class="headerlink" href="#paso-5-procesar-el-pedido" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>PATCH http://localhost:8080/api/pedidos/[id]/estado?valor=preparando
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>PATCH http://localhost:8080/api/pedidos/[id]/estado?valor=listo
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>PATCH http://localhost:8080/api/pedidos/[id]/estado?valor=entregado
+</code></pre></div>
+<p>Al marcar como entregado, el sistema automáticamente agrega puntos a Sofía.</p>
+<h3 id="paso-6-verificar-los-puntos-de-sofia">Paso 6: Verificar los puntos de Sofía<a class="headerlink" href="#paso-6-verificar-los-puntos-de-sofia" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>GET http://localhost:8080/api/clientes/[id de Sofía]
+</code></pre></div>
+<p>Sofía debe tener puntos acumulados (1 punto por cada peso gastado, redondeado).</p>
+<h3 id="paso-7-ver-todos-los-pedidos-del-dia">Paso 7: Ver todos los pedidos del día<a class="headerlink" href="#paso-7-ver-todos-los-pedidos-del-dia" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>GET http://localhost:8080/api/pedidos
+</code></pre></div>
+<hr />
+<h2 id="coleccion-de-postman-para-el-proyecto-final">💡 Colección de Postman para el proyecto final<a class="headerlink" href="#coleccion-de-postman-para-el-proyecto-final" title="Permanent link">&para;</a></h2>
+<p>Crea una colección en Postman con todas estas peticiones organizadas por carpetas:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>📁 Michi Café - Proyecto Final
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>  📁 Bebidas
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    GET  Obtener menú completo
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    GET  Bebidas disponibles
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    GET  Bebidas por categoría (caliente)
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    GET  Bebidas por precio (40-55)
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    POST Agregar bebida nueva
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    PUT  Actualizar bebida
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    PATCH Cambiar disponibilidad
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    DELETE Eliminar bebida
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>  📁 Clientes
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>    GET  Obtener todos los clientes
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    GET  Buscar cliente por correo
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>    POST Registrar cliente nuevo
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>    PATCH Agregar puntos
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>    DELETE Eliminar cliente
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a>  📁 Pedidos
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>    GET  Obtener todos los pedidos
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>    GET  Pedidos por cliente
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>    GET  Pedidos por estado
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>    POST Crear pedido nuevo
+<a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a>    PATCH Cambiar estado del pedido
+<a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a>    DELETE Cancelar pedido
+</code></pre></div>
+<hr />
+<h2 id="monitoreo-saber-que-todo-esta-bien">💡 Monitoreo: saber que todo está bien<a class="headerlink" href="#monitoreo-saber-que-todo-esta-bien" title="Permanent link">&para;</a></h2>
+<h3 id="health-checks-de-todos-los-servicios">Health checks de todos los servicios<a class="headerlink" href="#health-checks-de-todos-los-servicios" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Gateway</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>curl<span class="w"> </span>http://localhost:8080/actuator/health
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># Bebidas</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>curl<span class="w"> </span>http://localhost:8081/actuator/health
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1"># Clientes</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>curl<span class="w"> </span>http://localhost:8082/actuator/health
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="c1"># Pedidos</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>curl<span class="w"> </span>http://localhost:8083/actuator/health
+</code></pre></div>
+<p>Todos deben responder: <code>{ "status": "UP" }</code></p>
+<h3 id="ver-logs-en-tiempo-real">Ver logs en tiempo real<a class="headerlink" href="#ver-logs-en-tiempo-real" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Ver todos los logs</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># Ver solo los logs del gateway</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>api-gateway
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># Ver solo errores</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ERROR
+</code></pre></div>
+<hr />
+<h2 id="manejo-de-errores-casos-de-prueba-importantes">💡 Manejo de errores: casos de prueba importantes<a class="headerlink" href="#manejo-de-errores-casos-de-prueba-importantes" title="Permanent link">&para;</a></h2>
+<p>Prueba estos escenarios para verificar que el sistema maneja los errores correctamente:</p>
+<h3 id="pedido-con-cliente-inexistente">Pedido con cliente inexistente<a class="headerlink" href="#pedido-con-cliente-inexistente" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>POST http://localhost:8080/api/pedidos
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>{
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>  &quot;clienteId&quot;: &quot;id-que-no-existe&quot;,
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>  &quot;items&quot;: [...]
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>}
+</code></pre></div>
+<p>Respuesta esperada: <code>404 Not Found</code> con mensaje claro.</p>
+<h3 id="pedido-con-bebida-no-disponible">Pedido con bebida no disponible<a class="headerlink" href="#pedido-con-bebida-no-disponible" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>POST http://localhost:8080/api/pedidos
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>{
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>  &quot;clienteId&quot;: &quot;[id válido]&quot;,
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>  &quot;items&quot;: [{ &quot;bebidaId&quot;: &quot;[id de Chai Latte - no disponible]&quot;, &quot;cantidad&quot;: 1 }]
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>}
+</code></pre></div>
+<p>Respuesta esperada: <code>400 Bad Request</code> con mensaje "La bebida Chai Latte no está disponible".</p>
+<h3 id="registrar-cliente-con-correo-duplicado">Registrar cliente con correo duplicado<a class="headerlink" href="#registrar-cliente-con-correo-duplicado" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>POST http://localhost:8080/api/clientes
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>{ &quot;nombre&quot;: &quot;Sofía 2&quot;, &quot;correo&quot;: &quot;sofia@email.com&quot; }
+</code></pre></div>
+<p>Respuesta esperada: <code>409 Conflict</code> con mensaje "Ya existe un cliente con ese correo".</p>
+<hr />
+<h2 id="mejoras-opcionales-para-seguir-aprendiendo">💡 Mejoras opcionales para seguir aprendiendo<a class="headerlink" href="#mejoras-opcionales-para-seguir-aprendiendo" title="Permanent link">&para;</a></h2>
+<p>Una vez que el Michi Café básico funciona, aquí hay ideas para seguir mejorando:</p>
+<h3 id="seguridad-con-jwt">Seguridad con JWT<a class="headerlink" href="#seguridad-con-jwt" title="Permanent link">&para;</a></h3>
+<p>Agregar autenticación con tokens JWT para que solo usuarios registrados puedan hacer pedidos.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>POST /api/auth/login → devuelve un token JWT
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>GET  /api/pedidos    → requiere el token en el header Authorization
+</code></pre></div>
+<h3 id="notificaciones-con-eventos">Notificaciones con eventos<a class="headerlink" href="#notificaciones-con-eventos" title="Permanent link">&para;</a></h3>
+<p>Cuando un pedido cambia de estado, enviar una notificación al cliente usando un sistema de mensajería como <strong>Apache Kafka</strong> o <strong>RabbitMQ</strong>.</p>
+<h3 id="cache-con-redis">Caché con Redis<a class="headerlink" href="#cache-con-redis" title="Permanent link">&para;</a></h3>
+<p>Guardar el menú en caché para que no se consulte MongoDB en cada petición:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nd">@Cacheable</span><span class="p">(</span><span class="s">&quot;bebidas&quot;</span><span class="p">)</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Bebida</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">obtenerTodas</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">bebidaRepository</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="documentacion-automatica-con-swagger">Documentación automática con Swagger<a class="headerlink" href="#documentacion-automatica-con-swagger" title="Permanent link">&para;</a></h3>
+<p>Agregar la dependencia <code>springdoc-openapi</code> para generar documentación interactiva de la API automáticamente:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>GET http://localhost:8081/swagger-ui.html
+</code></pre></div>
+<h3 id="despliegue-en-la-nube">Despliegue en la nube<a class="headerlink" href="#despliegue-en-la-nube" title="Permanent link">&para;</a></h3>
+<p>Subir las imágenes Docker a <strong>Docker Hub</strong> y desplegar en:
+- <strong>AWS ECS</strong> (Elastic Container Service)
+- <strong>Google Cloud Run</strong>
+- <strong>Railway</strong> (más sencillo para empezar)</p>
+<hr />
+<h2 id="proyecto-final-reto-completo">🧪 Proyecto Final: Reto completo<a class="headerlink" href="#proyecto-final-reto-completo" title="Permanent link">&para;</a></h2>
+<h3 id="el-reto">El reto<a class="headerlink" href="#el-reto" title="Permanent link">&para;</a></h3>
+<p>Construye el Michi Café completo desde cero siguiendo todos los módulos del curso. Al terminar, tu sistema debe:</p>
+<ol>
+<li>✅ Tener los 3 microservicios corriendo independientemente</li>
+<li>✅ Cada servicio con su propia base de datos MongoDB</li>
+<li>✅ El API Gateway enrutando todas las peticiones</li>
+<li>✅ Todo levantado con <code>docker compose up</code></li>
+<li>✅ Flujo completo: registrar cliente → ver menú → hacer pedido → procesar → entregar → acumular puntos</li>
+</ol>
+<h3 id="criterios-de-exito">Criterios de éxito<a class="headerlink" href="#criterios-de-exito" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Verificación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Servicios independientes</td>
+<td>Cada uno corre en su propio puerto</td>
+</tr>
+<tr>
+<td>Persistencia</td>
+<td>Los datos sobreviven al reinicio</td>
+</tr>
+<tr>
+<td>Comunicación</td>
+<td>servicio-pedidos llama a los otros dos</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td>Todo accesible desde el puerto 8080</td>
+</tr>
+<tr>
+<td>Errores manejados</td>
+<td>Respuestas claras cuando algo falla</td>
+</tr>
+<tr>
+<td>Docker</td>
+<td><code>docker compose up</code> levanta todo</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="resumen-del-curso-completo">✅ Resumen del Curso Completo<a class="headerlink" href="#resumen-del-curso-completo" title="Permanent link">&para;</a></h2>
+<h3 id="lo-que-construiste">Lo que construiste<a class="headerlink" href="#lo-que-construiste" title="Permanent link">&para;</a></h3>
+<p>Un sistema de microservicios completo para el <strong>Michi Café</strong> con:</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Tecnología</th>
+<th>Puerto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API Gateway</td>
+<td>Spring Cloud Gateway</td>
+<td>8080</td>
+</tr>
+<tr>
+<td>Servicio de Bebidas</td>
+<td>Spring Boot + MongoDB</td>
+<td>8081</td>
+</tr>
+<tr>
+<td>Servicio de Clientes</td>
+<td>Spring Boot + MongoDB</td>
+<td>8082</td>
+</tr>
+<tr>
+<td>Servicio de Pedidos</td>
+<td>Spring Boot + MongoDB</td>
+<td>8083</td>
+</tr>
+<tr>
+<td>Base de datos</td>
+<td>MongoDB</td>
+<td>27017</td>
+</tr>
+<tr>
+<td>Contenedores</td>
+<td>Docker + Docker Compose</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="las-habilidades-que-adquiriste">Las habilidades que adquiriste<a class="headerlink" href="#las-habilidades-que-adquiriste" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Habilidad</th>
+<th>Módulos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Programación en Java</td>
+<td>02, 03</td>
+</tr>
+<tr>
+<td>APIs REST con Spring Boot</td>
+<td>04, 05</td>
+</tr>
+<tr>
+<td>Bases de datos con MongoDB</td>
+<td>06, 07</td>
+</tr>
+<tr>
+<td>Arquitectura de microservicios</td>
+<td>08 - 13</td>
+</tr>
+<tr>
+<td>Contenedores con Docker</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+<h3 id="el-camino-que-recorriste">El camino que recorriste<a class="headerlink" href="#el-camino-que-recorriste" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>No programador
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>      ↓
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>Variables y condiciones (Módulo 02)
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>      ↓
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>Clases y objetos (Módulo 03)
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>      ↓
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>Primer servidor web (Módulo 04)
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>      ↓
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>API REST completa (Módulo 05)
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>      ↓
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>Base de datos real (Módulos 06-07)
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>      ↓
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>Arquitectura de microservicios (Módulos 08-13)
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>      ↓
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>Sistema en producción con Docker (Módulo 14)
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>      ↓
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a>🎉 Desarrollador de microservicios con Java
+</code></pre></div>
+<hr />
+<h2 id="que-sigue-despues-de-este-curso">🎓 ¿Qué sigue después de este curso?<a class="headerlink" href="#que-sigue-despues-de-este-curso" title="Permanent link">&para;</a></h2>
+<h3 id="proximos-pasos-recomendados">Próximos pasos recomendados<a class="headerlink" href="#proximos-pasos-recomendados" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Spring Security</strong> — Agregar autenticación y autorización con JWT</li>
+<li><strong>Apache Kafka</strong> — Comunicación asíncrona entre microservicios</li>
+<li><strong>Kubernetes</strong> — Orquestación de contenedores a escala</li>
+<li><strong>CI/CD con GitHub Actions</strong> — Automatizar pruebas y despliegues</li>
+<li><strong>Testing</strong> — JUnit, Mockito, pruebas de integración</li>
+</ol>
+<h3 id="recursos-para-seguir-aprendiendo">Recursos para seguir aprendiendo<a class="headerlink" href="#recursos-para-seguir-aprendiendo" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Documentación oficial de Spring: <strong>https://spring.io/docs</strong></li>
+<li>MongoDB University (cursos gratuitos): <strong>https://university.mongodb.com</strong></li>
+<li>Docker docs: <strong>https://docs.docker.com</strong></li>
+<li>Baeldung (tutoriales de Spring): <strong>https://www.baeldung.com</strong></li>
+</ul>
+<hr />
+<blockquote>
+<p>🐾 "Empezaste sin saber qué era una variable y terminaste construyendo un sistema de microservicios completo con base de datos, API Gateway y Docker. Eso no es poco. Eso es mucho."</p>
+<p><strong>El Michi Café está abierto. ¡Bienvenido al mundo del desarrollo de software!</strong> ☕🐱</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.indexes", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

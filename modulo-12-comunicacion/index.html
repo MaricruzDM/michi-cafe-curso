@@ -1,0 +1,2596 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Curso de microservicios con Java para no programadores">
+      
+      
+        <meta name="author" content="Michi Café">
+      
+      
+      
+        <link rel="prev" href="../modulo-11-servicio-bebidas/">
+      
+      
+        <link rel="next" href="../modulo-13-api-gateway/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Módulo 12 — Comunicación - ☕🐱 Michi Café — Java + Spring Boot + MongoDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modulo-12-comunicacion-entre-microservicios" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-header__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Módulo 12 — Comunicación
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-nav__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐣 Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐣 Fundamentos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-01-introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 01 — Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-02-java-desde-cero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 02 — Java desde Cero
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-03-poo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 03 — POO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ☕ Spring Boot y APIs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ☕ Spring Boot y APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-04-spring-boot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 04 — Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-05-apis-rest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 05 — APIs REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗄️ Base de Datos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🗄️ Base de Datos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-06-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 06 — MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-07-spring-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 07 — Spring + MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏗️ Microservicios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🏗️ Microservicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-08-microservicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 08 — ¿Qué son?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-09-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 09 — Servicio Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-10-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 10 — Servicio Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-11-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 11 — Servicio Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 12 — Comunicación
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 12 — Comunicación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analogia-los-gatitos-se-pasan-notitas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐱 Analogía: Los gatitos se pasan notitas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Introducción
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏠 Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Tipos de comunicación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Tipos de comunicación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-comunicacion-sincrona-http-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Comunicación síncrona (HTTP REST)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analogia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-comunicacion-asincrona-mensajes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Comunicación asíncrona (Mensajes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analogia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resttemplate-vs-webclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 RestTemplate vs WebClient
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurando-resttemplate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Configurando RestTemplate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dtos-para-comunicacion-entre-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 DTOs para comunicación entre servicios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clientes-http-los-mensajeros-del-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Clientes HTTP: los mensajeros del servicio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Clientes HTTP: los mensajeros del servicio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurar-las-urls-en-applicationproperties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurar las URLs en application.properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actualizando-el-pedidoservice-con-comunicacion-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Actualizando el PedidoService con comunicación real
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patron-circuit-breaker-cuando-un-servicio-falla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Patrón Circuit Breaker: cuando un servicio falla
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Patrón Circuit Breaker: cuando un servicio falla">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probando-la-comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Probando la comunicación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Probando la comunicación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-un-cliente-servicio-clientes-8082" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Crear un cliente (servicio-clientes: 8082)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-verificar-bebidas-disponibles-servicio-bebidas-8081" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Verificar bebidas disponibles (servicio-bebidas: 8081)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-crear-un-pedido-servicio-pedidos-8083" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Crear un pedido (servicio-pedidos: 8083)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-avanzar-hasta-entregado-y-ver-los-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Avanzar hasta entregado y ver los puntos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-del-modulo-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Ejercicios del Módulo 12
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Ejercicios del Módulo 12">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-verificar-disponibilidad-antes-de-crear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 1: Verificar disponibilidad antes de crear
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2-historial-enriquecido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 2: Historial enriquecido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-manejo-de-fallos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 3: Manejo de fallos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-del-modulo-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Resumen del Módulo 12
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente Módulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-13-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 13 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚀 Producción
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚀 Producción
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-14-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 14 — Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-15-proyecto-final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 15 — Proyecto Final
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Proyecto Guiado
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Proyecto Guiado
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-01-instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P01 — Instalación del entorno
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-02-primer-proyecto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P02 — Primer proyecto Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-03-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P03 — Servicio de Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-04-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P04 — Servicio de Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-05-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P05 — Servicio de Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-06-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P06 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-07-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P07 — Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analogia-los-gatitos-se-pasan-notitas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐱 Analogía: Los gatitos se pasan notitas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Introducción
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏠 Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipos-de-comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Tipos de comunicación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Tipos de comunicación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-comunicacion-sincrona-http-rest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Comunicación síncrona (HTTP REST)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analogia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-comunicacion-asincrona-mensajes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Comunicación asíncrona (Mensajes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analogia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resttemplate-vs-webclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 RestTemplate vs WebClient
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurando-resttemplate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Configurando RestTemplate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dtos-para-comunicacion-entre-servicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 DTOs para comunicación entre servicios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clientes-http-los-mensajeros-del-servicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Clientes HTTP: los mensajeros del servicio
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Clientes HTTP: los mensajeros del servicio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configurar-las-urls-en-applicationproperties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurar las URLs en application.properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actualizando-el-pedidoservice-con-comunicacion-real" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Actualizando el PedidoService con comunicación real
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patron-circuit-breaker-cuando-un-servicio-falla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Patrón Circuit Breaker: cuando un servicio falla
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Patrón Circuit Breaker: cuando un servicio falla">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probando-la-comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Probando la comunicación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Probando la comunicación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-un-cliente-servicio-clientes-8082" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Crear un cliente (servicio-clientes: 8082)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-verificar-bebidas-disponibles-servicio-bebidas-8081" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Verificar bebidas disponibles (servicio-bebidas: 8081)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-crear-un-pedido-servicio-pedidos-8083" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Crear un pedido (servicio-pedidos: 8083)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-avanzar-hasta-entregado-y-ver-los-puntos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Avanzar hasta entregado y ver los puntos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-del-modulo-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Ejercicios del Módulo 12
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Ejercicios del Módulo 12">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-verificar-disponibilidad-antes-de-crear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 1: Verificar disponibilidad antes de crear
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2-historial-enriquecido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 2: Historial enriquecido
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-manejo-de-fallos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 3: Manejo de fallos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-del-modulo-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Resumen del Módulo 12
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente Módulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="modulo-12-comunicacion-entre-microservicios">Módulo 12 — Comunicación entre Microservicios<a class="headerlink" href="#modulo-12-comunicacion-entre-microservicios" title="Permanent link">&para;</a></h1>
+<h2 id="analogia-los-gatitos-se-pasan-notitas">🐱 Analogía: Los gatitos se pasan notitas<a class="headerlink" href="#analogia-los-gatitos-se-pasan-notitas" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="introduccion">🏠 Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>Tenemos tres microservicios corriendo de forma independiente. Pero en la vida real, necesitan colaborar:</p>
+<ul>
+<li>Cuando se crea un pedido, el servicio de pedidos necesita <strong>consultar el precio real</strong> de cada bebida al servicio de bebidas</li>
+<li>También necesita <strong>verificar que el cliente existe</strong> en el servicio de clientes</li>
+<li>Cuando se entrega un pedido, debería <strong>agregar puntos</strong> al cliente</li>
+</ul>
+<p>En este módulo aprenderemos cómo los microservicios se comunican entre sí.</p>
+<h3 id="analogia">Analogía 🐾<a class="headerlink" href="#analogia" title="Permanent link">&para;</a></h3>
+<p>En el Michi Café, cuando la cocina recibe un pedido:
+1. Le pregunta al área de bebidas: "¿Cuánto cuesta el Latte de vainilla?"
+2. Le pregunta al área de clientes: "¿Existe este cliente?"
+3. Cuando entrega el pedido, le avisa al área de clientes: "Agrega 10 puntos a este cliente"</p>
+<p>Esas preguntas y avisos son la <strong>comunicación entre microservicios</strong>.</p>
+<hr />
+<h2 id="tipos-de-comunicacion">💡 Tipos de comunicación<a class="headerlink" href="#tipos-de-comunicacion" title="Permanent link">&para;</a></h2>
+<p>Hay dos formas principales de comunicación entre microservicios:</p>
+<h3 id="1-comunicacion-sincrona-http-rest">1. Comunicación síncrona (HTTP REST)<a class="headerlink" href="#1-comunicacion-sincrona-http-rest" title="Permanent link">&para;</a></h3>
+<p>Un servicio llama a otro y <strong>espera la respuesta</strong> antes de continuar.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Servicio Pedidos → llama → Servicio Bebidas → responde → Servicio Pedidos continúa
+</code></pre></div>
+<h3 id="analogia_1">Analogía 🐾<a class="headerlink" href="#analogia_1" title="Permanent link">&para;</a></h3>
+<p>La cocina llama por teléfono al área de bebidas y espera que contesten para saber el precio. No puede continuar hasta tener la respuesta.</p>
+<p><strong>Ventaja</strong>: Simple de entender e implementar.
+<strong>Desventaja</strong>: Si el servicio de bebidas está caído, el servicio de pedidos también falla.</p>
+<h3 id="2-comunicacion-asincrona-mensajes">2. Comunicación asíncrona (Mensajes)<a class="headerlink" href="#2-comunicacion-asincrona-mensajes" title="Permanent link">&para;</a></h3>
+<p>Un servicio envía un mensaje a una cola y <strong>no espera respuesta</strong>. El otro servicio procesa el mensaje cuando puede.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Servicio Pedidos → envía mensaje → Cola → Servicio Clientes procesa cuando puede
+</code></pre></div>
+<h3 id="analogia_2">Analogía 🐾<a class="headerlink" href="#analogia_2" title="Permanent link">&para;</a></h3>
+<p>La cocina deja una nota en el buzón del área de clientes: "Agrega 10 puntos al cliente X". El área de clientes la leerá cuando pueda, sin bloquear a la cocina.</p>
+<p><strong>Ventaja</strong>: Los servicios son más independientes, si uno falla el mensaje queda en la cola.
+<strong>Desventaja</strong>: Más complejo de implementar.</p>
+<p>En este módulo usaremos <strong>comunicación síncrona con HTTP REST</strong>, que es la más común para empezar.</p>
+<hr />
+<h2 id="resttemplate-vs-webclient">💡 RestTemplate vs WebClient<a class="headerlink" href="#resttemplate-vs-webclient" title="Permanent link">&para;</a></h2>
+<p>Spring ofrece dos formas de hacer llamadas HTTP a otros servicios:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>RestTemplate</th>
+<th>WebClient</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tipo</td>
+<td>Síncrono (bloquea el hilo)</td>
+<td>Reactivo (no bloquea)</td>
+</tr>
+<tr>
+<td>Facilidad</td>
+<td>Más simple</td>
+<td>Más complejo</td>
+</tr>
+<tr>
+<td>Recomendado para</td>
+<td>Aprender, proyectos simples</td>
+<td>Producción, alto rendimiento</td>
+</tr>
+</tbody>
+</table>
+<p>Usaremos <strong>RestTemplate</strong> por ser más fácil de entender.</p>
+<hr />
+<h2 id="configurando-resttemplate">💡 Configurando RestTemplate<a class="headerlink" href="#configurando-resttemplate" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// src/main/java/com/michicafe/pedidos/config/AppConfig.java</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.michicafe.pedidos.config</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Bean</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Configuration</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.client.RestTemplate</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nd">@Configuration</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AppConfig</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nd">@Bean</span><span class="w">  </span><span class="c1">// Le dice a Spring que cree y gestione este objeto</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">RestTemplate</span><span class="w"> </span><span class="nf">restTemplate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RestTemplate</span><span class="p">();</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="dtos-para-comunicacion-entre-servicios">💡 DTOs para comunicación entre servicios<a class="headerlink" href="#dtos-para-comunicacion-entre-servicios" title="Permanent link">&para;</a></h2>
+<p>Cuando el servicio de pedidos llama al servicio de bebidas, necesita un DTO para recibir la respuesta:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// src/main/java/com/michicafe/pedidos/dto/BebidaExternaDTO.java</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.michicafe.pedidos.dto</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">// Representa la respuesta que recibimos del servicio de bebidas</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BebidaExternaDTO</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">precio</span><span class="p">;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">disponible</span><span class="p">;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">BebidaExternaDTO</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getId</span><span class="p">()</span><span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNombre</span><span class="p">()</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">getPrecio</span><span class="p">()</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">precio</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isDisponible</span><span class="p">()</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">disponible</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setId</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w">               </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setNombre</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPrecio</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">precio</span><span class="p">)</span><span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">precio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">precio</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setDisponible</span><span class="p">(</span><span class="kt">boolean</span><span class="w"> </span><span class="n">disp</span><span class="p">)</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">disponible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">disp</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// src/main/java/com/michicafe/pedidos/dto/ClienteExternoDTO.java</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.michicafe.pedidos.dto</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">// Representa la respuesta que recibimos del servicio de clientes</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ClienteExternoDTO</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">apellido</span><span class="p">;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">puntosFidelidad</span><span class="p">;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">ClienteExternoDTO</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getId</span><span class="p">()</span><span class="w">           </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNombre</span><span class="p">()</span><span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getApellido</span><span class="p">()</span><span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">apellido</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPuntosFidelidad</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">puntosFidelidad</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setId</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w">                  </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setNombre</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setApellido</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">apellido</span><span class="p">)</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">apellido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apellido</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPuntosFidelidad</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">puntos</span><span class="p">)</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">puntosFidelidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">puntos</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="clientes-http-los-mensajeros-del-servicio">💡 Clientes HTTP: los mensajeros del servicio<a class="headerlink" href="#clientes-http-los-mensajeros-del-servicio" title="Permanent link">&para;</a></h2>
+<p>Creamos clases dedicadas para comunicarse con cada servicio externo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// src/main/java/com/michicafe/pedidos/client/BebidaClient.java</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.michicafe.pedidos.client</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.michicafe.pedidos.dto.BebidaExternaDTO</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Value</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Component</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.client.HttpClientErrorException</span><span class="p">;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.client.RestTemplate</span><span class="p">;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Optional</span><span class="p">;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="nd">@Component</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BebidaClient</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="nd">@Autowired</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">RestTemplate</span><span class="w"> </span><span class="n">restTemplate</span><span class="p">;</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="c1">// Leemos la URL del servicio de bebidas desde application.properties</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="nd">@Value</span><span class="p">(</span><span class="s">&quot;${servicios.bebidas.url}&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">bebidaServiceUrl</span><span class="p">;</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">BebidaExternaDTO</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">obtenerBebida</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">bebidaId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bebidaServiceUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/api/bebidas/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bebidaId</span><span class="p">;</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">            </span><span class="n">BebidaExternaDTO</span><span class="w"> </span><span class="n">bebida</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">restTemplate</span><span class="p">.</span><span class="na">getForObject</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">BebidaExternaDTO</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Optional</span><span class="p">.</span><span class="na">ofNullable</span><span class="p">(</span><span class="n">bebida</span><span class="p">);</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">HttpClientErrorException</span><span class="p">.</span><span class="na">NotFound</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">            </span><span class="c1">// El servicio de bebidas respondió 404</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Optional</span><span class="p">.</span><span class="na">empty</span><span class="p">();</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">            </span><span class="c1">// El servicio de bebidas no está disponible</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">                </span><span class="s">&quot;No se pudo conectar con el servicio de bebidas: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// src/main/java/com/michicafe/pedidos/client/ClienteClient.java</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.michicafe.pedidos.client</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.michicafe.pedidos.dto.ClienteExternoDTO</span><span class="p">;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Value</span><span class="p">;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Component</span><span class="p">;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.client.HttpClientErrorException</span><span class="p">;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.client.RestTemplate</span><span class="p">;</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Optional</span><span class="p">;</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="nd">@Component</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ClienteClient</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="nd">@Autowired</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">RestTemplate</span><span class="w"> </span><span class="n">restTemplate</span><span class="p">;</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">    </span><span class="nd">@Value</span><span class="p">(</span><span class="s">&quot;${servicios.clientes.url}&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">clienteServiceUrl</span><span class="p">;</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">ClienteExternoDTO</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">obtenerCliente</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clienteId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clienteServiceUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/api/clientes/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">clienteId</span><span class="p">;</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">            </span><span class="n">ClienteExternoDTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">restTemplate</span><span class="p">.</span><span class="na">getForObject</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">ClienteExternoDTO</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Optional</span><span class="p">.</span><span class="na">ofNullable</span><span class="p">(</span><span class="n">cliente</span><span class="p">);</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">HttpClientErrorException</span><span class="p">.</span><span class="na">NotFound</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Optional</span><span class="p">.</span><span class="na">empty</span><span class="p">();</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="w">                </span><span class="s">&quot;No se pudo conectar con el servicio de clientes: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>
+<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">agregarPuntos</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clienteId</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">puntos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clienteServiceUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/api/clientes/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">clienteId</span>
+<a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a><span class="w">                       </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/puntos?cantidad=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">puntos</span><span class="p">;</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a><span class="w">            </span><span class="n">restTemplate</span><span class="p">.</span><span class="na">patchForObject</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="n">ClienteExternoDTO</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a><span class="w">            </span><span class="c1">// Si falla agregar puntos, no bloqueamos el flujo del pedido</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a><span class="w">            </span><span class="c1">// Solo lo registramos en el log</span>
+<a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;⚠️ No se pudieron agregar puntos al cliente: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="configurar-las-urls-en-applicationproperties">Configurar las URLs en application.properties<a class="headerlink" href="#configurar-las-urls-en-applicationproperties" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># application.properties del servicio-pedidos</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="na">spring.application.name</span><span class="o">=</span><span class="s">servicio-pedidos</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="na">server.port</span><span class="o">=</span><span class="s">8083</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="na">spring.data.mongodb.host</span><span class="o">=</span><span class="s">localhost</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="na">spring.data.mongodb.port</span><span class="o">=</span><span class="s">27017</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="na">spring.data.mongodb.database</span><span class="o">=</span><span class="s">michicafe-pedidos</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># URLs de los otros servicios</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="na">servicios.bebidas.url</span><span class="o">=</span><span class="s">http://localhost:8081</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="na">servicios.clientes.url</span><span class="o">=</span><span class="s">http://localhost:8082</span>
+</code></pre></div>
+<hr />
+<h2 id="actualizando-el-pedidoservice-con-comunicacion-real">💡 Actualizando el PedidoService con comunicación real<a class="headerlink" href="#actualizando-el-pedidoservice-con-comunicacion-real" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// PedidoService.java actualizado</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.michicafe.pedidos.service</span><span class="p">;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.michicafe.pedidos.client.BebidaClient</span><span class="p">;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.michicafe.pedidos.client.ClienteClient</span><span class="p">;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.michicafe.pedidos.dto.*</span><span class="p">;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.michicafe.pedidos.model.*</span><span class="p">;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.michicafe.pedidos.repository.PedidoRepository</span><span class="p">;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Service</span><span class="p">;</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDateTime</span><span class="p">;</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Optional</span><span class="p">;</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="nd">@Service</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PedidoService</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="w">    </span><span class="nd">@Autowired</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">PedidoRepository</span><span class="w"> </span><span class="n">pedidoRepository</span><span class="p">;</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="w">    </span><span class="nd">@Autowired</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">BebidaClient</span><span class="w"> </span><span class="n">bebidaClient</span><span class="p">;</span><span class="w">      </span><span class="c1">// Mensajero al servicio de bebidas</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="w">    </span><span class="nd">@Autowired</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ClienteClient</span><span class="w"> </span><span class="n">clienteClient</span><span class="p">;</span><span class="w">    </span><span class="c1">// Mensajero al servicio de clientes</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Pedido</span><span class="w"> </span><span class="nf">crear</span><span class="p">(</span><span class="n">CrearPedidoDTO</span><span class="w"> </span><span class="n">dto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>
+<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="w">        </span><span class="c1">// 1. Verificar que el cliente existe</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a><span class="w">        </span><span class="n">ClienteExternoDTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clienteClient</span><span class="p">.</span><span class="na">obtenerCliente</span><span class="p">(</span><span class="n">dto</span><span class="p">.</span><span class="na">getClienteId</span><span class="p">())</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="w">                </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span>
+<a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a><span class="w">                    </span><span class="s">&quot;Cliente no encontrado: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dto</span><span class="p">.</span><span class="na">getClienteId</span><span class="p">()));</span>
+<a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a>
+<a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a><span class="w">        </span><span class="c1">// 2. Construir los ítems consultando precios reales al servicio de bebidas</span>
+<a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ItemPedido</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">ItemPedidoDTO</span><span class="w"> </span><span class="n">itemDTO</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">dto</span><span class="p">.</span><span class="na">getItems</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a>
+<a id="__codelineno-8-40" name="__codelineno-8-40" href="#__codelineno-8-40"></a><span class="w">            </span><span class="n">BebidaExternaDTO</span><span class="w"> </span><span class="n">bebida</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bebidaClient</span><span class="p">.</span><span class="na">obtenerBebida</span><span class="p">(</span><span class="n">itemDTO</span><span class="p">.</span><span class="na">getBebidaId</span><span class="p">())</span>
+<a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a><span class="w">                    </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span>
+<a id="__codelineno-8-42" name="__codelineno-8-42" href="#__codelineno-8-42"></a><span class="w">                        </span><span class="s">&quot;Bebida no encontrada: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">itemDTO</span><span class="p">.</span><span class="na">getBebidaId</span><span class="p">()));</span>
+<a id="__codelineno-8-43" name="__codelineno-8-43" href="#__codelineno-8-43"></a>
+<a id="__codelineno-8-44" name="__codelineno-8-44" href="#__codelineno-8-44"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">bebida</span><span class="p">.</span><span class="na">isDisponible</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-45" name="__codelineno-8-45" href="#__codelineno-8-45"></a><span class="w">                </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span>
+<a id="__codelineno-8-46" name="__codelineno-8-46" href="#__codelineno-8-46"></a><span class="w">                    </span><span class="s">&quot;La bebida &#39;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bebida</span><span class="p">.</span><span class="na">getNombre</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39; no está disponible&quot;</span><span class="p">);</span>
+<a id="__codelineno-8-47" name="__codelineno-8-47" href="#__codelineno-8-47"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-8-48" name="__codelineno-8-48" href="#__codelineno-8-48"></a>
+<a id="__codelineno-8-49" name="__codelineno-8-49" href="#__codelineno-8-49"></a><span class="w">            </span><span class="n">items</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ItemPedido</span><span class="p">(</span>
+<a id="__codelineno-8-50" name="__codelineno-8-50" href="#__codelineno-8-50"></a><span class="w">                </span><span class="n">bebida</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span>
+<a id="__codelineno-8-51" name="__codelineno-8-51" href="#__codelineno-8-51"></a><span class="w">                </span><span class="n">bebida</span><span class="p">.</span><span class="na">getNombre</span><span class="p">(),</span>
+<a id="__codelineno-8-52" name="__codelineno-8-52" href="#__codelineno-8-52"></a><span class="w">                </span><span class="n">bebida</span><span class="p">.</span><span class="na">getPrecio</span><span class="p">(),</span>
+<a id="__codelineno-8-53" name="__codelineno-8-53" href="#__codelineno-8-53"></a><span class="w">                </span><span class="n">itemDTO</span><span class="p">.</span><span class="na">getCantidad</span><span class="p">()</span>
+<a id="__codelineno-8-54" name="__codelineno-8-54" href="#__codelineno-8-54"></a><span class="w">            </span><span class="p">));</span>
+<a id="__codelineno-8-55" name="__codelineno-8-55" href="#__codelineno-8-55"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-56" name="__codelineno-8-56" href="#__codelineno-8-56"></a>
+<a id="__codelineno-8-57" name="__codelineno-8-57" href="#__codelineno-8-57"></a><span class="w">        </span><span class="c1">// 3. Crear el pedido con datos reales</span>
+<a id="__codelineno-8-58" name="__codelineno-8-58" href="#__codelineno-8-58"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cliente</span><span class="p">.</span><span class="na">getNombre</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cliente</span><span class="p">.</span><span class="na">getApellido</span><span class="p">();</span>
+<a id="__codelineno-8-59" name="__codelineno-8-59" href="#__codelineno-8-59"></a><span class="w">        </span><span class="n">Pedido</span><span class="w"> </span><span class="n">pedido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Pedido</span><span class="p">(</span><span class="n">dto</span><span class="p">.</span><span class="na">getClienteId</span><span class="p">(),</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="p">,</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">dto</span><span class="p">.</span><span class="na">getNotas</span><span class="p">());</span>
+<a id="__codelineno-8-60" name="__codelineno-8-60" href="#__codelineno-8-60"></a>
+<a id="__codelineno-8-61" name="__codelineno-8-61" href="#__codelineno-8-61"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pedidoRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">pedido</span><span class="p">);</span>
+<a id="__codelineno-8-62" name="__codelineno-8-62" href="#__codelineno-8-62"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-63" name="__codelineno-8-63" href="#__codelineno-8-63"></a>
+<a id="__codelineno-8-64" name="__codelineno-8-64" href="#__codelineno-8-64"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Pedido</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">avanzarEstado</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-65" name="__codelineno-8-65" href="#__codelineno-8-65"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pedidoRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="na">map</span><span class="p">(</span><span class="n">pedido</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-66" name="__codelineno-8-66" href="#__codelineno-8-66"></a><span class="w">            </span><span class="n">EstadoPedido</span><span class="w"> </span><span class="n">nuevoEstado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">siguienteEstado</span><span class="p">(</span><span class="n">pedido</span><span class="p">.</span><span class="na">getEstado</span><span class="p">());</span>
+<a id="__codelineno-8-67" name="__codelineno-8-67" href="#__codelineno-8-67"></a><span class="w">            </span><span class="n">pedido</span><span class="p">.</span><span class="na">setEstado</span><span class="p">(</span><span class="n">nuevoEstado</span><span class="p">);</span>
+<a id="__codelineno-8-68" name="__codelineno-8-68" href="#__codelineno-8-68"></a><span class="w">            </span><span class="n">pedido</span><span class="p">.</span><span class="na">setFechaActualizacion</span><span class="p">(</span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">now</span><span class="p">());</span>
+<a id="__codelineno-8-69" name="__codelineno-8-69" href="#__codelineno-8-69"></a>
+<a id="__codelineno-8-70" name="__codelineno-8-70" href="#__codelineno-8-70"></a><span class="w">            </span><span class="n">Pedido</span><span class="w"> </span><span class="n">guardado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pedidoRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">pedido</span><span class="p">);</span>
+<a id="__codelineno-8-71" name="__codelineno-8-71" href="#__codelineno-8-71"></a>
+<a id="__codelineno-8-72" name="__codelineno-8-72" href="#__codelineno-8-72"></a><span class="w">            </span><span class="c1">// Si el pedido fue entregado, agregar puntos al cliente</span>
+<a id="__codelineno-8-73" name="__codelineno-8-73" href="#__codelineno-8-73"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nuevoEstado</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EstadoPedido</span><span class="p">.</span><span class="na">ENTREGADO</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-74" name="__codelineno-8-74" href="#__codelineno-8-74"></a><span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">puntos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">pedido</span><span class="p">.</span><span class="na">getTotal</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// 1 punto por cada $10</span>
+<a id="__codelineno-8-75" name="__codelineno-8-75" href="#__codelineno-8-75"></a><span class="w">                </span><span class="n">clienteClient</span><span class="p">.</span><span class="na">agregarPuntos</span><span class="p">(</span><span class="n">pedido</span><span class="p">.</span><span class="na">getClienteId</span><span class="p">(),</span><span class="w"> </span><span class="n">puntos</span><span class="p">);</span>
+<a id="__codelineno-8-76" name="__codelineno-8-76" href="#__codelineno-8-76"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;🐾 +&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">puntos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; puntos para &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pedido</span><span class="p">.</span><span class="na">getNombreCliente</span><span class="p">());</span>
+<a id="__codelineno-8-77" name="__codelineno-8-77" href="#__codelineno-8-77"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-8-78" name="__codelineno-8-78" href="#__codelineno-8-78"></a>
+<a id="__codelineno-8-79" name="__codelineno-8-79" href="#__codelineno-8-79"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">guardado</span><span class="p">;</span>
+<a id="__codelineno-8-80" name="__codelineno-8-80" href="#__codelineno-8-80"></a><span class="w">        </span><span class="p">});</span>
+<a id="__codelineno-8-81" name="__codelineno-8-81" href="#__codelineno-8-81"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-82" name="__codelineno-8-82" href="#__codelineno-8-82"></a>
+<a id="__codelineno-8-83" name="__codelineno-8-83" href="#__codelineno-8-83"></a><span class="w">    </span><span class="c1">// Los demás métodos permanecen igual que en el módulo 10</span>
+<a id="__codelineno-8-84" name="__codelineno-8-84" href="#__codelineno-8-84"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Pedido</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">obtenerTodos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-85" name="__codelineno-8-85" href="#__codelineno-8-85"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pedidoRepository</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span>
+<a id="__codelineno-8-86" name="__codelineno-8-86" href="#__codelineno-8-86"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-87" name="__codelineno-8-87" href="#__codelineno-8-87"></a>
+<a id="__codelineno-8-88" name="__codelineno-8-88" href="#__codelineno-8-88"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Pedido</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">obtenerPorId</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-89" name="__codelineno-8-89" href="#__codelineno-8-89"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pedidoRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<a id="__codelineno-8-90" name="__codelineno-8-90" href="#__codelineno-8-90"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-91" name="__codelineno-8-91" href="#__codelineno-8-91"></a>
+<a id="__codelineno-8-92" name="__codelineno-8-92" href="#__codelineno-8-92"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Pedido</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">obtenerPorCliente</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">clienteId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-93" name="__codelineno-8-93" href="#__codelineno-8-93"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pedidoRepository</span><span class="p">.</span><span class="na">findByClienteIdOrderByFechaCreacionDesc</span><span class="p">(</span><span class="n">clienteId</span><span class="p">);</span>
+<a id="__codelineno-8-94" name="__codelineno-8-94" href="#__codelineno-8-94"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-95" name="__codelineno-8-95" href="#__codelineno-8-95"></a>
+<a id="__codelineno-8-96" name="__codelineno-8-96" href="#__codelineno-8-96"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Pedido</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">obtenerPorEstado</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">estado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-97" name="__codelineno-8-97" href="#__codelineno-8-97"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-98" name="__codelineno-8-98" href="#__codelineno-8-98"></a><span class="w">            </span><span class="n">EstadoPedido</span><span class="w"> </span><span class="n">estadoEnum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EstadoPedido</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">estado</span><span class="p">.</span><span class="na">toUpperCase</span><span class="p">());</span>
+<a id="__codelineno-8-99" name="__codelineno-8-99" href="#__codelineno-8-99"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">pedidoRepository</span><span class="p">.</span><span class="na">findByEstado</span><span class="p">(</span><span class="n">estadoEnum</span><span class="p">);</span>
+<a id="__codelineno-8-100" name="__codelineno-8-100" href="#__codelineno-8-100"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IllegalArgumentException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-101" name="__codelineno-8-101" href="#__codelineno-8-101"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;Estado inválido: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">estado</span><span class="p">);</span>
+<a id="__codelineno-8-102" name="__codelineno-8-102" href="#__codelineno-8-102"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-103" name="__codelineno-8-103" href="#__codelineno-8-103"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-104" name="__codelineno-8-104" href="#__codelineno-8-104"></a>
+<a id="__codelineno-8-105" name="__codelineno-8-105" href="#__codelineno-8-105"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Pedido</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">cancelar</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-106" name="__codelineno-8-106" href="#__codelineno-8-106"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pedidoRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="na">map</span><span class="p">(</span><span class="n">pedido</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-107" name="__codelineno-8-107" href="#__codelineno-8-107"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pedido</span><span class="p">.</span><span class="na">getEstado</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EstadoPedido</span><span class="p">.</span><span class="na">ENTREGADO</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-108" name="__codelineno-8-108" href="#__codelineno-8-108"></a><span class="w">                </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;No se puede cancelar un pedido ya entregado&quot;</span><span class="p">);</span>
+<a id="__codelineno-8-109" name="__codelineno-8-109" href="#__codelineno-8-109"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-8-110" name="__codelineno-8-110" href="#__codelineno-8-110"></a><span class="w">            </span><span class="n">pedido</span><span class="p">.</span><span class="na">setEstado</span><span class="p">(</span><span class="n">EstadoPedido</span><span class="p">.</span><span class="na">CANCELADO</span><span class="p">);</span>
+<a id="__codelineno-8-111" name="__codelineno-8-111" href="#__codelineno-8-111"></a><span class="w">            </span><span class="n">pedido</span><span class="p">.</span><span class="na">setFechaActualizacion</span><span class="p">(</span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">now</span><span class="p">());</span>
+<a id="__codelineno-8-112" name="__codelineno-8-112" href="#__codelineno-8-112"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">pedidoRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">pedido</span><span class="p">);</span>
+<a id="__codelineno-8-113" name="__codelineno-8-113" href="#__codelineno-8-113"></a><span class="w">        </span><span class="p">});</span>
+<a id="__codelineno-8-114" name="__codelineno-8-114" href="#__codelineno-8-114"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-115" name="__codelineno-8-115" href="#__codelineno-8-115"></a>
+<a id="__codelineno-8-116" name="__codelineno-8-116" href="#__codelineno-8-116"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">EstadoPedido</span><span class="w"> </span><span class="nf">siguienteEstado</span><span class="p">(</span><span class="n">EstadoPedido</span><span class="w"> </span><span class="n">estadoActual</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-117" name="__codelineno-8-117" href="#__codelineno-8-117"></a><span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">estadoActual</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-118" name="__codelineno-8-118" href="#__codelineno-8-118"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">PENDIENTE</span><span class="p">:</span><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">EstadoPedido</span><span class="p">.</span><span class="na">CONFIRMADO</span><span class="p">;</span>
+<a id="__codelineno-8-119" name="__codelineno-8-119" href="#__codelineno-8-119"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">CONFIRMADO</span><span class="p">:</span><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="n">EstadoPedido</span><span class="p">.</span><span class="na">EN_PREPARACION</span><span class="p">;</span>
+<a id="__codelineno-8-120" name="__codelineno-8-120" href="#__codelineno-8-120"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">EN_PREPARACION</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">EstadoPedido</span><span class="p">.</span><span class="na">LISTO</span><span class="p">;</span>
+<a id="__codelineno-8-121" name="__codelineno-8-121" href="#__codelineno-8-121"></a><span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">LISTO</span><span class="p">:</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="n">EstadoPedido</span><span class="p">.</span><span class="na">ENTREGADO</span><span class="p">;</span>
+<a id="__codelineno-8-122" name="__codelineno-8-122" href="#__codelineno-8-122"></a><span class="w">            </span><span class="k">default</span><span class="p">:</span>
+<a id="__codelineno-8-123" name="__codelineno-8-123" href="#__codelineno-8-123"></a><span class="w">                </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;El pedido ya está en estado final: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">estadoActual</span><span class="p">);</span>
+<a id="__codelineno-8-124" name="__codelineno-8-124" href="#__codelineno-8-124"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-125" name="__codelineno-8-125" href="#__codelineno-8-125"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-126" name="__codelineno-8-126" href="#__codelineno-8-126"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="patron-circuit-breaker-cuando-un-servicio-falla">💡 Patrón Circuit Breaker: cuando un servicio falla<a class="headerlink" href="#patron-circuit-breaker-cuando-un-servicio-falla" title="Permanent link">&para;</a></h2>
+<p>En producción, los servicios pueden fallar. El <strong>Circuit Breaker</strong> (interruptor de circuito) es un patrón que evita que un fallo en cascada derribe todo el sistema.</p>
+<h3 id="analogia_3">Analogía 🐾<a class="headerlink" href="#analogia_3" title="Permanent link">&para;</a></h3>
+<p>Si el área de bebidas del Michi Café está cerrada temporalmente, la cocina no se queda esperando indefinidamente. Después de 3 intentos fallidos, la cocina decide usar el precio del último menú conocido y sigue trabajando.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// Versión simplificada con manejo de fallback</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">public</span><span class="w"> </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">BebidaExternaDTO</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">obtenerBebidaConFallback</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">bebidaId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">obtenerBebida</span><span class="p">(</span><span class="n">bebidaId</span><span class="p">);</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">RuntimeException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;⚠️ Servicio de bebidas no disponible. Usando precio por defecto.&quot;</span><span class="p">);</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="c1">// Fallback: devolvemos una bebida con precio por defecto</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span><span class="n">BebidaExternaDTO</span><span class="w"> </span><span class="n">fallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BebidaExternaDTO</span><span class="p">();</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">        </span><span class="n">fallback</span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="n">bebidaId</span><span class="p">);</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="n">fallback</span><span class="p">.</span><span class="na">setNombre</span><span class="p">(</span><span class="s">&quot;Bebida (precio no disponible)&quot;</span><span class="p">);</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">        </span><span class="n">fallback</span><span class="p">.</span><span class="na">setPrecio</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="n">fallback</span><span class="p">.</span><span class="na">setDisponible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Optional</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">fallback</span><span class="p">);</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="probando-la-comunicacion">💡 Probando la comunicación<a class="headerlink" href="#probando-la-comunicacion" title="Permanent link">&para;</a></h2>
+<p>Con los tres servicios corriendo, prueba el flujo completo:</p>
+<h3 id="1-crear-un-cliente-servicio-clientes-8082">1. Crear un cliente (servicio-clientes: 8082)<a class="headerlink" href="#1-crear-un-cliente-servicio-clientes-8082" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>POST http://localhost:8082/api/clientes
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>{
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  &quot;nombre&quot;: &quot;Sofía&quot;,
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  &quot;apellido&quot;: &quot;García&quot;,
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>  &quot;correo&quot;: &quot;sofia@email.com&quot;,
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  &quot;telefono&quot;: &quot;555-1234&quot;
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>}
+</code></pre></div>
+Guarda el <code>id</code> del cliente: <code>"64a1b2c3..."</code></p>
+<h3 id="2-verificar-bebidas-disponibles-servicio-bebidas-8081">2. Verificar bebidas disponibles (servicio-bebidas: 8081)<a class="headerlink" href="#2-verificar-bebidas-disponibles-servicio-bebidas-8081" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>GET http://localhost:8081/api/bebidas
+</code></pre></div>
+Guarda el <code>id</code> de una bebida: <code>"64a1b2c4..."</code></p>
+<h3 id="3-crear-un-pedido-servicio-pedidos-8083">3. Crear un pedido (servicio-pedidos: 8083)<a class="headerlink" href="#3-crear-un-pedido-servicio-pedidos-8083" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>POST http://localhost:8083/api/pedidos
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>{
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  &quot;clienteId&quot;: &quot;64a1b2c3...&quot;,
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  &quot;items&quot;: [
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    { &quot;bebidaId&quot;: &quot;64a1b2c4...&quot;, &quot;cantidad&quot;: 2 }
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>  ],
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>  &quot;notas&quot;: &quot;Para llevar&quot;
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>}
+</code></pre></div>
+<p>Ahora el servicio de pedidos:
+- Consulta al servicio de clientes para verificar que Sofía existe
+- Consulta al servicio de bebidas para obtener el precio real
+- Crea el pedido con datos reales</p>
+<h3 id="4-avanzar-hasta-entregado-y-ver-los-puntos">4. Avanzar hasta entregado y ver los puntos<a class="headerlink" href="#4-avanzar-hasta-entregado-y-ver-los-puntos" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>PATCH http://localhost:8083/api/pedidos/{id}/avanzar  (x4 veces)
+</code></pre></div>
+<p>Luego verifica los puntos de Sofía:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>GET http://localhost:8082/api/clientes/64a1b2c3...
+</code></pre></div></p>
+<hr />
+<h2 id="ejercicios-del-modulo-12">🧪 Ejercicios del Módulo 12<a class="headerlink" href="#ejercicios-del-modulo-12" title="Permanent link">&para;</a></h2>
+<h3 id="ejercicio-1-verificar-disponibilidad-antes-de-crear">Ejercicio 1: Verificar disponibilidad antes de crear<a class="headerlink" href="#ejercicio-1-verificar-disponibilidad-antes-de-crear" title="Permanent link">&para;</a></h3>
+<p>Modifica <code>PedidoService.crear()</code> para que antes de aceptar el pedido, verifique que todas las bebidas solicitadas están disponibles. Si alguna no lo está, rechaza el pedido completo con un mensaje claro.</p>
+<h3 id="ejercicio-2-historial-enriquecido">Ejercicio 2: Historial enriquecido<a class="headerlink" href="#ejercicio-2-historial-enriquecido" title="Permanent link">&para;</a></h3>
+<p>Crea un endpoint <code>GET /api/pedidos/{id}/detalle</code> que devuelva el pedido con información adicional del cliente (nombre completo, nivel de fidelidad) obtenida del servicio de clientes en tiempo real.</p>
+<h3 id="ejercicio-3-manejo-de-fallos">Ejercicio 3: Manejo de fallos<a class="headerlink" href="#ejercicio-3-manejo-de-fallos" title="Permanent link">&para;</a></h3>
+<p>Modifica el <code>BebidaClient</code> para que si el servicio de bebidas no responde en 3 segundos, use un precio por defecto de $0 y marque el ítem como "precio pendiente de confirmar".</p>
+<hr />
+<h2 id="resumen-del-modulo-12">✅ Resumen del Módulo 12<a class="headerlink" href="#resumen-del-modulo-12" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>¿Qué es?</th>
+<th>Analogía del Michi Café</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Comunicación síncrona</td>
+<td>Un servicio llama y espera respuesta</td>
+<td>La cocina llama por teléfono y espera</td>
+</tr>
+<tr>
+<td>Comunicación asíncrona</td>
+<td>Un servicio envía mensaje sin esperar</td>
+<td>La cocina deja una nota en el buzón</td>
+</tr>
+<tr>
+<td><code>RestTemplate</code></td>
+<td>Cliente HTTP de Spring</td>
+<td>El mensajero entre áreas</td>
+</tr>
+<tr>
+<td>DTO externo</td>
+<td>Objeto para recibir datos de otro servicio</td>
+<td>El formulario que llena el mensajero</td>
+</tr>
+<tr>
+<td>Circuit Breaker</td>
+<td>Manejo de fallos en cascada</td>
+<td>Si el área falla, usar plan B</td>
+</tr>
+<tr>
+<td>Fallback</td>
+<td>Respuesta alternativa cuando falla un servicio</td>
+<td>Usar el último precio conocido</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="siguiente-modulo">➡️ Siguiente Módulo<a class="headerlink" href="#siguiente-modulo" title="Permanent link">&para;</a></h2>
+<p>En el <strong>Módulo 13</strong> crearemos el <strong>API Gateway</strong>: la puerta principal del Michi Café. En lugar de que los clientes tengan que saber en qué puerto está cada servicio, el Gateway los dirige automáticamente.</p>
+<blockquote>
+<p>🐾 "Los gatitos del Michi Café trabajan en equipo. Cada uno hace su parte y se comunican con respeto."</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.indexes", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2315 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Curso de microservicios con Java para no programadores">
+      
+      
+        <meta name="author" content="Michi Café">
+      
+      
+      
+        <link rel="prev" href="../modulo-15-proyecto-final/">
+      
+      
+        <link rel="next" href="../proyecto-02-primer-proyecto/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>P01 — Instalación del entorno - ☕🐱 Michi Café — Java + Spring Boot + MongoDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#proyecto-p01-instalacion-del-entorno" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-header__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              P01 — Instalación del entorno
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-nav__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐣 Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐣 Fundamentos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-01-introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 01 — Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-02-java-desde-cero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 02 — Java desde Cero
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-03-poo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 03 — POO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ☕ Spring Boot y APIs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ☕ Spring Boot y APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-04-spring-boot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 04 — Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-05-apis-rest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 05 — APIs REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗄️ Base de Datos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🗄️ Base de Datos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-06-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 06 — MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-07-spring-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 07 — Spring + MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏗️ Microservicios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🏗️ Microservicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-08-microservicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 08 — ¿Qué son?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-09-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 09 — Servicio Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-10-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 10 — Servicio Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-11-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 11 — Servicio Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-12-comunicacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 12 — Comunicación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-13-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 13 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚀 Producción
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚀 Producción
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-14-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 14 — Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-15-proyecto-final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 15 — Proyecto Final
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Proyecto Guiado
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Proyecto Guiado
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P01 — Instalación del entorno
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P01 — Instalación del entorno
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preparando-la-cocina-antes-de-abrir-el-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparando la cocina antes de abrir el café
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-vamos-a-hacer-en-este-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 ¿Qué vamos a hacer en este módulo?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lista-de-lo-que-instalaremos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Lista de lo que instalaremos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-1-instalar-java-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Paso 1: Instalar Java 17
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Paso 1: Instalar Java 17">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-descargar-java-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 — Descargar Java 17
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-instalar-java-17-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 — Instalar Java 17 en Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-verificar-que-java-se-instalo-correctamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 — Verificar que Java se instaló correctamente
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2-instalar-intellij-idea-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Paso 2: Instalar IntelliJ IDEA Community
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Paso 2: Instalar IntelliJ IDEA Community">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-descargar-intellij-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 — Descargar IntelliJ IDEA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-instalar-intellij-idea-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 — Instalar IntelliJ IDEA en Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-configuracion-inicial-de-intellij-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 — Configuración inicial de IntelliJ IDEA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-3-instalar-mongodb-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Paso 3: Instalar MongoDB Community
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Paso 3: Instalar MongoDB Community">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-descargar-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 — Descargar MongoDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-instalar-mongodb-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 — Instalar MongoDB en Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-verificar-que-mongodb-esta-corriendo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 — Verificar que MongoDB está corriendo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-instalar-postman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Paso 4: Instalar Postman
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Paso 4: Instalar Postman">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-descargar-e-instalar-postman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 — Descargar e instalar Postman
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-crear-cuenta-en-postman-opcional-pero-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 — Crear cuenta en Postman (opcional pero recomendado)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-5-instalar-docker-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Paso 5: Instalar Docker Desktop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Paso 5: Instalar Docker Desktop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-descargar-docker-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 — Descargar Docker Desktop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-instalar-docker-desktop-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 — Instalar Docker Desktop en Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-verificar-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 — Verificar Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacion-final-todo-listo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Verificación final: todo listo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-de-lo-que-instalaste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Resumen de lo que instalaste
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente paso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-02-primer-proyecto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P02 — Primer proyecto Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-03-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P03 — Servicio de Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-04-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P04 — Servicio de Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-05-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P05 — Servicio de Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-06-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P06 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-07-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P07 — Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preparando-la-cocina-antes-de-abrir-el-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparando la cocina antes de abrir el café
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-vamos-a-hacer-en-este-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 ¿Qué vamos a hacer en este módulo?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lista-de-lo-que-instalaremos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Lista de lo que instalaremos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-1-instalar-java-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Paso 1: Instalar Java 17
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Paso 1: Instalar Java 17">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-descargar-java-17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 — Descargar Java 17
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-instalar-java-17-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 — Instalar Java 17 en Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-verificar-que-java-se-instalo-correctamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 — Verificar que Java se instaló correctamente
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-2-instalar-intellij-idea-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Paso 2: Instalar IntelliJ IDEA Community
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Paso 2: Instalar IntelliJ IDEA Community">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-descargar-intellij-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 — Descargar IntelliJ IDEA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-instalar-intellij-idea-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 — Instalar IntelliJ IDEA en Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-configuracion-inicial-de-intellij-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 — Configuración inicial de IntelliJ IDEA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-3-instalar-mongodb-community" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Paso 3: Instalar MongoDB Community
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Paso 3: Instalar MongoDB Community">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-descargar-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 — Descargar MongoDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-instalar-mongodb-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 — Instalar MongoDB en Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-verificar-que-mongodb-esta-corriendo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 — Verificar que MongoDB está corriendo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-4-instalar-postman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Paso 4: Instalar Postman
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Paso 4: Instalar Postman">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-descargar-e-instalar-postman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 — Descargar e instalar Postman
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-crear-cuenta-en-postman-opcional-pero-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 — Crear cuenta en Postman (opcional pero recomendado)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paso-5-instalar-docker-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Paso 5: Instalar Docker Desktop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Paso 5: Instalar Docker Desktop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-descargar-docker-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 — Descargar Docker Desktop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-instalar-docker-desktop-en-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 — Instalar Docker Desktop en Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-verificar-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 — Verificar Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verificacion-final-todo-listo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Verificación final: todo listo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-de-lo-que-instalaste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Resumen de lo que instalaste
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente paso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="proyecto-p01-instalacion-del-entorno">Proyecto P01 — Instalación del Entorno<a class="headerlink" href="#proyecto-p01-instalacion-del-entorno" title="Permanent link">&para;</a></h1>
+<h2 id="preparando-la-cocina-antes-de-abrir-el-cafe">Preparando la cocina antes de abrir el café<a class="headerlink" href="#preparando-la-cocina-antes-de-abrir-el-cafe" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>📚 Referencia teórica: <a href="../modulo-01-introduccion/">Módulo 01 — Introducción</a></p>
+</blockquote>
+<hr />
+<h2 id="que-vamos-a-hacer-en-este-modulo">🏠 ¿Qué vamos a hacer en este módulo?<a class="headerlink" href="#que-vamos-a-hacer-en-este-modulo" title="Permanent link">&para;</a></h2>
+<p>Vamos a instalar en tu computadora todas las herramientas que necesitas para
+desarrollar el Michi Café. Al final de este módulo tendrás todo listo para
+empezar a escribir código.</p>
+<p><strong>Tiempo estimado:</strong> 30-45 minutos</p>
+<hr />
+<h2 id="lista-de-lo-que-instalaremos">✅ Lista de lo que instalaremos<a class="headerlink" href="#lista-de-lo-que-instalaremos" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Java 17 (JDK) — el lenguaje de programación</li>
+<li>[ ] IntelliJ IDEA Community — el editor de código</li>
+<li>[ ] MongoDB Community — la base de datos</li>
+<li>[ ] MongoDB Compass — la interfaz visual de MongoDB</li>
+<li>[ ] Postman — para probar las APIs</li>
+<li>[ ] Docker Desktop — para empaquetar todo al final</li>
+</ul>
+<hr />
+<h2 id="paso-1-instalar-java-17">🛠️ Paso 1: Instalar Java 17<a class="headerlink" href="#paso-1-instalar-java-17" title="Permanent link">&para;</a></h2>
+<p>Java es el lenguaje con el que vamos a programar. Necesitamos instalar el
+<strong>JDK</strong> (Java Development Kit), que incluye todo lo necesario para desarrollar.</p>
+<h3 id="11-descargar-java-17">1.1 — Descargar Java 17<a class="headerlink" href="#11-descargar-java-17" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Abre tu navegador y ve a: <strong>https://adoptium.net/temurin/releases/</strong></li>
+<li>Verás una página con opciones de descarga. Configura los filtros así:</li>
+<li><strong>Version:</strong> <code>17 - LTS</code></li>
+<li><strong>Operating System:</strong> el de tu computadora (Windows, macOS, Linux)</li>
+<li><strong>Architecture:</strong> <code>x64</code> (si tu computadora es de 64 bits, que es lo más común)</li>
+<li><strong>Package Type:</strong> <code>JDK</code></li>
+<li><strong>Vendor:</strong> <code>Eclipse Temurin</code></li>
+<li>Haz clic en el botón azul que dice <strong><code>.msi</code></strong> (en Windows) o <strong><code>.pkg</code></strong> (en Mac)</li>
+<li>Se descargará un archivo de instalación</li>
+</ol>
+<blockquote>
+<p>💡 ¿No sabes si tu Windows es de 32 o 64 bits? Haz clic derecho en
+"Este equipo" → "Propiedades" → busca "Tipo de sistema". La gran mayoría
+de computadoras modernas son de 64 bits.</p>
+</blockquote>
+<h3 id="12-instalar-java-17-en-windows">1.2 — Instalar Java 17 en Windows<a class="headerlink" href="#12-instalar-java-17-en-windows" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Busca el archivo descargado (normalmente en tu carpeta <strong>Descargas</strong>)</li>
+<li>Se llama algo como: <code>OpenJDK17U-jdk_x64_windows_hotspot_17.x.x_x.msi</code></li>
+<li>Haz <strong>doble clic</strong> sobre el archivo para iniciar la instalación</li>
+<li>Aparecerá una ventana del instalador. Haz clic en <strong>Next</strong></li>
+<li>En la pantalla de opciones, asegúrate de que esté marcado:</li>
+<li>✅ <code>Add to PATH</code> (muy importante, esto permite usar Java desde cualquier lugar)</li>
+<li>✅ <code>Set JAVA_HOME variable</code></li>
+<li>Haz clic en <strong>Next</strong> → <strong>Install</strong></li>
+<li>Cuando termine, haz clic en <strong>Finish</strong></li>
+</ol>
+<h3 id="13-verificar-que-java-se-instalo-correctamente">1.3 — Verificar que Java se instaló correctamente<a class="headerlink" href="#13-verificar-que-java-se-instalo-correctamente" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Presiona las teclas <strong>Windows + R</strong> al mismo tiempo</li>
+<li>Escribe <code>cmd</code> y presiona <strong>Enter</strong></li>
+<li>Se abrirá una ventana negra (la terminal). Escribe exactamente esto y presiona Enter:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>java -version
+</code></pre></div>
+<ol>
+<li>Deberías ver algo como:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>openjdk version &quot;17.0.x&quot; 2024-xx-xx LTS
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>OpenJDK Runtime Environment temurin-17.x.x (build 17.0.x+xx-LTS)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>OpenJDK 64-Bit Server VM temurin-17.x.x
+</code></pre></div>
+<p>✅ Si ves algo parecido, ¡Java está instalado correctamente!</p>
+<p>❌ Si ves <code>'java' is not recognized as an internal or external command</code>, cierra
+la terminal, vuelve a abrirla e intenta de nuevo. Si sigue fallando, reinicia
+tu computadora e intenta otra vez.</p>
+<hr />
+<h2 id="paso-2-instalar-intellij-idea-community">🛠️ Paso 2: Instalar IntelliJ IDEA Community<a class="headerlink" href="#paso-2-instalar-intellij-idea-community" title="Permanent link">&para;</a></h2>
+<p>IntelliJ IDEA es donde vamos a escribir todo nuestro código. Usamos la versión
+<strong>Community</strong> que es completamente gratuita.</p>
+<h3 id="21-descargar-intellij-idea">2.1 — Descargar IntelliJ IDEA<a class="headerlink" href="#21-descargar-intellij-idea" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Ve a: <strong>https://www.jetbrains.com/idea/download/</strong></li>
+<li>La página detecta automáticamente tu sistema operativo</li>
+<li>Baja hasta encontrar la sección <strong>IntelliJ IDEA Community Edition</strong></li>
+<li>Haz clic en el botón negro que dice <strong>Download</strong></li>
+<li>⚠️ Asegúrate de descargar la versión <strong>Community</strong>, NO la Ultimate (que es de pago)</li>
+</ol>
+<h3 id="22-instalar-intellij-idea-en-windows">2.2 — Instalar IntelliJ IDEA en Windows<a class="headerlink" href="#22-instalar-intellij-idea-en-windows" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Busca el archivo descargado (algo como <code>ideaIC-2024.x.x.exe</code>)</li>
+<li>Haz <strong>doble clic</strong> para iniciar la instalación</li>
+<li>Haz clic en <strong>Next</strong></li>
+<li>En la pantalla "Installation Options", marca estas opciones:</li>
+<li>✅ <code>Create Desktop Shortcut</code> (para abrirlo fácilmente)</li>
+<li>✅ <code>Add "Open Folder as Project"</code> (muy útil)</li>
+<li>✅ <code>.java</code> (asociar archivos Java con IntelliJ)</li>
+<li>Haz clic en <strong>Next</strong> → <strong>Install</strong></li>
+<li>Cuando termine, marca <code>Run IntelliJ IDEA</code> y haz clic en <strong>Finish</strong></li>
+</ol>
+<h3 id="23-configuracion-inicial-de-intellij-idea">2.3 — Configuración inicial de IntelliJ IDEA<a class="headerlink" href="#23-configuracion-inicial-de-intellij-idea" title="Permanent link">&para;</a></h3>
+<p>La primera vez que abres IntelliJ te hace algunas preguntas:</p>
+<ol>
+<li>
+<p><strong>"Do you want to import IntelliJ IDEA settings?"</strong>
+   → Selecciona <strong>"Do not import settings"</strong> y haz clic en <strong>OK</strong></p>
+</li>
+<li>
+<p>Aparecerá la pantalla de bienvenida con el logo de IntelliJ.
+   Por ahora ciérrala — la usaremos en el siguiente módulo del proyecto.</p>
+</li>
+</ol>
+<hr />
+<h2 id="paso-3-instalar-mongodb-community">🛠️ Paso 3: Instalar MongoDB Community<a class="headerlink" href="#paso-3-instalar-mongodb-community" title="Permanent link">&para;</a></h2>
+<p>MongoDB es la base de datos donde guardaremos toda la información del Michi Café.</p>
+<h3 id="31-descargar-mongodb">3.1 — Descargar MongoDB<a class="headerlink" href="#31-descargar-mongodb" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Ve a: <strong>https://www.mongodb.com/try/download/community</strong></li>
+<li>Configura las opciones:</li>
+<li><strong>Version:</strong> la más reciente (7.x.x o superior)</li>
+<li><strong>Platform:</strong> Windows</li>
+<li><strong>Package:</strong> <code>msi</code></li>
+<li>Haz clic en <strong>Download</strong></li>
+</ol>
+<h3 id="32-instalar-mongodb-en-windows">3.2 — Instalar MongoDB en Windows<a class="headerlink" href="#32-instalar-mongodb-en-windows" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Busca el archivo descargado (algo como <code>mongodb-windows-x86_64-7.x.x.msi</code>)</li>
+<li>Haz <strong>doble clic</strong> para iniciar la instalación</li>
+<li>Haz clic en <strong>Next</strong> → acepta los términos → <strong>Next</strong></li>
+<li>En "Choose Setup Type", selecciona <strong>Complete</strong></li>
+<li>En "Service Configuration":</li>
+<li>Deja todo como está</li>
+<li>✅ Asegúrate de que <code>Install MongoDB as a Service</code> esté marcado</li>
+<li>Esto hace que MongoDB se inicie automáticamente cuando enciendes la computadora</li>
+<li>En la siguiente pantalla:</li>
+<li>✅ <code>Install MongoDB Compass</code> debe estar marcado (lo necesitamos)</li>
+<li>Haz clic en <strong>Next</strong> → <strong>Install</strong></li>
+<li>Cuando termine, haz clic en <strong>Finish</strong></li>
+</ol>
+<blockquote>
+<p>💡 MongoDB Compass se instala junto con MongoDB. Es la interfaz visual
+que nos permite ver y editar los datos sin escribir comandos.</p>
+</blockquote>
+<h3 id="33-verificar-que-mongodb-esta-corriendo">3.3 — Verificar que MongoDB está corriendo<a class="headerlink" href="#33-verificar-que-mongodb-esta-corriendo" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Presiona <strong>Windows + R</strong>, escribe <code>services.msc</code> y presiona <strong>Enter</strong></li>
+<li>Se abre la ventana de Servicios de Windows</li>
+<li>Busca en la lista <code>MongoDB Server (MongoDB)</code></li>
+<li>En la columna "Status" debe decir <strong>Running</strong></li>
+</ol>
+<p>✅ Si dice Running, MongoDB está activo y listo.</p>
+<p>❌ Si no está corriendo, haz clic derecho sobre él → <strong>Start</strong></p>
+<hr />
+<h2 id="paso-4-instalar-postman">🛠️ Paso 4: Instalar Postman<a class="headerlink" href="#paso-4-instalar-postman" title="Permanent link">&para;</a></h2>
+<p>Postman nos permite probar nuestra API sin necesidad de construir una interfaz visual.</p>
+<h3 id="41-descargar-e-instalar-postman">4.1 — Descargar e instalar Postman<a class="headerlink" href="#41-descargar-e-instalar-postman" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Ve a: <strong>https://www.postman.com/downloads/</strong></li>
+<li>Haz clic en el botón <strong>Download the App</strong> (detecta tu OS automáticamente)</li>
+<li>Ejecuta el instalador descargado</li>
+<li>La instalación es automática, no necesita configuración</li>
+</ol>
+<h3 id="42-crear-cuenta-en-postman-opcional-pero-recomendado">4.2 — Crear cuenta en Postman (opcional pero recomendado)<a class="headerlink" href="#42-crear-cuenta-en-postman-opcional-pero-recomendado" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Abre Postman</li>
+<li>Puedes crear una cuenta gratuita con tu correo</li>
+<li>O hacer clic en <strong>"Skip signing in and take me straight to the app"</strong></li>
+</ol>
+<hr />
+<h2 id="paso-5-instalar-docker-desktop">🛠️ Paso 5: Instalar Docker Desktop<a class="headerlink" href="#paso-5-instalar-docker-desktop" title="Permanent link">&para;</a></h2>
+<p>Docker lo necesitamos al final del curso para empaquetar todo.
+Lo instalamos ahora para no interrumpir el flujo más adelante.</p>
+<h3 id="51-descargar-docker-desktop">5.1 — Descargar Docker Desktop<a class="headerlink" href="#51-descargar-docker-desktop" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Ve a: <strong>https://www.docker.com/products/docker-desktop/</strong></li>
+<li>Haz clic en <strong>"Download Docker Desktop"</strong> (detecta Windows automáticamente)</li>
+</ol>
+<h3 id="52-instalar-docker-desktop-en-windows">5.2 — Instalar Docker Desktop en Windows<a class="headerlink" href="#52-instalar-docker-desktop-en-windows" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>⚠️ Docker Desktop requiere que <strong>WSL 2</strong> (Windows Subsystem for Linux 2) esté habilitado.
+El instalador lo hace automáticamente si no lo tienes.</p>
+</blockquote>
+<ol>
+<li>Ejecuta el instalador descargado (<code>Docker Desktop Installer.exe</code>)</li>
+<li>En las opciones, deja todo marcado por defecto y haz clic en <strong>Ok</strong></li>
+<li>La instalación tardará varios minutos</li>
+<li>Cuando termine, haz clic en <strong>Close and restart</strong> para reiniciar tu computadora</li>
+</ol>
+<h3 id="53-verificar-docker">5.3 — Verificar Docker<a class="headerlink" href="#53-verificar-docker" title="Permanent link">&para;</a></h3>
+<p>Después de reiniciar:
+1. Docker Desktop se inicia automáticamente (verás el ícono de Docker en la barra de tareas)
+2. Espera a que la ballena deje de moverse (eso indica que está listo)
+3. Abre la terminal (Windows + R → cmd → Enter) y escribe:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker --version
+</code></pre></div>
+<p>Deberías ver algo como: <code>Docker version 25.x.x</code></p>
+<hr />
+<h2 id="verificacion-final-todo-listo">✅ Verificación final: todo listo<a class="headerlink" href="#verificacion-final-todo-listo" title="Permanent link">&para;</a></h2>
+<p>Antes de continuar al siguiente módulo, verifica que todo funciona ejecutando
+estos comandos en la terminal (Windows + R → cmd → Enter):</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>java -version
+</code></pre></div>
+Debe mostrar: <code>openjdk version "17.x.x"</code></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker --version
+</code></pre></div>
+Debe mostrar: <code>Docker version 25.x.x</code></p>
+<hr />
+<h2 id="resumen-de-lo-que-instalaste">🗺️ Resumen de lo que instalaste<a class="headerlink" href="#resumen-de-lo-que-instalaste" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Versión</th>
+<th>¿Para qué?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Java 17 JDK</td>
+<td>17.x.x</td>
+<td>Lenguaje de programación</td>
+</tr>
+<tr>
+<td>IntelliJ IDEA Community</td>
+<td>2024.x</td>
+<td>Editor de código</td>
+</tr>
+<tr>
+<td>MongoDB Community</td>
+<td>7.x</td>
+<td>Base de datos</td>
+</tr>
+<tr>
+<td>MongoDB Compass</td>
+<td>Incluido</td>
+<td>Ver datos visualmente</td>
+</tr>
+<tr>
+<td>Postman</td>
+<td>Última</td>
+<td>Probar las APIs</td>
+</tr>
+<tr>
+<td>Docker Desktop</td>
+<td>25.x</td>
+<td>Empaquetar todo al final</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="siguiente-paso">➡️ Siguiente paso<a class="headerlink" href="#siguiente-paso" title="Permanent link">&para;</a></h2>
+<p>En el <strong><a href="../proyecto-02-primer-proyecto/">Proyecto P02 — Primer proyecto Spring Boot</a></strong>
+vamos a crear el primer proyecto del Michi Café en Spring Initializr, abrirlo
+en IntelliJ y hacer que diga "¡Hola Michi Café!" por primera vez.</p>
+<blockquote>
+<p>🐾 "La cocina bien equipada es la mitad del trabajo."</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.indexes", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

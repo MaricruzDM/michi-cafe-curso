@@ -1,0 +1,2977 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Curso de microservicios con Java para no programadores">
+      
+      
+        <meta name="author" content="Michi Café">
+      
+      
+      
+        <link rel="prev" href="../modulo-02-java-desde-cero/">
+      
+      
+        <link rel="next" href="../modulo-04-spring-boot/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Módulo 03 — POO - ☕🐱 Michi Café — Java + Spring Boot + MongoDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modulo-03-programacion-orientada-a-objetos-poo" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-header__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Módulo 03 — POO
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-nav__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐣 Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐣 Fundamentos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-01-introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 01 — Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-02-java-desde-cero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 02 — Java desde Cero
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 03 — POO
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 03 — POO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analogia-los-roles-del-michi-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐱 Analogía: Los roles del Michi Café
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-la-poo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es la POO?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es la POO?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clases-el-molde-del-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Clases: el molde del gatito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Clases: el molde del gatito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-una-clase-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo crear una clase en Java
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-objetos-a-partir-de-la-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo crear objetos a partir de la clase
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-y-metodos-lo-que-el-gatito-es-y-lo-que-hace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Atributos y Métodos: lo que el gatito ES y lo que HACE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Atributos y Métodos: lo que el gatito ES y lo que HACE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructores-el-formulario-de-contratacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Constructores: el formulario de contratación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Constructores: el formulario de contratación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-un-constructor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo crear un constructor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encapsulamiento-la-caja-fuerte-del-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Encapsulamiento: la caja fuerte del gatito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Encapsulamiento: la caja fuerte del gatito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sin-encapsulamiento-peligroso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sin encapsulamiento (peligroso)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#con-encapsulamiento-seguro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Con encapsulamiento (seguro)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herencia-el-gatito-aprende-de-otro-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Herencia: el gatito aprende de otro gatito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Herencia: el gatito aprende de otro gatito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polimorfismo-el-gatito-que-hace-lo-mismo-pero-diferente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Polimorfismo: el gatito que hace lo mismo pero diferente
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Polimorfismo: el gatito que hace lo mismo pero diferente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interfaces-el-contrato-del-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Interfaces: el contrato del gatito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Interfaces: el contrato del gatito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#juntando-todo-el-modelo-completo-del-michi-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Juntando todo: el modelo completo del Michi Café
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-del-modulo-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Ejercicios del Módulo 3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Ejercicios del Módulo 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-la-clase-producto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 1: La clase Producto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2-herencia-de-empleados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 2: Herencia de empleados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-el-turno-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 3: El turno completo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-del-modulo-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Resumen del Módulo 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente Módulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ☕ Spring Boot y APIs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ☕ Spring Boot y APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-04-spring-boot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 04 — Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-05-apis-rest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 05 — APIs REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗄️ Base de Datos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🗄️ Base de Datos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-06-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 06 — MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-07-spring-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 07 — Spring + MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏗️ Microservicios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🏗️ Microservicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-08-microservicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 08 — ¿Qué son?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-09-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 09 — Servicio Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-10-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 10 — Servicio Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-11-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 11 — Servicio Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-12-comunicacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 12 — Comunicación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-13-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 13 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚀 Producción
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚀 Producción
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-14-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 14 — Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-15-proyecto-final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 15 — Proyecto Final
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Proyecto Guiado
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Proyecto Guiado
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-01-instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P01 — Instalación del entorno
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-02-primer-proyecto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P02 — Primer proyecto Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-03-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P03 — Servicio de Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-04-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P04 — Servicio de Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-05-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P05 — Servicio de Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-06-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P06 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-07-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P07 — Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analogia-los-roles-del-michi-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐱 Analogía: Los roles del Michi Café
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-la-poo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es la POO?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es la POO?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clases-el-molde-del-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Clases: el molde del gatito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Clases: el molde del gatito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-una-clase-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo crear una clase en Java
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-objetos-a-partir-de-la-clase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo crear objetos a partir de la clase
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-y-metodos-lo-que-el-gatito-es-y-lo-que-hace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Atributos y Métodos: lo que el gatito ES y lo que HACE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Atributos y Métodos: lo que el gatito ES y lo que HACE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructores-el-formulario-de-contratacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Constructores: el formulario de contratación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Constructores: el formulario de contratación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-un-constructor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo crear un constructor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encapsulamiento-la-caja-fuerte-del-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Encapsulamiento: la caja fuerte del gatito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Encapsulamiento: la caja fuerte del gatito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sin-encapsulamiento-peligroso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sin encapsulamiento (peligroso)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#con-encapsulamiento-seguro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Con encapsulamiento (seguro)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#herencia-el-gatito-aprende-de-otro-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Herencia: el gatito aprende de otro gatito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Herencia: el gatito aprende de otro gatito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polimorfismo-el-gatito-que-hace-lo-mismo-pero-diferente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Polimorfismo: el gatito que hace lo mismo pero diferente
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Polimorfismo: el gatito que hace lo mismo pero diferente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interfaces-el-contrato-del-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Interfaces: el contrato del gatito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Interfaces: el contrato del gatito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#juntando-todo-el-modelo-completo-del-michi-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Juntando todo: el modelo completo del Michi Café
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-del-modulo-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Ejercicios del Módulo 3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Ejercicios del Módulo 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-la-clase-producto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 1: La clase Producto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2-herencia-de-empleados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 2: Herencia de empleados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-el-turno-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 3: El turno completo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-del-modulo-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Resumen del Módulo 3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente Módulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="modulo-03-programacion-orientada-a-objetos-poo">Módulo 03 — Programación Orientada a Objetos (POO)<a class="headerlink" href="#modulo-03-programacion-orientada-a-objetos-poo" title="Permanent link">&para;</a></h1>
+<h2 id="analogia-los-roles-del-michi-cafe">🐱 Analogía: Los roles del Michi Café<a class="headerlink" href="#analogia-los-roles-del-michi-cafe" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="introduccion">🏠 Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>En el módulo anterior aprendimos a escribir instrucciones básicas en Java: variables, condiciones, ciclos y métodos.</p>
+<p>Pero hay un problema: si el Michi Café tiene 50 clientes, ¿vamos a crear 50 variables separadas para cada uno?</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Esto sería un caos 😱</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">String</span><span class="w"> </span><span class="n">nombreCliente1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sofía&quot;</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">edadCliente1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">String</span><span class="w"> </span><span class="n">nombreCliente2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Carlos&quot;</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kt">int</span><span class="w"> </span><span class="n">edadCliente2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1">// ... y así 48 veces más</span>
+</code></pre></div>
+<p>La solución es la <strong>Programación Orientada a Objetos (POO)</strong>: una forma de organizar el código que imita cómo funciona el mundo real.</p>
+<hr />
+<h2 id="que-es-la-poo">💡 ¿Qué es la POO?<a class="headerlink" href="#que-es-la-poo" title="Permanent link">&para;</a></h2>
+<p>La POO es una forma de programar donde organizamos el código en <strong>objetos</strong>.</p>
+<p>Un objeto es una representación de algo del mundo real dentro del programa.</p>
+<h3 id="analogia">Analogía 🐾<a class="headerlink" href="#analogia" title="Permanent link">&para;</a></h3>
+<p>En el Michi Café tenemos:
+- <strong>Clientes</strong> (cada uno con nombre, correo, puntos de fidelidad)
+- <strong>Bebidas</strong> (cada una con nombre, precio, tamaño)
+- <strong>Pedidos</strong> (cada uno con cliente, bebidas, total, estado)
+- <strong>Gatitos empleados</strong> (cada uno con nombre, rol, turno)</p>
+<p>Cada uno de estos es un tipo de <strong>objeto</strong>. Y para crear objetos, primero necesitamos un <strong>molde</strong>.</p>
+<hr />
+<h2 id="clases-el-molde-del-gatito">💡 Clases: el molde del gatito<a class="headerlink" href="#clases-el-molde-del-gatito" title="Permanent link">&para;</a></h2>
+<p>Una <strong>clase</strong> es el molde o plantilla para crear objetos.</p>
+<h3 id="analogia_1">Analogía 🐾<a class="headerlink" href="#analogia_1" title="Permanent link">&para;</a></h3>
+<p>Imagina que tienes un molde para hacer galletas con forma de gatito. Ese molde es la <strong>clase</strong>. Cada galleta que haces con ese molde es un <strong>objeto</strong> (una instancia de la clase).</p>
+<p>Todas las galletas tienen la misma forma (misma clase), pero pueden tener diferente decoración (diferentes valores en sus atributos).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Clase Cliente  →  molde
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    ↓
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>objeto cliente1 (Sofía, 25 años, 150 puntos)
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>objeto cliente2 (Carlos, 30 años, 80 puntos)
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>objeto cliente3 (Ana, 22 años, 200 puntos)
+</code></pre></div>
+<h3 id="como-crear-una-clase-en-java">Cómo crear una clase en Java<a class="headerlink" href="#como-crear-una-clase-en-java" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cliente</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="c1">// ATRIBUTOS: las características del cliente</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">correo</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">puntosFidelidad</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="n">tieneTarjeta</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="como-crear-objetos-a-partir-de-la-clase">Cómo crear objetos a partir de la clase<a class="headerlink" href="#como-crear-objetos-a-partir-de-la-clase" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MichiCafe</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="c1">// Creamos un objeto de tipo Cliente</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="n">Cliente</span><span class="w"> </span><span class="n">cliente1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cliente</span><span class="p">();</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="c1">// Asignamos valores a sus atributos</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="n">cliente1</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sofía&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="n">cliente1</span><span class="p">.</span><span class="na">correo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;sofia@email.com&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">cliente1</span><span class="p">.</span><span class="na">puntosFidelidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span><span class="p">;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="n">cliente1</span><span class="p">.</span><span class="na">tieneTarjeta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="c1">// Creamos otro cliente</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="n">Cliente</span><span class="w"> </span><span class="n">cliente2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cliente</span><span class="p">();</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="n">cliente2</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Carlos&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="n">cliente2</span><span class="p">.</span><span class="na">correo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;carlos@email.com&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="n">cliente2</span><span class="p">.</span><span class="na">puntosFidelidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="n">cliente2</span><span class="p">.</span><span class="na">tieneTarjeta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="c1">// Mostramos la información</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Cliente: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cliente1</span><span class="p">.</span><span class="na">nombre</span><span class="p">);</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Puntos: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cliente1</span><span class="p">.</span><span class="na">puntosFidelidad</span><span class="p">);</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>💡 La palabra <code>new</code> es la que "fabrica" el objeto usando el molde (la clase).</p>
+</blockquote>
+<hr />
+<h2 id="atributos-y-metodos-lo-que-el-gatito-es-y-lo-que-hace">💡 Atributos y Métodos: lo que el gatito ES y lo que HACE<a class="headerlink" href="#atributos-y-metodos-lo-que-el-gatito-es-y-lo-que-hace" title="Permanent link">&para;</a></h2>
+<p>Una clase tiene dos partes:</p>
+<ul>
+<li><strong>Atributos</strong>: las características (lo que el objeto ES o TIENE)</li>
+<li><strong>Métodos</strong>: las acciones (lo que el objeto PUEDE HACER)</li>
+</ul>
+<h3 id="analogia_2">Analogía 🐾<a class="headerlink" href="#analogia_2" title="Permanent link">&para;</a></h3>
+<p>Un gatito barista:
+- <strong>Atributos</strong>: nombre, edad, turno, especialidad
+- <strong>Métodos</strong>: prepararCafe(), tomarPedido(), cobrar()</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GatitoBarista</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="c1">// ATRIBUTOS (lo que el gatito ES/TIENE)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">especialidad</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">turno</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">cafesPreparados</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="c1">// MÉTODOS (lo que el gatito HACE)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">prepararCafe</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">tipoCafe</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="n">cafesPreparados</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; está preparando un &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tipoCafe</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; ☕&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Cafés preparados hoy: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cafesPreparados</span><span class="p">);</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">saludar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;¡Miau! Soy &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, tu barista del turno &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">turno</span><span class="p">);</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">mostrarEspecialidad</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; se especializa en: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">especialidad</span><span class="p">);</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="p">}</span>
+</code></pre></div>
+<p>Usando la clase:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MichiCafe</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="n">GatitoBarista</span><span class="w"> </span><span class="n">gatito1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GatitoBarista</span><span class="p">();</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="n">gatito1</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Mochi&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="n">gatito1</span><span class="p">.</span><span class="na">especialidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Latte Art&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="n">gatito1</span><span class="p">.</span><span class="na">turno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mañana&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="n">gatito1</span><span class="p">.</span><span class="na">cafesPreparados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="n">gatito1</span><span class="p">.</span><span class="na">saludar</span><span class="p">();</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="n">gatito1</span><span class="p">.</span><span class="na">prepararCafe</span><span class="p">(</span><span class="s">&quot;Cappuccino&quot;</span><span class="p">);</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="n">gatito1</span><span class="p">.</span><span class="na">prepararCafe</span><span class="p">(</span><span class="s">&quot;Latte de vainilla&quot;</span><span class="p">);</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="n">gatito1</span><span class="p">.</span><span class="na">mostrarEspecialidad</span><span class="p">();</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="p">}</span>
+</code></pre></div>
+<p>Salida:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>¡Miau! Soy Mochi, tu barista del turno mañana
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Mochi está preparando un Cappuccino ☕
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Cafés preparados hoy: 1
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Mochi está preparando un Latte de vainilla ☕
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Cafés preparados hoy: 2
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Mochi se especializa en: Latte Art
+</code></pre></div></p>
+<hr />
+<h2 id="constructores-el-formulario-de-contratacion">💡 Constructores: el formulario de contratación<a class="headerlink" href="#constructores-el-formulario-de-contratacion" title="Permanent link">&para;</a></h2>
+<p>Un <strong>constructor</strong> es un método especial que se ejecuta automáticamente cuando creamos un objeto. Sirve para darle valores iniciales.</p>
+<h3 id="analogia_3">Analogía 🐾<a class="headerlink" href="#analogia_3" title="Permanent link">&para;</a></h3>
+<p>Cuando contratas a un nuevo gatito para el café, llenas un formulario con su nombre, especialidad y turno. Ese formulario es el <strong>constructor</strong>: te obliga a dar la información necesaria desde el principio.</p>
+<p>Sin constructor (incómodo):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">GatitoBarista</span><span class="w"> </span><span class="n">gatito</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GatitoBarista</span><span class="p">();</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">gatito</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Mochi&quot;</span><span class="p">;</span><span class="w">         </span><span class="c1">// tienes que asignar</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">gatito</span><span class="p">.</span><span class="na">especialidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Latte Art&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// cada cosa</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">gatito</span><span class="p">.</span><span class="na">turno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mañana&quot;</span><span class="p">;</span><span class="w">         </span><span class="c1">// por separado</span>
+</code></pre></div></p>
+<p>Con constructor (mucho mejor):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">GatitoBarista</span><span class="w"> </span><span class="n">gatito</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GatitoBarista</span><span class="p">(</span><span class="s">&quot;Mochi&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Latte Art&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mañana&quot;</span><span class="p">);</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1">// Todo en una sola línea 🎉</span>
+</code></pre></div></p>
+<h3 id="como-crear-un-constructor">Cómo crear un constructor<a class="headerlink" href="#como-crear-un-constructor" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GatitoBarista</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">especialidad</span><span class="p">;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">turno</span><span class="p">;</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">cafesPreparados</span><span class="p">;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="c1">// CONSTRUCTOR: mismo nombre que la clase, sin tipo de retorno</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">GatitoBarista</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">especialidad</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">turno</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span><span class="w">             </span><span class="c1">// &quot;this&quot; se refiere al objeto actual</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">especialidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">especialidad</span><span class="p">;</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">turno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">turno</span><span class="p">;</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">cafesPreparados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">         </span><span class="c1">// siempre empieza en 0</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">prepararCafe</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">tipoCafe</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">        </span><span class="n">cafesPreparados</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; prepara un &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tipoCafe</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; ☕ (#&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cafesPreparados</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;)&quot;</span><span class="p">);</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">saludar</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;¡Miau! Soy &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, turno &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">turno</span><span class="p">);</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="p">}</span>
+</code></pre></div>
+<p>Usando el constructor:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MichiCafe</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">        </span><span class="c1">// Creamos gatitos con el constructor</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="n">GatitoBarista</span><span class="w"> </span><span class="n">mochi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GatitoBarista</span><span class="p">(</span><span class="s">&quot;Mochi&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Latte Art&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mañana&quot;</span><span class="p">);</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">        </span><span class="n">GatitoBarista</span><span class="w"> </span><span class="n">nube</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GatitoBarista</span><span class="p">(</span><span class="s">&quot;Nube&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Café frío&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tarde&quot;</span><span class="p">);</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">        </span><span class="n">GatitoBarista</span><span class="w"> </span><span class="n">luna</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GatitoBarista</span><span class="p">(</span><span class="s">&quot;Luna&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Repostería&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;noche&quot;</span><span class="p">);</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="n">mochi</span><span class="p">.</span><span class="na">saludar</span><span class="p">();</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">        </span><span class="n">nube</span><span class="p">.</span><span class="na">saludar</span><span class="p">();</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">        </span><span class="n">luna</span><span class="p">.</span><span class="na">saludar</span><span class="p">();</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">        </span><span class="n">mochi</span><span class="p">.</span><span class="na">prepararCafe</span><span class="p">(</span><span class="s">&quot;Cappuccino&quot;</span><span class="p">);</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="n">mochi</span><span class="p">.</span><span class="na">prepararCafe</span><span class="p">(</span><span class="s">&quot;Espresso&quot;</span><span class="p">);</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">        </span><span class="n">nube</span><span class="p">.</span><span class="na">prepararCafe</span><span class="p">(</span><span class="s">&quot;Cold Brew&quot;</span><span class="p">);</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="p">}</span>
+</code></pre></div>
+<p>Salida:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>¡Miau! Soy Mochi, turno mañana
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>¡Miau! Soy Nube, turno tarde
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>¡Miau! Soy Luna, turno noche
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>Mochi prepara un Cappuccino ☕ (#1)
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>Mochi prepara un Espresso ☕ (#2)
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>Nube prepara un Cold Brew ☕ (#1)
+</code></pre></div></p>
+<blockquote>
+<p>💡 <code>this</code> es una palabra especial que significa "este objeto". Se usa cuando el nombre del parámetro es igual al nombre del atributo, para diferenciarlos.</p>
+</blockquote>
+<hr />
+<h2 id="encapsulamiento-la-caja-fuerte-del-gatito">💡 Encapsulamiento: la caja fuerte del gatito<a class="headerlink" href="#encapsulamiento-la-caja-fuerte-del-gatito" title="Permanent link">&para;</a></h2>
+<p>El <strong>encapsulamiento</strong> es uno de los pilares de la POO. Consiste en proteger los datos de un objeto para que no puedan ser modificados directamente desde afuera.</p>
+<h3 id="analogia_4">Analogía 🐾<a class="headerlink" href="#analogia_4" title="Permanent link">&para;</a></h3>
+<p>La caja registradora del Michi Café tiene un candado. Solo el gatito cajero puede abrirla y modificar el dinero. Los clientes no pueden meter la mano directamente.</p>
+<p>Si alguien quiere saber cuánto hay en la caja, tiene que preguntarle al cajero (usar un método). Si quiere agregar dinero, tiene que dárselo al cajero (usar otro método).</p>
+<h3 id="sin-encapsulamiento-peligroso">Sin encapsulamiento (peligroso)<a class="headerlink" href="#sin-encapsulamiento-peligroso" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">Cliente</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cliente</span><span class="p">();</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">cliente</span><span class="p">.</span><span class="na">puntosFidelidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">9999</span><span class="p">;</span><span class="w"> </span><span class="c1">// ¡Cualquiera puede poner valores inválidos!</span>
+</code></pre></div>
+<h3 id="con-encapsulamiento-seguro">Con encapsulamiento (seguro)<a class="headerlink" href="#con-encapsulamiento-seguro" title="Permanent link">&para;</a></h3>
+<p>Usamos <code>private</code> para proteger los atributos, y <code>getters/setters</code> para acceder a ellos de forma controlada:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cliente</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="c1">// Atributos PRIVADOS (nadie puede tocarlos directamente)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">correo</span><span class="p">;</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">puntosFidelidad</span><span class="p">;</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">    </span><span class="c1">// Constructor</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Cliente</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">correo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">correo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">correo</span><span class="p">;</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">puntosFidelidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// siempre empieza en 0</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">    </span><span class="c1">// GETTER: permite LEER el valor (el cajero te dice cuántos puntos tienes)</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNombre</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPuntosFidelidad</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">puntosFidelidad</span><span class="p">;</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getCorreo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">correo</span><span class="p">;</span>
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>
+<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a><span class="w">    </span><span class="c1">// SETTER: permite MODIFICAR el valor con validación</span>
+<a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setCorreo</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">correo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a><span class="w">        </span><span class="c1">// Validamos que el correo tenga @ antes de guardarlo</span>
+<a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">correo</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">&quot;@&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">correo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">correo</span><span class="p">;</span>
+<a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Error: correo inválido&quot;</span><span class="p">);</span>
+<a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a>
+<a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a><span class="w">    </span><span class="c1">// Método para agregar puntos (con validación)</span>
+<a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">agregarPuntos</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">puntos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">puntos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="na">puntosFidelidad</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">puntos</span><span class="p">;</span>
+<a id="__codelineno-13-42" name="__codelineno-13-42" href="#__codelineno-13-42"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;+&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">puntos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; puntos para &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-13-43" name="__codelineno-13-43" href="#__codelineno-13-43"></a><span class="w">                               </span><span class="s">&quot;. Total: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">puntosFidelidad</span><span class="p">);</span>
+<a id="__codelineno-13-44" name="__codelineno-13-44" href="#__codelineno-13-44"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-45" name="__codelineno-13-45" href="#__codelineno-13-45"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Error: los puntos deben ser positivos&quot;</span><span class="p">);</span>
+<a id="__codelineno-13-46" name="__codelineno-13-46" href="#__codelineno-13-46"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-13-47" name="__codelineno-13-47" href="#__codelineno-13-47"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-48" name="__codelineno-13-48" href="#__codelineno-13-48"></a><span class="p">}</span>
+</code></pre></div>
+<p>Usando la clase encapsulada:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MichiCafe</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">        </span><span class="n">Cliente</span><span class="w"> </span><span class="n">sofia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cliente</span><span class="p">(</span><span class="s">&quot;Sofía&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sofia@email.com&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">        </span><span class="c1">// Leemos datos con getters</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Cliente: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sofia</span><span class="p">.</span><span class="na">getNombre</span><span class="p">());</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Puntos: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sofia</span><span class="p">.</span><span class="na">getPuntosFidelidad</span><span class="p">());</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">        </span><span class="c1">// Agregamos puntos de forma controlada</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">        </span><span class="n">sofia</span><span class="p">.</span><span class="na">agregarPuntos</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">        </span><span class="n">sofia</span><span class="p">.</span><span class="na">agregarPuntos</span><span class="p">(</span><span class="mi">30</span><span class="p">);</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">        </span><span class="n">sofia</span><span class="p">.</span><span class="na">agregarPuntos</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// Esto dará error controlado</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">        </span><span class="c1">// Actualizamos correo con validación</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">        </span><span class="n">sofia</span><span class="p">.</span><span class="na">setCorreo</span><span class="p">(</span><span class="s">&quot;nuevo-correo@email.com&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// OK</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">        </span><span class="n">sofia</span><span class="p">.</span><span class="na">setCorreo</span><span class="p">(</span><span class="s">&quot;correo-sin-arroba&quot;</span><span class="p">);</span><span class="w">       </span><span class="c1">// Error controlado</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="p">}</span>
+</code></pre></div>
+<p>Salida:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Cliente: Sofía
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>Puntos: 0
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>+50 puntos para Sofía. Total: 50
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>+30 puntos para Sofía. Total: 80
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>Error: los puntos deben ser positivos
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>Error: correo inválido
+</code></pre></div></p>
+<hr />
+<h2 id="herencia-el-gatito-aprende-de-otro-gatito">💡 Herencia: el gatito aprende de otro gatito<a class="headerlink" href="#herencia-el-gatito-aprende-de-otro-gatito" title="Permanent link">&para;</a></h2>
+<p>La <strong>herencia</strong> permite crear una clase nueva basada en una clase existente, heredando sus atributos y métodos.</p>
+<h3 id="analogia_5">Analogía 🐾<a class="headerlink" href="#analogia_5" title="Permanent link">&para;</a></h3>
+<p>En el Michi Café todos los empleados comparten cosas en común:
+- Tienen nombre, turno y salario
+- Pueden fichar entrada y salida
+- Reciben su pago</p>
+<p>Pero cada rol tiene cosas específicas:
+- El <strong>barista</strong> prepara bebidas
+- El <strong>mesero</strong> toma pedidos y los lleva
+- El <strong>cajero</strong> cobra y da cambio</p>
+<p>En lugar de repetir el código común en cada clase, creamos una clase <strong>Empleado</strong> con lo común, y las clases específicas <strong>heredan</strong> de ella.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1">// Clase PADRE (superclase): lo que todos los empleados tienen en común</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Empleado</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">turno</span><span class="p">;</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">salario</span><span class="p">;</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Empleado</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">turno</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">salario</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">turno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">turno</span><span class="p">;</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">salario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">salario</span><span class="p">;</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ficharEntrada</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; fichó entrada. Turno: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">turno</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; 🕐&quot;</span><span class="p">);</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ficharSalida</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; fichó salida. ¡Hasta mañana! 🌙&quot;</span><span class="p">);</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNombre</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getTurno</span><span class="p">()</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">turno</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">getSalario</span><span class="p">(){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">salario</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">// Clase HIJA: hereda de Empleado con &quot;extends&quot;</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Barista</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Empleado</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">especialidad</span><span class="p">;</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cafesPreparados</span><span class="p">;</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">    </span><span class="c1">// Constructor: llama al constructor del padre con &quot;super&quot;</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Barista</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">turno</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">salario</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">especialidad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">turno</span><span class="p">,</span><span class="w"> </span><span class="n">salario</span><span class="p">);</span><span class="w"> </span><span class="c1">// llama al constructor de Empleado</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">especialidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">especialidad</span><span class="p">;</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">cafesPreparados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">    </span><span class="c1">// Método propio del Barista (no lo tienen otros empleados)</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">prepararCafe</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">tipoCafe</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="w">        </span><span class="n">cafesPreparados</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">getNombre</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; prepara &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tipoCafe</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="w">                           </span><span class="s">&quot; (especialidad: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">especialidad</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;) ☕&quot;</span><span class="p">);</span>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getCafesPreparados</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">cafesPreparados</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">// Otra clase hija</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Mesero</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Empleado</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pedidosAtendidos</span><span class="p">;</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Mesero</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">turno</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">salario</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">turno</span><span class="p">,</span><span class="w"> </span><span class="n">salario</span><span class="p">);</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">pedidosAtendidos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">tomarPedido</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">cliente</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">bebida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="w">        </span><span class="n">pedidosAtendidos</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">getNombre</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; toma pedido de &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">                           </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bebida</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; 📝&quot;</span><span class="p">);</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">entregarPedido</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">cliente</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">getNombre</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; entrega pedido a &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; 🐾&quot;</span><span class="p">);</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="p">}</span>
+</code></pre></div>
+<p>Usando la herencia:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MichiCafe</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">        </span><span class="n">Barista</span><span class="w"> </span><span class="n">mochi</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Barista</span><span class="p">(</span><span class="s">&quot;Mochi&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mañana&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">8000.0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Latte Art&quot;</span><span class="p">);</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">        </span><span class="n">Mesero</span><span class="w">  </span><span class="n">canela</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mesero</span><span class="p">(</span><span class="s">&quot;Canela&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mañana&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">7500.0</span><span class="p">);</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">        </span><span class="c1">// Métodos heredados de Empleado</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">        </span><span class="n">mochi</span><span class="p">.</span><span class="na">ficharEntrada</span><span class="p">();</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">        </span><span class="n">canela</span><span class="p">.</span><span class="na">ficharEntrada</span><span class="p">();</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">        </span><span class="c1">// Métodos propios de cada rol</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">        </span><span class="n">canela</span><span class="p">.</span><span class="na">tomarPedido</span><span class="p">(</span><span class="s">&quot;Sofía&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Latte de vainilla&quot;</span><span class="p">);</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">        </span><span class="n">mochi</span><span class="p">.</span><span class="na">prepararCafe</span><span class="p">(</span><span class="s">&quot;Latte de vainilla&quot;</span><span class="p">);</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">        </span><span class="n">canela</span><span class="p">.</span><span class="na">entregarPedido</span><span class="p">(</span><span class="s">&quot;Sofía&quot;</span><span class="p">);</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">        </span><span class="n">mochi</span><span class="p">.</span><span class="na">ficharSalida</span><span class="p">();</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">        </span><span class="n">canela</span><span class="p">.</span><span class="na">ficharSalida</span><span class="p">();</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Cafés preparados por Mochi: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mochi</span><span class="p">.</span><span class="na">getCafesPreparados</span><span class="p">());</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="p">}</span>
+</code></pre></div>
+<p>Salida:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Mochi fichó entrada. Turno: mañana 🕐
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>Canela fichó entrada. Turno: mañana 🕐
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>Canela toma pedido de Sofía: Latte de vainilla 📝
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>Mochi prepara Latte de vainilla (especialidad: Latte Art) ☕
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>Canela entrega pedido a Sofía 🐾
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>Mochi fichó salida. ¡Hasta mañana! 🌙
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>Canela fichó salida. ¡Hasta mañana! 🌙
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>Cafés preparados por Mochi: 1
+</code></pre></div></p>
+<hr />
+<h2 id="polimorfismo-el-gatito-que-hace-lo-mismo-pero-diferente">💡 Polimorfismo: el gatito que hace lo mismo pero diferente<a class="headerlink" href="#polimorfismo-el-gatito-que-hace-lo-mismo-pero-diferente" title="Permanent link">&para;</a></h2>
+<p>El <strong>polimorfismo</strong> significa que objetos de diferentes clases pueden responder al mismo mensaje de formas distintas.</p>
+<h3 id="analogia_6">Analogía 🐾<a class="headerlink" href="#analogia_6" title="Permanent link">&para;</a></h3>
+<p>Si le dices a cualquier empleado del Michi Café "preséntate", cada uno lo hace a su manera:
+- El barista dice su nombre y especialidad
+- El mesero dice su nombre y cuántas mesas atiende
+- El cajero dice su nombre y el turno de caja</p>
+<p>Todos "se presentan", pero cada uno lo hace diferente.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Empleado</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Empleado</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">    </span><span class="c1">// Método que cada hijo puede sobreescribir</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">presentarse</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hola, soy &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, empleado del Michi Café.&quot;</span><span class="p">);</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="p">}</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Barista</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Empleado</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">especialidad</span><span class="p">;</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Barista</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">especialidad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">nombre</span><span class="p">);</span>
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">especialidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">especialidad</span><span class="p">;</span>
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a>
+<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a><span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="c1">// Esta anotación indica que estamos sobreescribiendo el método del padre</span>
+<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">presentarse</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;¡Miau! Soy &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a><span class="w">                           </span><span class="s">&quot;, barista especializado en &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">especialidad</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; ☕&quot;</span><span class="p">);</span>
+<a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a><span class="p">}</span>
+<a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a>
+<a id="__codelineno-21-29" name="__codelineno-21-29" href="#__codelineno-21-29"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Mesero</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Empleado</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-30" name="__codelineno-21-30" href="#__codelineno-21-30"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mesas</span><span class="p">;</span>
+<a id="__codelineno-21-31" name="__codelineno-21-31" href="#__codelineno-21-31"></a>
+<a id="__codelineno-21-32" name="__codelineno-21-32" href="#__codelineno-21-32"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Mesero</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mesas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-33" name="__codelineno-21-33" href="#__codelineno-21-33"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">nombre</span><span class="p">);</span>
+<a id="__codelineno-21-34" name="__codelineno-21-34" href="#__codelineno-21-34"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">mesas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mesas</span><span class="p">;</span>
+<a id="__codelineno-21-35" name="__codelineno-21-35" href="#__codelineno-21-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-21-36" name="__codelineno-21-36" href="#__codelineno-21-36"></a>
+<a id="__codelineno-21-37" name="__codelineno-21-37" href="#__codelineno-21-37"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-21-38" name="__codelineno-21-38" href="#__codelineno-21-38"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">presentarse</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-39" name="__codelineno-21-39" href="#__codelineno-21-39"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;¡Hola! Soy &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-21-40" name="__codelineno-21-40" href="#__codelineno-21-40"></a><span class="w">                           </span><span class="s">&quot;, mesero. Atiendo &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mesas</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; mesas 🐾&quot;</span><span class="p">);</span>
+<a id="__codelineno-21-41" name="__codelineno-21-41" href="#__codelineno-21-41"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-21-42" name="__codelineno-21-42" href="#__codelineno-21-42"></a><span class="p">}</span>
+</code></pre></div>
+<p>Usando el polimorfismo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MichiCafe</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">        </span><span class="c1">// Podemos guardar diferentes tipos en un array del tipo padre</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">        </span><span class="n">Empleado</span><span class="o">[]</span><span class="w"> </span><span class="n">equipo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">Barista</span><span class="p">(</span><span class="s">&quot;Mochi&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Latte Art&quot;</span><span class="p">),</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">Mesero</span><span class="p">(</span><span class="s">&quot;Canela&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">),</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">Barista</span><span class="p">(</span><span class="s">&quot;Nube&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Café frío&quot;</span><span class="p">),</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">Mesero</span><span class="p">(</span><span class="s">&quot;Luna&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="w">        </span><span class="p">};</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=== EQUIPO DEL MICHI CAFÉ ===&quot;</span><span class="p">);</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Empleado</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">equipo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="w">            </span><span class="n">empleado</span><span class="p">.</span><span class="na">presentarse</span><span class="p">();</span><span class="w"> </span><span class="c1">// Cada uno se presenta a su manera</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="p">}</span>
+</code></pre></div>
+<p>Salida:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>=== EQUIPO DEL MICHI CAFÉ ===
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>¡Miau! Soy Mochi, barista especializado en Latte Art ☕
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>¡Hola! Soy Canela, mesero. Atiendo 5 mesas 🐾
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>¡Miau! Soy Nube, barista especializado en Café frío ☕
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>¡Hola! Soy Luna, mesero. Atiendo 4 mesas 🐾
+</code></pre></div></p>
+<hr />
+<h2 id="interfaces-el-contrato-del-gatito">💡 Interfaces: el contrato del gatito<a class="headerlink" href="#interfaces-el-contrato-del-gatito" title="Permanent link">&para;</a></h2>
+<p>Una <strong>interfaz</strong> es un contrato que dice "cualquier clase que me implemente DEBE tener estos métodos".</p>
+<h3 id="analogia_7">Analogía 🐾<a class="headerlink" href="#analogia_7" title="Permanent link">&para;</a></h3>
+<p>El Michi Café tiene una regla: cualquier empleado que trabaje en el área de atención al cliente DEBE saber:
+- Saludar al cliente
+- Tomar un pedido
+- Despedirse</p>
+<p>No importa si es un gatito barista, mesero o cajero. Si trabaja en atención al cliente, debe cumplir ese contrato.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1">// La interfaz define el CONTRATO</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">AtencionAlCliente</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">saludarCliente</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombreCliente</span><span class="p">);</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">tomarPedido</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">pedido</span><span class="p">);</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">despedirCliente</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombreCliente</span><span class="p">);</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1">// El Barista implementa el contrato</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Barista</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Empleado</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AtencionAlCliente</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Barista</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">nombre</span><span class="p">);</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">saludarCliente</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombreCliente</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;¡Bienvenido &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombreCliente</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="w">                           </span><span class="s">&quot; al Michi Café! Soy &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; ☕&quot;</span><span class="p">);</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">tomarPedido</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">pedido</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; anota: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pedido</span><span class="p">);</span>
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a>
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">despedirCliente</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombreCliente</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;¡Hasta pronto &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombreCliente</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;! 🐾&quot;</span><span class="p">);</span>
+<a id="__codelineno-25-22" name="__codelineno-25-22" href="#__codelineno-25-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-25-23" name="__codelineno-25-23" href="#__codelineno-25-23"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="juntando-todo-el-modelo-completo-del-michi-cafe">💡 Juntando todo: el modelo completo del Michi Café<a class="headerlink" href="#juntando-todo-el-modelo-completo-del-michi-cafe" title="Permanent link">&para;</a></h2>
+<p>Ahora vamos a crear el modelo de datos que usaremos en los próximos módulos:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1">// Bebida.java</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Bebida</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">precio</span><span class="p">;</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">categoria</span><span class="p">;</span><span class="w"> </span><span class="c1">// &quot;caliente&quot;, &quot;frio&quot;, &quot;especial&quot;</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Bebida</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">precio</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">categoria</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">precio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">precio</span><span class="p">;</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">categoria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">categoria</span><span class="p">;</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNombre</span><span class="p">()</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">getPrecio</span><span class="p">()</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">precio</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getCategoria</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">categoria</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; ($&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">precio</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;) [&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">categoria</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;]&quot;</span><span class="p">;</span>
+<a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1">// Cliente.java</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Cliente</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">correo</span><span class="p">;</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">puntosFidelidad</span><span class="p">;</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Cliente</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">correo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">correo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">correo</span><span class="p">;</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">puntosFidelidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">agregarPuntos</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">puntos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">puntos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">puntosFidelidad</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">puntos</span><span class="p">;</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a>
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getNombre</span><span class="p">()</span><span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getCorreo</span><span class="p">()</span><span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">correo</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getPuntosFidelidad</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">puntosFidelidad</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a>
+<a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; (&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">correo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;) - Puntos: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">puntosFidelidad</span><span class="p">;</span>
+<a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1">// Pedido.java</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Pedido</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Cliente</span><span class="w"> </span><span class="n">cliente</span><span class="p">;</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Bebida</span><span class="o">&gt;</span><span class="w"> </span><span class="n">bebidas</span><span class="p">;</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">estado</span><span class="p">;</span><span class="w"> </span><span class="c1">// &quot;pendiente&quot;, &quot;preparando&quot;, &quot;listo&quot;, &quot;entregado&quot;</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Pedido</span><span class="p">(</span><span class="n">Cliente</span><span class="w"> </span><span class="n">cliente</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cliente</span><span class="p">;</span>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">bebidas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pendiente&quot;</span><span class="p">;</span>
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">agregarBebida</span><span class="p">(</span><span class="n">Bebida</span><span class="w"> </span><span class="n">bebida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="w">        </span><span class="n">bebidas</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">bebida</span><span class="p">);</span>
+<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Agregado al pedido: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bebida</span><span class="p">.</span><span class="na">getNombre</span><span class="p">());</span>
+<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>
+<a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">calcularTotal</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Bebida</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">bebidas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a><span class="w">            </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="na">getPrecio</span><span class="p">();</span>
+<a id="__codelineno-28-25" name="__codelineno-28-25" href="#__codelineno-28-25"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-28-26" name="__codelineno-28-26" href="#__codelineno-28-26"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+<a id="__codelineno-28-27" name="__codelineno-28-27" href="#__codelineno-28-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-28-28" name="__codelineno-28-28" href="#__codelineno-28-28"></a>
+<a id="__codelineno-28-29" name="__codelineno-28-29" href="#__codelineno-28-29"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">cambiarEstado</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">nuevoEstado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-30" name="__codelineno-28-30" href="#__codelineno-28-30"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nuevoEstado</span><span class="p">;</span>
+<a id="__codelineno-28-31" name="__codelineno-28-31" href="#__codelineno-28-31"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Pedido de &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cliente</span><span class="p">.</span><span class="na">getNombre</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-28-32" name="__codelineno-28-32" href="#__codelineno-28-32"></a><span class="w">                           </span><span class="s">&quot; → Estado: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nuevoEstado</span><span class="p">);</span>
+<a id="__codelineno-28-33" name="__codelineno-28-33" href="#__codelineno-28-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-28-34" name="__codelineno-28-34" href="#__codelineno-28-34"></a>
+<a id="__codelineno-28-35" name="__codelineno-28-35" href="#__codelineno-28-35"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">imprimirResumen</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-36" name="__codelineno-28-36" href="#__codelineno-28-36"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=============================&quot;</span><span class="p">);</span>
+<a id="__codelineno-28-37" name="__codelineno-28-37" href="#__codelineno-28-37"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;PEDIDO - MICHI CAFÉ 🐱☕&quot;</span><span class="p">);</span>
+<a id="__codelineno-28-38" name="__codelineno-28-38" href="#__codelineno-28-38"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=============================&quot;</span><span class="p">);</span>
+<a id="__codelineno-28-39" name="__codelineno-28-39" href="#__codelineno-28-39"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Cliente: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cliente</span><span class="p">.</span><span class="na">getNombre</span><span class="p">());</span>
+<a id="__codelineno-28-40" name="__codelineno-28-40" href="#__codelineno-28-40"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Bebidas:&quot;</span><span class="p">);</span>
+<a id="__codelineno-28-41" name="__codelineno-28-41" href="#__codelineno-28-41"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Bebida</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">bebidas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-28-42" name="__codelineno-28-42" href="#__codelineno-28-42"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<a id="__codelineno-28-43" name="__codelineno-28-43" href="#__codelineno-28-43"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-28-44" name="__codelineno-28-44" href="#__codelineno-28-44"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Total: $&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">calcularTotal</span><span class="p">());</span>
+<a id="__codelineno-28-45" name="__codelineno-28-45" href="#__codelineno-28-45"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Estado: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">estado</span><span class="p">);</span>
+<a id="__codelineno-28-46" name="__codelineno-28-46" href="#__codelineno-28-46"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=============================&quot;</span><span class="p">);</span>
+<a id="__codelineno-28-47" name="__codelineno-28-47" href="#__codelineno-28-47"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-28-48" name="__codelineno-28-48" href="#__codelineno-28-48"></a><span class="p">}</span>
+</code></pre></div>
+<p>Usando el modelo completo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MichiCafe</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">        </span><span class="c1">// Creamos bebidas del menú</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">        </span><span class="n">Bebida</span><span class="w"> </span><span class="n">latte</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bebida</span><span class="p">(</span><span class="s">&quot;Latte de vainilla&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">45.50</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;caliente&quot;</span><span class="p">);</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">        </span><span class="n">Bebida</span><span class="w"> </span><span class="n">matcha</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bebida</span><span class="p">(</span><span class="s">&quot;Matcha Latte&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">55.00</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;caliente&quot;</span><span class="p">);</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">        </span><span class="n">Bebida</span><span class="w"> </span><span class="n">coldBrew</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bebida</span><span class="p">(</span><span class="s">&quot;Cold Brew&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">50.00</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;frio&quot;</span><span class="p">);</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="w">        </span><span class="c1">// Creamos un cliente</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="w">        </span><span class="n">Cliente</span><span class="w"> </span><span class="n">sofia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Cliente</span><span class="p">(</span><span class="s">&quot;Sofía&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sofia@email.com&quot;</span><span class="p">);</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="w">        </span><span class="c1">// Creamos un pedido</span>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="w">        </span><span class="n">Pedido</span><span class="w"> </span><span class="n">pedido</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Pedido</span><span class="p">(</span><span class="n">sofia</span><span class="p">);</span>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="w">        </span><span class="n">pedido</span><span class="p">.</span><span class="na">agregarBebida</span><span class="p">(</span><span class="n">latte</span><span class="p">);</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="w">        </span><span class="n">pedido</span><span class="p">.</span><span class="na">agregarBebida</span><span class="p">(</span><span class="n">matcha</span><span class="p">);</span>
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="w">        </span><span class="c1">// Procesamos el pedido</span>
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="w">        </span><span class="n">pedido</span><span class="p">.</span><span class="na">cambiarEstado</span><span class="p">(</span><span class="s">&quot;preparando&quot;</span><span class="p">);</span>
+<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a><span class="w">        </span><span class="n">pedido</span><span class="p">.</span><span class="na">cambiarEstado</span><span class="p">(</span><span class="s">&quot;listo&quot;</span><span class="p">);</span>
+<a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a><span class="w">        </span><span class="n">pedido</span><span class="p">.</span><span class="na">cambiarEstado</span><span class="p">(</span><span class="s">&quot;entregado&quot;</span><span class="p">);</span>
+<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a>
+<a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a><span class="w">        </span><span class="c1">// Imprimimos el resumen</span>
+<a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a><span class="w">        </span><span class="n">pedido</span><span class="p">.</span><span class="na">imprimirResumen</span><span class="p">();</span>
+<a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a>
+<a id="__codelineno-29-24" name="__codelineno-29-24" href="#__codelineno-29-24"></a><span class="w">        </span><span class="c1">// Agregamos puntos al cliente</span>
+<a id="__codelineno-29-25" name="__codelineno-29-25" href="#__codelineno-29-25"></a><span class="w">        </span><span class="n">sofia</span><span class="p">.</span><span class="na">agregarPuntos</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">pedido</span><span class="p">.</span><span class="na">calcularTotal</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<a id="__codelineno-29-26" name="__codelineno-29-26" href="#__codelineno-29-26"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Puntos acumulados: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sofia</span><span class="p">.</span><span class="na">getPuntosFidelidad</span><span class="p">());</span>
+<a id="__codelineno-29-27" name="__codelineno-29-27" href="#__codelineno-29-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-29-28" name="__codelineno-29-28" href="#__codelineno-29-28"></a><span class="p">}</span>
+</code></pre></div>
+<p>Salida:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>Agregado al pedido: Latte de vainilla
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>Agregado al pedido: Matcha Latte
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>Pedido de Sofía → Estado: preparando
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>Pedido de Sofía → Estado: listo
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>Pedido de Sofía → Estado: entregado
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>=============================
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>PEDIDO - MICHI CAFÉ 🐱☕
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>=============================
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>Cliente: Sofía
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>Bebidas:
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>  - Latte de vainilla ($45.5) [caliente]
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>  - Matcha Latte ($55.0) [caliente]
+<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>Total: $100.5
+<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>Estado: entregado
+<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>=============================
+<a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a>Puntos acumulados: 10
+</code></pre></div></p>
+<hr />
+<h2 id="ejercicios-del-modulo-3">🧪 Ejercicios del Módulo 3<a class="headerlink" href="#ejercicios-del-modulo-3" title="Permanent link">&para;</a></h2>
+<h3 id="ejercicio-1-la-clase-producto">Ejercicio 1: La clase Producto<a class="headerlink" href="#ejercicio-1-la-clase-producto" title="Permanent link">&para;</a></h3>
+<p>Crea una clase <code>Producto</code> para el menú del Michi Café con:
+- Atributos privados: nombre, precio, categoria, disponible
+- Constructor con todos los atributos
+- Getters y setters con validación (precio no puede ser negativo)
+- Método <code>mostrarInfo()</code> que imprima toda la información</p>
+<h3 id="ejercicio-2-herencia-de-empleados">Ejercicio 2: Herencia de empleados<a class="headerlink" href="#ejercicio-2-herencia-de-empleados" title="Permanent link">&para;</a></h3>
+<p>Crea la clase <code>Cajero</code> que herede de <code>Empleado</code> con:
+- Atributo extra: <code>dineroEnCaja</code>
+- Método <code>cobrar(double monto)</code> que sume al dinero en caja
+- Método <code>darCambio(double pagado, double total)</code> que calcule el cambio
+- Sobreescribe <code>presentarse()</code> con un mensaje propio</p>
+<h3 id="ejercicio-3-el-turno-completo">Ejercicio 3: El turno completo<a class="headerlink" href="#ejercicio-3-el-turno-completo" title="Permanent link">&para;</a></h3>
+<p>Simula un turno del Michi Café:
+1. Crea 2 clientes
+2. Crea un barista y un mesero
+3. El mesero toma pedidos de ambos clientes
+4. El barista prepara las bebidas
+5. El mesero entrega los pedidos
+6. Agrega puntos a los clientes según su total</p>
+<hr />
+<h2 id="resumen-del-modulo-3">✅ Resumen del Módulo 3<a class="headerlink" href="#resumen-del-modulo-3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>¿Qué es?</th>
+<th>Analogía del Michi Café</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clase</td>
+<td>Molde para crear objetos</td>
+<td>El formulario de contratación</td>
+</tr>
+<tr>
+<td>Objeto</td>
+<td>Instancia de una clase</td>
+<td>Un gatito específico contratado</td>
+</tr>
+<tr>
+<td>Atributos</td>
+<td>Características del objeto</td>
+<td>Nombre, turno, especialidad</td>
+</tr>
+<tr>
+<td>Métodos</td>
+<td>Acciones del objeto</td>
+<td>Preparar café, tomar pedido</td>
+</tr>
+<tr>
+<td>Constructor</td>
+<td>Inicializa el objeto</td>
+<td>Llenar el formulario al contratar</td>
+</tr>
+<tr>
+<td>Encapsulamiento</td>
+<td>Proteger los datos</td>
+<td>La caja registradora con candado</td>
+</tr>
+<tr>
+<td>Herencia</td>
+<td>Una clase basada en otra</td>
+<td>Barista y Mesero son Empleados</td>
+</tr>
+<tr>
+<td>Polimorfismo</td>
+<td>Mismo método, diferente comportamiento</td>
+<td>Cada gatito se presenta diferente</td>
+</tr>
+<tr>
+<td>Interfaz</td>
+<td>Contrato de métodos obligatorios</td>
+<td>Reglas de atención al cliente</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="siguiente-modulo">➡️ Siguiente Módulo<a class="headerlink" href="#siguiente-modulo" title="Permanent link">&para;</a></h2>
+<p>En el <strong>Módulo 04</strong> vamos a levantar nuestro primer servidor con <strong>Spring Boot</strong>. Vamos a abrir el Michi Café al mundo: cualquier persona podrá hacer una petición y recibir una respuesta.</p>
+<blockquote>
+<p>🐾 "Un objeto bien diseñado es como un buen gatito: sabe lo que tiene que hacer y lo hace bien."</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.indexes", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

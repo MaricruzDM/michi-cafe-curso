@@ -1,0 +1,2955 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Curso de microservicios con Java para no programadores">
+      
+      
+        <meta name="author" content="Michi Café">
+      
+      
+      
+        <link rel="prev" href="../modulo-03-poo/">
+      
+      
+        <link rel="next" href="../modulo-05-apis-rest/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Módulo 04 — Spring Boot - ☕🐱 Michi Café — Java + Spring Boot + MongoDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modulo-04-spring-boot-tu-primer-servidor" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-header__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Módulo 04 — Spring Boot
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-nav__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐣 Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐣 Fundamentos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-01-introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 01 — Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-02-java-desde-cero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 02 — Java desde Cero
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-03-poo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 03 — POO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ☕ Spring Boot y APIs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ☕ Spring Boot y APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 04 — Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 04 — Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abriendo-el-michi-cafe-al-publico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐱 Abriendo el Michi Café al público
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-un-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es un servidor?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es un servidor?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-spring-boot-410" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Spring Boot 4.1.0?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Spring Boot 4.1.0?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cambios-importantes-vs-versiones-anteriores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cambios importantes vs versiones anteriores
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-maven-y-el-archivo-pomxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Maven y el archivo pom.xml?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Maven y el archivo pom.xml?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-se-ve-una-dependencia-en-el-pomxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Cómo se ve una dependencia en el pom.xml?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#las-dependencias-principales-que-usaremos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Las dependencias principales que usaremos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-spring-initializr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Spring Initializr?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Spring Initializr?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-genera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué genera?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-estructura-de-un-proyecto-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 La estructura de un proyecto Spring Boot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 La estructura de un proyecto Spring Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-cada-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es cada cosa?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-clase-principal-el-interruptor-que-enciende-todo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 La clase principal: el interruptor que enciende todo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 La clase principal: el interruptor que enciende todo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-un-puerto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es un puerto?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anotaciones-de-spring-las-etiquetas-magicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Anotaciones de Spring: las etiquetas mágicas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Anotaciones de Spring: las etiquetas mágicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#las-anotaciones-mas-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Las anotaciones más importantes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#las-capas-de-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Las capas de Spring Boot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Las capas de Spring Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-separar-en-capas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué separar en capas?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tu-primer-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Tu primer Controller
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es JSON?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es JSON?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#las-reglas-de-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Las reglas de JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spring-boot-convierte-automaticamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spring Boot convierte automáticamente
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-archivo-applicationproperties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 El archivo application.properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inyeccion-de-dependencias-la-magia-del-autowired" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Inyección de dependencias: la magia del @Autowired
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Inyección de dependencias: la magia del @Autowired">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-es-mejor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué es mejor?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#responseentity-controlar-exactamente-la-respuesta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ResponseEntity: controlar exactamente la respuesta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-comprension-modulo-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Ejercicios de comprensión — Módulo 04
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-del-modulo-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Resumen del Módulo 04
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente módulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-05-apis-rest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 05 — APIs REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗄️ Base de Datos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🗄️ Base de Datos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-06-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 06 — MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-07-spring-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 07 — Spring + MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏗️ Microservicios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🏗️ Microservicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-08-microservicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 08 — ¿Qué son?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-09-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 09 — Servicio Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-10-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 10 — Servicio Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-11-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 11 — Servicio Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-12-comunicacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 12 — Comunicación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-13-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 13 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚀 Producción
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚀 Producción
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-14-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 14 — Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-15-proyecto-final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 15 — Proyecto Final
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Proyecto Guiado
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Proyecto Guiado
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-01-instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P01 — Instalación del entorno
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-02-primer-proyecto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P02 — Primer proyecto Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-03-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P03 — Servicio de Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-04-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P04 — Servicio de Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-05-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P05 — Servicio de Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-06-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P06 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-07-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P07 — Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abriendo-el-michi-cafe-al-publico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐱 Abriendo el Michi Café al público
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-un-servidor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es un servidor?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es un servidor?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-spring-boot-410" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Spring Boot 4.1.0?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Spring Boot 4.1.0?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cambios-importantes-vs-versiones-anteriores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cambios importantes vs versiones anteriores
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-maven-y-el-archivo-pomxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Maven y el archivo pom.xml?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Maven y el archivo pom.xml?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-se-ve-una-dependencia-en-el-pomxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Cómo se ve una dependencia en el pom.xml?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#las-dependencias-principales-que-usaremos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Las dependencias principales que usaremos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-spring-initializr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Spring Initializr?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Spring Initializr?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-genera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué genera?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-estructura-de-un-proyecto-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 La estructura de un proyecto Spring Boot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 La estructura de un proyecto Spring Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-cada-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué es cada cosa?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#la-clase-principal-el-interruptor-que-enciende-todo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 La clase principal: el interruptor que enciende todo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 La clase principal: el interruptor que enciende todo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-un-puerto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es un puerto?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anotaciones-de-spring-las-etiquetas-magicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Anotaciones de Spring: las etiquetas mágicas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Anotaciones de Spring: las etiquetas mágicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#las-anotaciones-mas-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Las anotaciones más importantes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#las-capas-de-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Las capas de Spring Boot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Las capas de Spring Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-separar-en-capas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué separar en capas?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tu-primer-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Tu primer Controller
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es JSON?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es JSON?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#las-reglas-de-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Las reglas de JSON
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spring-boot-convierte-automaticamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spring Boot convierte automáticamente
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-archivo-applicationproperties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 El archivo application.properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inyeccion-de-dependencias-la-magia-del-autowired" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Inyección de dependencias: la magia del @Autowired
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Inyección de dependencias: la magia del @Autowired">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-es-mejor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué es mejor?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#responseentity-controlar-exactamente-la-respuesta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ResponseEntity: controlar exactamente la respuesta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-comprension-modulo-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Ejercicios de comprensión — Módulo 04
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-del-modulo-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Resumen del Módulo 04
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente módulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="modulo-04-spring-boot-tu-primer-servidor">Módulo 04 — Spring Boot: Tu Primer Servidor<a class="headerlink" href="#modulo-04-spring-boot-tu-primer-servidor" title="Permanent link">&para;</a></h1>
+<h2 id="abriendo-el-michi-cafe-al-publico">🐱 Abriendo el Michi Café al público<a class="headerlink" href="#abriendo-el-michi-cafe-al-publico" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="introduccion">🏠 Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>Hasta ahora hemos aprendido Java y POO. Nuestro código corre en nuestra computadora
+pero nadie más puede usarlo.</p>
+<p>Es como tener el Michi Café completamente equipado — con recetas, empleados y menú —
+pero con la puerta cerrada y sin teléfono. Nadie puede comunicarse con nosotros.</p>
+<p><strong>Spring Boot</strong> es lo que nos permite abrir esa puerta. Vamos a crear un <strong>servidor</strong>:
+un programa que escucha peticiones que llegan por internet y responde a ellas.</p>
+<hr />
+<h2 id="que-es-un-servidor">💡 ¿Qué es un servidor?<a class="headerlink" href="#que-es-un-servidor" title="Permanent link">&para;</a></h2>
+<p>Un servidor es un programa que está siempre encendido, esperando peticiones.
+Cuando llega una, la procesa y devuelve una respuesta.</p>
+<h3 id="analogia">Analogía 🐾<a class="headerlink" href="#analogia" title="Permanent link">&para;</a></h3>
+<p>El Michi Café tiene un número de teléfono para pedidos a domicilio.
+El gatito que contesta siempre está disponible:</p>
+<ol>
+<li>Suena el teléfono → llega una petición HTTP</li>
+<li>El gatito contesta → el servidor recibe la petición</li>
+<li>El gatito pregunta qué quieren → el servidor lee los datos enviados</li>
+<li>El gatito busca la información → el servidor ejecuta la lógica</li>
+<li>El gatito responde → el servidor envía la respuesta</li>
+</ol>
+<p>Ese gatito que contesta es tu servidor Spring Boot.</p>
+<hr />
+<h2 id="que-es-spring-boot-410">💡 ¿Qué es Spring Boot 4.1.0?<a class="headerlink" href="#que-es-spring-boot-410" title="Permanent link">&para;</a></h2>
+<p><strong>Spring</strong> es un framework (conjunto de herramientas) para Java que facilita
+crear aplicaciones empresariales.</p>
+<p><strong>Spring Boot</strong> es una versión de Spring que viene preconfigurada y lista para usar.
+La versión actual es <strong>4.1.0</strong> y requiere <strong>Java 17</strong> como mínimo.</p>
+<h3 id="cambios-importantes-vs-versiones-anteriores">Cambios importantes vs versiones anteriores<a class="headerlink" href="#cambios-importantes-vs-versiones-anteriores" title="Permanent link">&para;</a></h3>
+<p>Si has visto tutoriales más viejos, notarás diferencias. Las principales:</p>
+<table>
+<thead>
+<tr>
+<th>Versión antigua (≤ 2.x)</th>
+<th>Versión actual (4.1.0)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Java 8 o 11</td>
+<td>Java 17 mínimo</td>
+</tr>
+<tr>
+<td><code>javax.*</code> en los imports</td>
+<td><code>jakarta.*</code> en los imports</td>
+</tr>
+<tr>
+<td>Spring Fox para Swagger</td>
+<td>SpringDoc OpenAPI</td>
+</tr>
+<tr>
+<td><code>spring-boot-starter-web</code> (Spring MVC)</td>
+<td>Sigue igual ✅</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 El cambio de <code>javax</code> a <code>jakarta</code> es el más importante. Si ves código antiguo
+con <code>import javax.persistence.*</code> o <code>import javax.validation.*</code>, en Spring Boot 4.1.0
+esos imports son <code>import jakarta.persistence.*</code> y <code>import jakarta.validation.*</code>.</p>
+</blockquote>
+<hr />
+<h2 id="que-es-maven-y-el-archivo-pomxml">💡 ¿Qué es Maven y el archivo <code>pom.xml</code>?<a class="headerlink" href="#que-es-maven-y-el-archivo-pomxml" title="Permanent link">&para;</a></h2>
+<p><strong>Maven</strong> es una herramienta que gestiona las <strong>dependencias</strong> de tu proyecto.</p>
+<p>Una dependencia es una librería de código que alguien más ya escribió y que tú
+puedes usar en tu proyecto sin tener que escribirla desde cero.</p>
+<h3 id="analogia_1">Analogía 🐾<a class="headerlink" href="#analogia_1" title="Permanent link">&para;</a></h3>
+<p>Imagina que vas a preparar un Latte de vainilla. No vas a cultivar el café, ordeñar
+la vaca ni fabricar el jarabe de vainilla. <strong>Los compras ya hechos</strong>.</p>
+<p>Maven es el sistema de compras del Michi Café:
+- Tú dices qué necesitas en el archivo <code>pom.xml</code> (la lista de compras)
+- Maven descarga automáticamente todo lo necesario de internet
+- Cada vez que alguien más abra el proyecto, Maven descarga lo mismo</p>
+<h3 id="como-se-ve-una-dependencia-en-el-pomxml">¿Cómo se ve una dependencia en el <code>pom.xml</code>?<a class="headerlink" href="#como-se-ve-una-dependencia-en-el-pomxml" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span><span class="w">    </span><span class="cm">&lt;!-- La marca --&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-web<span class="nt">&lt;/artifactId&gt;</span><span class="w"> </span><span class="cm">&lt;!-- El producto --&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<p>No necesitas escribir la versión porque el <code>pom.xml</code> hereda las versiones del
+<strong>Spring Boot Parent</strong>, que las gestiona automáticamente:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;parent&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-parent<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>4.1.0<span class="nt">&lt;/version&gt;</span><span class="w">  </span><span class="cm">&lt;!-- Versión de Spring Boot --&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nt">&lt;/parent&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="las-dependencias-principales-que-usaremos">💡 Las dependencias principales que usaremos<a class="headerlink" href="#las-dependencias-principales-que-usaremos" title="Permanent link">&para;</a></h2>
+<p>Estos son los "ingredientes" que vamos a pedir en nuestra lista de compras:</p>
+<table>
+<thead>
+<tr>
+<th>Dependencia (artifactId)</th>
+<th>¿Para qué sirve?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spring-boot-starter-web</code></td>
+<td>Crear APIs REST (controladores, peticiones HTTP)</td>
+</tr>
+<tr>
+<td><code>spring-boot-starter-data-mongodb</code></td>
+<td>Conectar con MongoDB</td>
+</tr>
+<tr>
+<td><code>spring-boot-starter-validation</code></td>
+<td>Validar datos de entrada</td>
+</tr>
+<tr>
+<td><code>spring-boot-starter-actuator</code></td>
+<td>Endpoints de salud y métricas</td>
+</tr>
+<tr>
+<td><code>spring-cloud-starter-gateway</code></td>
+<td>Solo para el API Gateway</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="que-es-spring-initializr">💡 ¿Qué es Spring Initializr?<a class="headerlink" href="#que-es-spring-initializr" title="Permanent link">&para;</a></h2>
+<p><strong>Spring Initializr</strong> es una página web oficial de Spring que genera el esqueleto
+de tu proyecto automáticamente. Es el punto de partida de cualquier proyecto Spring Boot.</p>
+<p>URL: <strong>https://start.spring.io</strong></p>
+<h3 id="que-genera">¿Qué genera?<a class="headerlink" href="#que-genera" title="Permanent link">&para;</a></h3>
+<ul>
+<li>La estructura de carpetas correcta</li>
+<li>El <code>pom.xml</code> con las dependencias que elijas</li>
+<li>La clase principal con <code>@SpringBootApplication</code></li>
+<li>El archivo <code>application.properties</code> vacío</li>
+<li>Un test básico</li>
+</ul>
+<p>Todo esto en un archivo ZIP que descargas y abres en IntelliJ.</p>
+<blockquote>
+<p>💡 En la Parte 2 del curso (módulos de proyecto) verás capturas exactas de
+cómo configurar Spring Initializr paso a paso. Aquí solo explicamos los conceptos.</p>
+</blockquote>
+<hr />
+<h2 id="la-estructura-de-un-proyecto-spring-boot">💡 La estructura de un proyecto Spring Boot<a class="headerlink" href="#la-estructura-de-un-proyecto-spring-boot" title="Permanent link">&para;</a></h2>
+<p>Cuando abres el proyecto descargado en IntelliJ, verás esta estructura:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>michicafe/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── src/
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│   ├── main/
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│   │   ├── java/
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│   │   │   └── com/michicafe/
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│   │   │       └── MichicafeApplication.java   ← Punto de entrada
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│   │   └── resources/
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>│   │       └── application.properties           ← Configuración
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>│   └── test/
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>│       └── java/
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>│           └── com/michicafe/
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>│               └── MichicafeApplicationTests.java
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>├── pom.xml                                       ← Lista de dependencias
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>└── mvnw / mvnw.cmd                              ← Maven wrapper
+</code></pre></div>
+<h3 id="que-es-cada-cosa">¿Qué es cada cosa?<a class="headerlink" href="#que-es-cada-cosa" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Archivo/Carpeta</th>
+<th>Función</th>
+<th>Analogía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/main/java</code></td>
+<td>Todo tu código Java</td>
+<td>Las recetas del café</td>
+</tr>
+<tr>
+<td><code>src/main/resources</code></td>
+<td>Configuraciones, archivos estáticos</td>
+<td>El manual de configuración</td>
+</tr>
+<tr>
+<td><code>src/test/java</code></td>
+<td>Pruebas automatizadas</td>
+<td>El inspector de calidad</td>
+</tr>
+<tr>
+<td><code>pom.xml</code></td>
+<td>Lista de dependencias</td>
+<td>La lista de compras</td>
+</tr>
+<tr>
+<td><code>application.properties</code></td>
+<td>Configuración del servidor</td>
+<td>El panel de control del café</td>
+</tr>
+<tr>
+<td><code>mvnw</code></td>
+<td>Maven empaquetado (no necesitas instalarlo)</td>
+<td>El asistente de compras incluido</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="la-clase-principal-el-interruptor-que-enciende-todo">💡 La clase principal: el interruptor que enciende todo<a class="headerlink" href="#la-clase-principal-el-interruptor-que-enciende-todo" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.michicafe</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.SpringApplication</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nd">@SpringBootApplication</span><span class="w">  </span><span class="c1">// ← Esta anotación activa toda la magia de Spring Boot</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MichicafeApplication</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="c1">// Esta línea arranca el servidor</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="c1">// Es como girar la llave para encender el café</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">MichicafeApplication</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">}</span>
+</code></pre></div>
+<p><code>@SpringBootApplication</code> es una sola anotación que en realidad activa tres cosas:
+- <code>@SpringBootConfiguration</code>: esta clase es la configuración principal
+- <code>@EnableAutoConfiguration</code>: Spring configura automáticamente lo que detecta
+- <code>@ComponentScan</code>: Spring busca en este paquete todas las clases anotadas</p>
+<h3 id="analogia_2">Analogía 🐾<a class="headerlink" href="#analogia_2" title="Permanent link">&para;</a></h3>
+<p>Es el <strong>interruptor principal del café</strong>: cuando lo activas, se encienden las luces,
+se calientan las máquinas, se conecta el sistema de pedidos. Todo arranca solo.</p>
+<hr />
+<h2 id="que-es-un-puerto">💡 ¿Qué es un puerto?<a class="headerlink" href="#que-es-un-puerto" title="Permanent link">&para;</a></h2>
+<p>Un puerto es como la puerta específica de un edificio.
+Tu computadora tiene miles de puertas (puertos), y cada servicio usa una diferente.</p>
+<table>
+<thead>
+<tr>
+<th>Puerto</th>
+<th>Servicio</th>
+<th>Analogía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8080</td>
+<td>Tu API (Spring Boot por defecto)</td>
+<td>Puerta principal del café</td>
+</tr>
+<tr>
+<td>8081</td>
+<td>servicio-bebidas</td>
+<td>Puerta del área de bebidas</td>
+</tr>
+<tr>
+<td>8082</td>
+<td>servicio-clientes</td>
+<td>Puerta del área de clientes</td>
+</tr>
+<tr>
+<td>8083</td>
+<td>servicio-pedidos</td>
+<td>Puerta del área de pedidos</td>
+</tr>
+<tr>
+<td>27017</td>
+<td>MongoDB</td>
+<td>Puerta del almacén</td>
+</tr>
+</tbody>
+</table>
+<p>Cuando el servidor arranca, verás en la consola de IntelliJ:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Tomcat started on port 8080 (http) with context path &#39;/&#39;
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Started MichicafeApplication in 2.345 seconds
+</code></pre></div>
+<p>Eso significa que el café está abierto en <code>http://localhost:8080</code>.
+<code>localhost</code> significa "esta misma computadora".</p>
+<hr />
+<h2 id="anotaciones-de-spring-las-etiquetas-magicas">💡 Anotaciones de Spring: las etiquetas mágicas<a class="headerlink" href="#anotaciones-de-spring-las-etiquetas-magicas" title="Permanent link">&para;</a></h2>
+<p>Las <strong>anotaciones</strong> en Spring Boot son instrucciones especiales que empiezan con <code>@</code>.
+Le dicen a Spring cómo debe tratar cada clase o método.</p>
+<h3 id="analogia_3">Analogía 🐾<a class="headerlink" href="#analogia_3" title="Permanent link">&para;</a></h3>
+<p>Son como las etiquetas que pones en las cajas del café:
+- Una caja con etiqueta <code>@Cocina</code> va a la cocina
+- Una caja con etiqueta <code>@Caja</code> va a la caja registradora
+- Spring lee esas etiquetas y sabe exactamente qué hacer con cada cosa</p>
+<h3 id="las-anotaciones-mas-importantes">Las anotaciones más importantes<a class="headerlink" href="#las-anotaciones-mas-importantes" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Anotación</th>
+<th>¿Dónde se usa?</th>
+<th>¿Qué hace?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@SpringBootApplication</code></td>
+<td>Clase principal</td>
+<td>Activa todo Spring Boot</td>
+</tr>
+<tr>
+<td><code>@RestController</code></td>
+<td>Clase</td>
+<td>Esta clase recibe y responde peticiones HTTP</td>
+</tr>
+<tr>
+<td><code>@RequestMapping("/ruta")</code></td>
+<td>Clase o método</td>
+<td>Define la ruta base</td>
+</tr>
+<tr>
+<td><code>@GetMapping</code></td>
+<td>Método</td>
+<td>Responde a peticiones GET</td>
+</tr>
+<tr>
+<td><code>@PostMapping</code></td>
+<td>Método</td>
+<td>Responde a peticiones POST</td>
+</tr>
+<tr>
+<td><code>@PutMapping</code></td>
+<td>Método</td>
+<td>Responde a peticiones PUT</td>
+</tr>
+<tr>
+<td><code>@DeleteMapping</code></td>
+<td>Método</td>
+<td>Responde a peticiones DELETE</td>
+</tr>
+<tr>
+<td><code>@Service</code></td>
+<td>Clase</td>
+<td>Esta clase contiene lógica de negocio</td>
+</tr>
+<tr>
+<td><code>@Repository</code></td>
+<td>Interfaz</td>
+<td>Esta interfaz habla con la base de datos</td>
+</tr>
+<tr>
+<td><code>@Autowired</code></td>
+<td>Campo</td>
+<td>Spring inyecta aquí la instancia de esa clase</td>
+</tr>
+<tr>
+<td><code>@Document</code></td>
+<td>Clase</td>
+<td>Esta clase es un documento de MongoDB</td>
+</tr>
+<tr>
+<td><code>@Id</code></td>
+<td>Campo</td>
+<td>Este campo es el identificador único</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="las-capas-de-spring-boot">💡 Las capas de Spring Boot<a class="headerlink" href="#las-capas-de-spring-boot" title="Permanent link">&para;</a></h2>
+<p>Un proyecto bien organizado en Spring Boot tiene <strong>tres capas</strong> bien definidas.
+Cada capa tiene una responsabilidad clara y se comunica con la capa de abajo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>┌─────────────────────────────────────┐
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>│          Controller  (@RestController)│  ← Recibe peticiones, envía respuestas
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>├─────────────────────────────────────┤
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>│          Service     (@Service)      │  ← Contiene la lógica de negocio
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>├─────────────────────────────────────┤
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>│          Repository  (@Repository)   │  ← Habla con la base de datos
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>└─────────────────────────────────────┘
+</code></pre></div>
+<h3 id="analogia_4">Analogía 🐾<a class="headerlink" href="#analogia_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>┌─────────────────────────────────────┐
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>│  Recepcionista (Controller)         │  ← Atiende al cliente, toma el pedido
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>├─────────────────────────────────────┤
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>│  Manual de operaciones (Service)    │  ← Define cómo se hace cada cosa
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>├─────────────────────────────────────┤
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>│  Archivero (Repository)             │  ← Busca y guarda en el libro de registros
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>└─────────────────────────────────────┘
+</code></pre></div>
+<h3 id="por-que-separar-en-capas">¿Por qué separar en capas?<a class="headerlink" href="#por-que-separar-en-capas" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Si cambias la base de datos de MongoDB a otra, solo tocas el Repository</li>
+<li>Si cambias la lógica de negocio, solo tocas el Service</li>
+<li>Si cambias la API (las rutas), solo tocas el Controller</li>
+<li>Las capas no se mezclan: el Controller nunca habla directamente con el Repository</li>
+</ul>
+<hr />
+<h2 id="tu-primer-controller">💡 Tu primer Controller<a class="headerlink" href="#tu-primer-controller" title="Permanent link">&para;</a></h2>
+<p>Un <strong>Controller</strong> es la clase que recibe las peticiones HTTP y devuelve respuestas.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.michicafe.controller</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1">// Importaciones: le decimos a Java qué clases necesitamos</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.RestController</span><span class="p">;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nd">@RestController</span><span class="w">  </span><span class="c1">// Le dice a Spring: &quot;esta clase maneja peticiones HTTP&quot;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MichiController</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="c1">// Cuando alguien haga GET a localhost:8080/ se ejecuta este método</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">bienvenida</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;¡Bienvenido al Michi Café! 🐱☕&quot;</span><span class="p">;</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="c1">// Cuando alguien haga GET a localhost:8080/estado se ejecuta este método</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/estado&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">estado</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;El Michi Café está ABIERTO 🐾&quot;</span><span class="p">;</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="p">}</span>
+</code></pre></div>
+<p>Si abres el navegador y vas a <code>http://localhost:8080/</code> verás:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>¡Bienvenido al Michi Café! 🐱☕
+</code></pre></div></p>
+<hr />
+<h2 id="que-es-json">💡 ¿Qué es JSON?<a class="headerlink" href="#que-es-json" title="Permanent link">&para;</a></h2>
+<p>Nuestro servidor no solo devuelve texto. Devuelve datos estructurados en formato <strong>JSON</strong>.</p>
+<p><strong>JSON</strong> (JavaScript Object Notation) es el formato estándar que usan todas las
+APIs del mundo para intercambiar datos. Se lee fácilmente y cualquier lenguaje
+de programación puede procesarlo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;64a1b2c3d4e5f6&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Latte de vainilla&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">45.50</span><span class="p">,</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="nt">&quot;categoria&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;caliente&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="nt">&quot;disponible&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="las-reglas-de-json">Las reglas de JSON<a class="headerlink" href="#las-reglas-de-json" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Regla</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Los textos van entre comillas dobles</td>
+<td><code>"nombre": "Latte"</code></td>
+</tr>
+<tr>
+<td>Los números van sin comillas</td>
+<td><code>"precio": 45.50</code></td>
+</tr>
+<tr>
+<td>Los booleanos son <code>true</code> o <code>false</code></td>
+<td><code>"disponible": true</code></td>
+</tr>
+<tr>
+<td>Las listas van entre corchetes</td>
+<td><code>"tags": ["café", "caliente"]</code></td>
+</tr>
+<tr>
+<td>Los objetos van entre llaves</td>
+<td><code>{ "nombre": "Sofía" }</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="spring-boot-convierte-automaticamente">Spring Boot convierte automáticamente<a class="headerlink" href="#spring-boot-convierte-automaticamente" title="Permanent link">&para;</a></h3>
+<p>Cuando un método del Controller devuelve un objeto Java, Spring Boot lo convierte
+automáticamente a JSON. No tienes que hacer nada extra.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// Devuelves un objeto Java...</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&quot;/bebida&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="kd">public</span><span class="w"> </span><span class="n">Bebida</span><span class="w"> </span><span class="nf">obtenerBebida</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Bebida</span><span class="p">(</span><span class="s">&quot;Latte de vainilla&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">45.50</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;caliente&quot;</span><span class="p">);</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">}</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1">// ...y Spring lo convierte automáticamente a JSON:</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1">// { &quot;nombre&quot;: &quot;Latte de vainilla&quot;, &quot;precio&quot;: 45.50, &quot;categoria&quot;: &quot;caliente&quot; }</span>
+</code></pre></div>
+<hr />
+<h2 id="el-archivo-applicationproperties">💡 El archivo <code>application.properties</code><a class="headerlink" href="#el-archivo-applicationproperties" title="Permanent link">&para;</a></h2>
+<p>Este archivo controla el comportamiento del servidor. Usa el formato <code>clave=valor</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Puerto del servidor</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="na">server.port</span><span class="o">=</span><span class="s">8081</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Nombre de la aplicación (aparece en los logs)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="na">spring.application.name</span><span class="o">=</span><span class="s">servicio-bebidas</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Conexión a MongoDB</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="na">spring.data.mongodb.host</span><span class="o">=</span><span class="s">localhost</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="na">spring.data.mongodb.port</span><span class="o">=</span><span class="s">27017</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="na">spring.data.mongodb.database</span><span class="o">=</span><span class="s">michicafe_bebidas</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="c1"># Nivel de detalle de los logs (DEBUG muestra mucho, INFO muestra lo esencial)</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="na">logging.level.com.michicafe</span><span class="o">=</span><span class="s">INFO</span>
+</code></pre></div>
+<p>Los comentarios en este archivo empiezan con <code>#</code>.</p>
+<hr />
+<h2 id="inyeccion-de-dependencias-la-magia-del-autowired">💡 Inyección de dependencias: la magia del <code>@Autowired</code><a class="headerlink" href="#inyeccion-de-dependencias-la-magia-del-autowired" title="Permanent link">&para;</a></h2>
+<p>Este es uno de los conceptos más importantes de Spring Boot.</p>
+<p>Normalmente en Java, si una clase necesita usar otra, la creas tú:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// Sin Spring: tienes que crear el objeto manualmente</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">BebidaService</span><span class="w"> </span><span class="n">bebidaService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BebidaService</span><span class="p">();</span>
+</code></pre></div>
+<p>Con Spring, tú declaras que la necesitas y Spring la crea y la inyecta:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// Con Spring: Spring crea el objeto y lo inyecta aquí automáticamente</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nd">@Autowired</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kd">private</span><span class="w"> </span><span class="n">BebidaService</span><span class="w"> </span><span class="n">bebidaService</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="analogia_5">Analogía 🐾<a class="headerlink" href="#analogia_5" title="Permanent link">&para;</a></h3>
+<p>Es como si el Michi Café ya viniera con todos los empleados asignados.
+No tienes que contratar a nadie: el sistema detecta que necesitas un barista
+y lo asigna automáticamente a tu turno.</p>
+<h3 id="por-que-es-mejor">¿Por qué es mejor?<a class="headerlink" href="#por-que-es-mejor" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Spring gestiona el ciclo de vida de los objetos (los crea y los destruye cuando ya no se necesitan)</li>
+<li>Hace el código más fácil de probar y de cambiar</li>
+<li>Evita crear múltiples instancias del mismo objeto innecesariamente</li>
+</ul>
+<hr />
+<h2 id="responseentity-controlar-exactamente-la-respuesta">💡 ResponseEntity: controlar exactamente la respuesta<a class="headerlink" href="#responseentity-controlar-exactamente-la-respuesta" title="Permanent link">&para;</a></h2>
+<p><code>ResponseEntity</code> es una clase de Spring que nos permite controlar:
+- Los <strong>datos</strong> que devolvemos
+- El <strong>código de estado HTTP</strong> (200 OK, 404 Not Found, etc.)
+- Los <strong>headers</strong> (metadatos de la respuesta)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.http.ResponseEntity</span><span class="p">;</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.http.HttpStatus</span><span class="p">;</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1">// Devolver 200 OK con datos</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="n">bebida</span><span class="p">);</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1">// Devolver 201 Created con los datos del nuevo recurso</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">status</span><span class="p">(</span><span class="n">HttpStatus</span><span class="p">.</span><span class="na">CREATED</span><span class="p">).</span><span class="na">body</span><span class="p">(</span><span class="n">nuevaBebida</span><span class="p">);</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="c1">// Devolver 404 Not Found sin datos</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">notFound</span><span class="p">().</span><span class="na">build</span><span class="p">();</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="c1">// Devolver 204 No Content (éxito pero sin datos que devolver)</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="k">return</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="p">.</span><span class="na">noContent</span><span class="p">().</span><span class="na">build</span><span class="p">();</span>
+</code></pre></div>
+<hr />
+<h2 id="ejercicios-de-comprension-modulo-04">🧪 Ejercicios de comprensión — Módulo 04<a class="headerlink" href="#ejercicios-de-comprension-modulo-04" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>¿Por qué usamos Spring Boot en lugar de Java puro para crear el servidor?</p>
+</li>
+<li>
+<p>¿Cuál es la diferencia entre el Controller, el Service y el Repository?
+   Descríbelos con la analogía del Michi Café.</p>
+</li>
+<li>
+<p>Si quisieras crear un endpoint que responda a <code>GET /menu</code>, ¿qué anotaciones usarías?</p>
+</li>
+<li>
+<p>¿Qué significa que Spring Boot "convierte automáticamente a JSON"?
+   ¿Qué ventaja tiene eso?</p>
+</li>
+</ol>
+<hr />
+<h2 id="resumen-del-modulo-04">✅ Resumen del Módulo 04<a class="headerlink" href="#resumen-del-modulo-04" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>¿Qué es?</th>
+<th>Analogía del Michi Café</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Servidor</td>
+<td>Programa que escucha y responde peticiones</td>
+<td>El gatito que contesta el teléfono</td>
+</tr>
+<tr>
+<td>Spring Boot 4.1.0</td>
+<td>Framework para crear servidores con Java</td>
+<td>La franquicia lista para abrir</td>
+</tr>
+<tr>
+<td>Maven / <code>pom.xml</code></td>
+<td>Gestor de dependencias</td>
+<td>Lista de compras del café</td>
+</tr>
+<tr>
+<td>Puerto</td>
+<td>Puerta de comunicación del servidor</td>
+<td>La puerta de entrada del café</td>
+</tr>
+<tr>
+<td><code>@RestController</code></td>
+<td>Clase que maneja peticiones HTTP</td>
+<td>El recepcionista</td>
+</tr>
+<tr>
+<td><code>@GetMapping</code></td>
+<td>Responde a peticiones GET</td>
+<td>"Cuando pregunten X, di Y"</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>Formato de datos estándar</td>
+<td>La ficha del producto</td>
+</tr>
+<tr>
+<td><code>@Autowired</code></td>
+<td>Spring inyecta la dependencia</td>
+<td>El empleado ya viene asignado</td>
+</tr>
+<tr>
+<td><code>ResponseEntity</code></td>
+<td>Control total de la respuesta</td>
+<td>El gatito decide qué decir y cómo</td>
+</tr>
+<tr>
+<td><code>application.properties</code></td>
+<td>Configuración del servidor</td>
+<td>El panel de control del café</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="siguiente-modulo">➡️ Siguiente módulo<a class="headerlink" href="#siguiente-modulo" title="Permanent link">&para;</a></h2>
+<p>En el <strong>Módulo 05</strong> aprenderemos las operaciones REST completas: GET, POST, PUT,
+PATCH y DELETE. El Michi Café podrá recibir pedidos nuevos, actualizarlos y cancelarlos.</p>
+<blockquote>
+<p>🐾 "Un servidor bien configurado es como un café bien organizado: siempre listo para atender."</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.indexes", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

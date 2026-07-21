@@ -1,0 +1,3045 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Curso de microservicios con Java para no programadores">
+      
+      
+        <meta name="author" content="Michi Café">
+      
+      
+      
+        <link rel="prev" href="../modulo-01-introduccion/">
+      
+      
+        <link rel="next" href="../modulo-03-poo/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Módulo 02 — Java desde Cero - ☕🐱 Michi Café — Java + Spring Boot + MongoDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modulo-02-java-desde-cero" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-header__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Módulo 02 — Java desde Cero
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-nav__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐣 Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐣 Fundamentos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-01-introduccion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 01 — Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 02 — Java desde Cero
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 02 — Java desde Cero
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analogia-los-gatitos-aprenden-a-hablar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐱 Analogía: Los gatitos aprenden a hablar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-funciona-un-programa-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Cómo funciona un programa en Java?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Cómo funciona un programa en Java?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tu-primer-programa-hola-michi-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Tu primer programa: Hola Michi Café
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💻 Tu primer programa: Hola Michi Café">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-significa-cada-parte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué significa cada parte?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-la-libretita-del-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Variables: la libretita del gatito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Variables: la libretita del gatito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-variables-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo crear variables en Java
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#los-tipos-de-datos-basicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Los tipos de datos básicos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo completo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadores-el-gatito-cajero-hace-cuentas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Operadores: el gatito cajero hace cuentas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Operadores: el gatito cajero hace cuentas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operadores-de-comparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operadores de comparación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condicionales-el-gatito-toma-decisiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Condicionales: el gatito toma decisiones
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Condicionales: el gatito toma decisiones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-en-el-michi-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo en el Michi Café
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#else-if-multiples-condiciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        else if: múltiples condiciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-el-menu-de-opciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        switch: el menú de opciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ciclos-el-gatito-repite-tareas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Ciclos: el gatito repite tareas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Ciclos: el gatito repite tareas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-ciclo-for-cuando-sabes-cuantas-veces-repetir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El ciclo for: cuando sabes cuántas veces repetir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-significa-int-i-1-i-5-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué significa int i = 1; i &lt;= 5; i++?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-ciclo-while-cuando-no-sabes-cuantas-veces-repetir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El ciclo while: cuando no sabes cuántas veces repetir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-ciclo-do-while-ejecuta-al-menos-una-vez" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El ciclo do-while: ejecuta al menos una vez
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arrays-la-lista-de-productos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Arrays: la lista de productos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Arrays: la lista de productos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorrer-un-array-con-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recorrer un array con for
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-for-each-forma-mas-elegante-de-recorrer-listas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El for-each: forma más elegante de recorrer listas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-las-habilidades-del-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Métodos: las habilidades del gatito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Métodos: las habilidades del gatito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crear-y-usar-un-metodo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Crear y usar un método
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anatomia-de-un-metodo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomía de un método
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comentarios-las-notas-del-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Comentarios: las notas del gatito
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-del-modulo-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Ejercicios del Módulo 2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Ejercicios del Módulo 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-el-pedido-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 1: El pedido completo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2-el-menu-del-dia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 2: El menú del día
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-el-contador-de-pedidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 3: El contador de pedidos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solucion-del-ejercicio-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solución del Ejercicio 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-del-modulo-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Resumen del Módulo 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente Módulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-03-poo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 03 — POO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ☕ Spring Boot y APIs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ☕ Spring Boot y APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-04-spring-boot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 04 — Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-05-apis-rest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 05 — APIs REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗄️ Base de Datos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🗄️ Base de Datos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-06-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 06 — MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-07-spring-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 07 — Spring + MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏗️ Microservicios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🏗️ Microservicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-08-microservicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 08 — ¿Qué son?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-09-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 09 — Servicio Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-10-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 10 — Servicio Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-11-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 11 — Servicio Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-12-comunicacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 12 — Comunicación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-13-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 13 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚀 Producción
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚀 Producción
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-14-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 14 — Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-15-proyecto-final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 15 — Proyecto Final
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Proyecto Guiado
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Proyecto Guiado
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-01-instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P01 — Instalación del entorno
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-02-primer-proyecto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P02 — Primer proyecto Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-03-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P03 — Servicio de Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-04-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P04 — Servicio de Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-05-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P05 — Servicio de Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-06-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P06 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-07-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P07 — Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analogia-los-gatitos-aprenden-a-hablar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐱 Analogía: Los gatitos aprenden a hablar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-funciona-un-programa-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Cómo funciona un programa en Java?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Cómo funciona un programa en Java?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tu-primer-programa-hola-michi-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Tu primer programa: Hola Michi Café
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💻 Tu primer programa: Hola Michi Café">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-significa-cada-parte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué significa cada parte?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-la-libretita-del-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Variables: la libretita del gatito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Variables: la libretita del gatito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-crear-variables-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo crear variables en Java
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#los-tipos-de-datos-basicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Los tipos de datos básicos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo completo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadores-el-gatito-cajero-hace-cuentas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Operadores: el gatito cajero hace cuentas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Operadores: el gatito cajero hace cuentas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operadores-de-comparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operadores de comparación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condicionales-el-gatito-toma-decisiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Condicionales: el gatito toma decisiones
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Condicionales: el gatito toma decisiones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-en-el-michi-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejemplo en el Michi Café
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#else-if-multiples-condiciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        else if: múltiples condiciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-el-menu-de-opciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        switch: el menú de opciones
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ciclos-el-gatito-repite-tareas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Ciclos: el gatito repite tareas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Ciclos: el gatito repite tareas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-ciclo-for-cuando-sabes-cuantas-veces-repetir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El ciclo for: cuando sabes cuántas veces repetir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-significa-int-i-1-i-5-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Qué significa int i = 1; i &lt;= 5; i++?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-ciclo-while-cuando-no-sabes-cuantas-veces-repetir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El ciclo while: cuando no sabes cuántas veces repetir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-ciclo-do-while-ejecuta-al-menos-una-vez" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El ciclo do-while: ejecuta al menos una vez
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arrays-la-lista-de-productos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Arrays: la lista de productos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Arrays: la lista de productos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorrer-un-array-con-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recorrer un array con for
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-for-each-forma-mas-elegante-de-recorrer-listas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El for-each: forma más elegante de recorrer listas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-las-habilidades-del-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Métodos: las habilidades del gatito
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Métodos: las habilidades del gatito">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crear-y-usar-un-metodo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Crear y usar un método
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anatomia-de-un-metodo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomía de un método
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comentarios-las-notas-del-gatito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Comentarios: las notas del gatito
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-del-modulo-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Ejercicios del Módulo 2
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Ejercicios del Módulo 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-el-pedido-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 1: El pedido completo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2-el-menu-del-dia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 2: El menú del día
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-el-contador-de-pedidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejercicio 3: El contador de pedidos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solucion-del-ejercicio-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solución del Ejercicio 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-del-modulo-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Resumen del Módulo 2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente Módulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="modulo-02-java-desde-cero">Módulo 02 — Java desde Cero<a class="headerlink" href="#modulo-02-java-desde-cero" title="Permanent link">&para;</a></h1>
+<h2 id="analogia-los-gatitos-aprenden-a-hablar">🐱 Analogía: Los gatitos aprenden a hablar<a class="headerlink" href="#analogia-los-gatitos-aprenden-a-hablar" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="introduccion">🏠 Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>En el módulo anterior conocimos el Michi Café y entendimos para qué sirve cada herramienta.
+Ahora es momento de aprender el idioma: <strong>Java</strong>.</p>
+<p>Imagina que contrataste a varios gatitos para trabajar en el café, pero ninguno sabe hablar todavía.
+Este módulo es la <strong>escuela de gatitos</strong>: aquí aprenderán a comunicarse, recordar cosas, tomar decisiones y repetir tareas.</p>
+<p>Al final de este módulo podrás escribir tus primeros programas reales en Java.</p>
+<hr />
+<h2 id="como-funciona-un-programa-en-java">💡 ¿Cómo funciona un programa en Java?<a class="headerlink" href="#como-funciona-un-programa-en-java" title="Permanent link">&para;</a></h2>
+<p>Antes de escribir código, entendamos el flujo básico:</p>
+<ol>
+<li>Tú escribes instrucciones en un archivo <code>.java</code></li>
+<li>Java las <strong>compila</strong> (las traduce a un idioma que la computadora entiende)</li>
+<li>La computadora <strong>ejecuta</strong> esas instrucciones</li>
+</ol>
+<h3 id="analogia">Analogía 🐾<a class="headerlink" href="#analogia" title="Permanent link">&para;</a></h3>
+<p>Es como escribir una receta:
+- Tú escribes la receta en papel (archivo <code>.java</code>)
+- Un chef la lee y la interpreta (compilación)
+- La cocina prepara el platillo (ejecución)</p>
+<hr />
+<h2 id="tu-primer-programa-hola-michi-cafe">💻 Tu primer programa: Hola Michi Café<a class="headerlink" href="#tu-primer-programa-hola-michi-cafe" title="Permanent link">&para;</a></h2>
+<p>Todo programa en Java empieza con una estructura básica.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MichiCafe</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;¡Bienvenido al Michi Café! 🐱☕&quot;</span><span class="p">);</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="que-significa-cada-parte">¿Qué significa cada parte?<a class="headerlink" href="#que-significa-cada-parte" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Significado</th>
+<th>Analogía del café</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public class MichiCafe</code></td>
+<td>Define el contenedor del programa</td>
+<td>El nombre del café en el letrero</td>
+</tr>
+<tr>
+<td><code>public static void main</code></td>
+<td>El punto de inicio del programa</td>
+<td>La puerta principal del café</td>
+</tr>
+<tr>
+<td><code>System.out.println(...)</code></td>
+<td>Muestra un mensaje en pantalla</td>
+<td>El gatito mesero habla en voz alta</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 En Java, cada instrucción termina con <code>;</code>. Es como el punto al final de una oración.</p>
+</blockquote>
+<hr />
+<h2 id="variables-la-libretita-del-gatito">💡 Variables: la libretita del gatito<a class="headerlink" href="#variables-la-libretita-del-gatito" title="Permanent link">&para;</a></h2>
+<p>Una <strong>variable</strong> es un espacio en memoria donde guardamos información.</p>
+<h3 id="analogia_1">Analogía 🐾<a class="headerlink" href="#analogia_1" title="Permanent link">&para;</a></h3>
+<p>El gatito mesero tiene una libretita. En ella anota:
+- El nombre del cliente
+- La cantidad de cafés pedidos
+- Si el cliente quiere leche o no</p>
+<p>Cada anotación es una <strong>variable</strong>.</p>
+<h3 id="como-crear-variables-en-java">Cómo crear variables en Java<a class="headerlink" href="#como-crear-variables-en-java" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Sintaxis: tipo nombreVariable = valor;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">String</span><span class="w"> </span><span class="n">nombreCliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sofía&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kt">int</span><span class="w"> </span><span class="n">cantidadCafes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kt">double</span><span class="w"> </span><span class="n">precio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">45.50</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kt">boolean</span><span class="w"> </span><span class="n">quiereLeche</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="los-tipos-de-datos-basicos">Los tipos de datos básicos<a class="headerlink" href="#los-tipos-de-datos-basicos" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>¿Para qué sirve?</th>
+<th>Ejemplo</th>
+<th>Analogía del café</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>String</code></td>
+<td>Texto</td>
+<td><code>"Latte de vainilla"</code></td>
+<td>Nombre de un producto</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>Números enteros</td>
+<td><code>3</code></td>
+<td>Cantidad de cafés</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>Números con decimales</td>
+<td><code>45.50</code></td>
+<td>Precio de un café</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td>Verdadero o falso</td>
+<td><code>true</code> / <code>false</code></td>
+<td>¿Tiene azúcar?</td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td>Un solo carácter</td>
+<td><code>'M'</code></td>
+<td>Inicial del nombre</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ejemplo-completo">Ejemplo completo<a class="headerlink" href="#ejemplo-completo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PedidoCafe</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">nombreCliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sofía&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">bebida</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Latte de vainilla&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">precioPorUnidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">45.50</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">paraLlevar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">precioPorUnidad</span><span class="p">;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=== PEDIDO MICHI CAFÉ ===&quot;</span><span class="p">);</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Cliente: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombreCliente</span><span class="p">);</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Bebida: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bebida</span><span class="p">);</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Cantidad: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cantidad</span><span class="p">);</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Para llevar: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">paraLlevar</span><span class="p">);</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Total: $&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">total</span><span class="p">);</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="p">}</span>
+</code></pre></div>
+<p>Salida:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>=== PEDIDO MICHI CAFÉ ===
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Cliente: Sofía
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Bebida: Latte de vainilla
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Cantidad: 2
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Para llevar: true
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Total: $91.0
+</code></pre></div></p>
+<blockquote>
+<p>💡 El <code>+</code> entre texto y variables une el texto con el valor de la variable.</p>
+</blockquote>
+<hr />
+<h2 id="operadores-el-gatito-cajero-hace-cuentas">💡 Operadores: el gatito cajero hace cuentas<a class="headerlink" href="#operadores-el-gatito-cajero-hace-cuentas" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">cafes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">pastelitos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kt">int</span><span class="w"> </span><span class="n">total</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">cafes</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pastelitos</span><span class="p">;</span><span class="w">  </span><span class="c1">// Suma:           8</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kt">int</span><span class="w"> </span><span class="n">diferencia</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">cafes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pastelitos</span><span class="p">;</span><span class="w">  </span><span class="c1">// Resta:          2</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="kt">int</span><span class="w"> </span><span class="n">doble</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">cafes</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">           </span><span class="c1">// Multiplicación: 10</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="kt">double</span><span class="w"> </span><span class="n">mitad</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">cafes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">;</span><span class="w">         </span><span class="c1">// División:       2.5</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="kt">int</span><span class="w"> </span><span class="n">sobrante</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">cafes</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">           </span><span class="c1">// Módulo:         1</span>
+</code></pre></div>
+<h3 id="operadores-de-comparacion">Operadores de comparación<a class="headerlink" href="#operadores-de-comparacion" title="Permanent link">&para;</a></h3>
+<p>Comparan dos valores y devuelven <code>true</code> o <code>false</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">edad</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span><span class="w">   </span><span class="c1">// true</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">edad</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">18</span><span class="p">);</span><span class="w">   </span><span class="c1">// false</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">edad</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w">  </span><span class="c1">// true  (doble igual para comparar)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">edad</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w">  </span><span class="c1">// false</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">edad</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w">  </span><span class="c1">// true</span>
+</code></pre></div>
+<blockquote>
+<p>⚠️ Para comparar usamos <code>==</code>. El <code>=</code> solo asigna valores.</p>
+</blockquote>
+<hr />
+<h2 id="condicionales-el-gatito-toma-decisiones">💡 Condicionales: el gatito toma decisiones<a class="headerlink" href="#condicionales-el-gatito-toma-decisiones" title="Permanent link">&para;</a></h2>
+<h3 id="analogia_2">Analogía 🐾<a class="headerlink" href="#analogia_2" title="Permanent link">&para;</a></h3>
+<p>El gatito mesero tiene una regla:
+- Si el cliente tiene tarjeta de fidelidad → 10% de descuento
+- Si no → precio normal</p>
+<p>Eso es un <code>if</code> en Java.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condición</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="c1">// Se ejecuta si la condición es VERDADERA</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="c1">// Se ejecuta si la condición es FALSA</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="ejemplo-en-el-michi-cafe">Ejemplo en el Michi Café<a class="headerlink" href="#ejemplo-en-el-michi-cafe" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DescuentoCliente</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">nombreCliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Sofía&quot;</span><span class="p">;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">tieneTarjeta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">91.0</span><span class="p">;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tieneTarjeta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">descuento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.10</span><span class="p">;</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">            </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">descuento</span><span class="p">;</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;¡Hola &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombreCliente</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;! Tienes 10% de descuento 🐾&quot;</span><span class="p">);</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hola &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nombreCliente</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, ¿quieres una tarjeta de fidelidad?&quot;</span><span class="p">);</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Total a pagar: $&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">total</span><span class="p">);</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="else-if-multiples-condiciones"><code>else if</code>: múltiples condiciones<a class="headerlink" href="#else-if-multiples-condiciones" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">puntos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span><span class="p">;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">String</span><span class="w"> </span><span class="n">recompensa</span><span class="p">;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">puntos</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="n">recompensa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Café gratis&quot;</span><span class="p">;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">puntos</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="n">recompensa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Pastelito gratis&quot;</span><span class="p">;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">puntos</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="n">recompensa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;10% de descuento&quot;</span><span class="p">;</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="n">recompensa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;¡Sigue acumulando puntos!&quot;</span><span class="p">;</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="p">}</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Tu recompensa: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">recompensa</span><span class="p">);</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="c1">// Resultado: Tu recompensa: Pastelito gratis</span>
+</code></pre></div>
+<h3 id="switch-el-menu-de-opciones"><code>switch</code>: el menú de opciones<a class="headerlink" href="#switch-el-menu-de-opciones" title="Permanent link">&para;</a></h3>
+<p>Cuando hay muchas opciones posibles, <code>switch</code> es más limpio:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">String</span><span class="w"> </span><span class="n">bebida</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Cappuccino&quot;</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kt">double</span><span class="w"> </span><span class="n">precio</span><span class="p">;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">bebida</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;Espresso&quot;</span><span class="p">:</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="n">precio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">35.0</span><span class="p">;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;Latte&quot;</span><span class="p">:</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">        </span><span class="n">precio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">45.0</span><span class="p">;</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;Cappuccino&quot;</span><span class="p">:</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="n">precio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">48.0</span><span class="p">;</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;Matcha Latte&quot;</span><span class="p">:</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">        </span><span class="n">precio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">55.0</span><span class="p">;</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">    </span><span class="k">default</span><span class="p">:</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">        </span><span class="n">precio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Bebida no encontrada en el menú&quot;</span><span class="p">);</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="p">}</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Precio: $&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">precio</span><span class="p">);</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="c1">// Resultado: Precio: $48.0</span>
+</code></pre></div>
+<blockquote>
+<p>💡 El <code>break</code> le dice al switch "ya encontré lo que buscaba, para aquí".</p>
+</blockquote>
+<hr />
+<h2 id="ciclos-el-gatito-repite-tareas">💡 Ciclos: el gatito repite tareas<a class="headerlink" href="#ciclos-el-gatito-repite-tareas" title="Permanent link">&para;</a></h2>
+<p>Un ciclo (o bucle) permite repetir instrucciones varias veces sin tener que escribirlas una y una.</p>
+<h3 id="analogia_3">Analogía 🐾<a class="headerlink" href="#analogia_3" title="Permanent link">&para;</a></h3>
+<p>El gatito de la caja tiene que imprimir el ticket de cada cliente. Si hay 100 clientes, no va a escribir 100 veces "imprimir ticket". Le dice a la computadora:</p>
+<blockquote>
+<p>"Repite esto 100 veces"</p>
+</blockquote>
+<h3 id="el-ciclo-for-cuando-sabes-cuantas-veces-repetir">El ciclo <code>for</code>: cuando sabes cuántas veces repetir<a class="headerlink" href="#el-ciclo-for-cuando-sabes-cuantas-veces-repetir" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// Sintaxis:</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1">// for (inicio; condición; incremento) { ... }</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Preparando café número &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; ☕&quot;</span><span class="p">);</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">}</span>
+</code></pre></div>
+<p>Salida:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Preparando café número 1 ☕
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Preparando café número 2 ☕
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>Preparando café número 3 ☕
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>Preparando café número 4 ☕
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>Preparando café número 5 ☕
+</code></pre></div></p>
+<h3 id="que-significa-int-i-1-i-5-i">¿Qué significa <code>int i = 1; i &lt;= 5; i++</code>?<a class="headerlink" href="#que-significa-int-i-1-i-5-i" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int i = 1</code></td>
+<td>Empieza contando desde 1</td>
+</tr>
+<tr>
+<td><code>i &lt;= 5</code></td>
+<td>Sigue mientras i sea menor o igual a 5</td>
+</tr>
+<tr>
+<td><code>i++</code></td>
+<td>Después de cada vuelta, suma 1 a i</td>
+</tr>
+</tbody>
+</table>
+<h3 id="el-ciclo-while-cuando-no-sabes-cuantas-veces-repetir">El ciclo <code>while</code>: cuando no sabes cuántas veces repetir<a class="headerlink" href="#el-ciclo-while-cuando-no-sabes-cuantas-veces-repetir" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// El gatito sigue tomando pedidos mientras el café esté abierto</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="kt">boolean</span><span class="w"> </span><span class="n">cafeAbierto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="kt">int</span><span class="w"> </span><span class="n">pedidosAtendidos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cafeAbierto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="n">pedidosAtendidos</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Pedido #&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pedidosAtendidos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; atendido&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pedidosAtendidos</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">        </span><span class="n">cafeAbierto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// Cerramos después de 3 pedidos (para este ejemplo)</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;El Michi Café cerró por hoy 🌙&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="p">}</span>
+</code></pre></div>
+<p>Salida:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Pedido #1 atendido
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Pedido #2 atendido
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>Pedido #3 atendido
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>El Michi Café cerró por hoy 🌙
+</code></pre></div></p>
+<blockquote>
+<p>⚠️ Cuidado con los ciclos infinitos: si la condición del <code>while</code> nunca se vuelve <code>false</code>, el programa nunca termina. Es como decirle al gatito "sigue trabajando" sin decirle cuándo parar.</p>
+</blockquote>
+<h3 id="el-ciclo-do-while-ejecuta-al-menos-una-vez">El ciclo <code>do-while</code>: ejecuta al menos una vez<a class="headerlink" href="#el-ciclo-do-while-ejecuta-al-menos-una-vez" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// El gatito pregunta al menos una vez si el cliente quiere algo más</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="kt">int</span><span class="w"> </span><span class="n">extras</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;¿Desea algo más? (simulando respuesta automática)&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">    </span><span class="n">extras</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="p">}</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">extras</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// Solo pregunta una vez en este ejemplo</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Gracias por su visita al Michi Café 🐾&quot;</span><span class="p">);</span>
+</code></pre></div>
+<hr />
+<h2 id="arrays-la-lista-de-productos">💡 Arrays: la lista de productos<a class="headerlink" href="#arrays-la-lista-de-productos" title="Permanent link">&para;</a></h2>
+<p>Un <strong>array</strong> es una lista de valores del mismo tipo guardados juntos.</p>
+<h3 id="analogia_4">Analogía 🐾<a class="headerlink" href="#analogia_4" title="Permanent link">&para;</a></h3>
+<p>El menú del Michi Café es una lista de bebidas. En lugar de crear una variable para cada bebida, creamos un array (una lista).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">// Crear un array de Strings (textos)</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">menu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;Espresso&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Latte&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Cappuccino&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Matcha Latte&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Chai&quot;</span><span class="p">};</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1">// Acceder a un elemento (los índices empiezan en 0)</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">menu</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span><span class="w"> </span><span class="c1">// Espresso</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">menu</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span><span class="w"> </span><span class="c1">// Latte</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">menu</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span><span class="p">);</span><span class="w"> </span><span class="c1">// Chai</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1">// Saber cuántos elementos tiene</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;El menú tiene &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">menu</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; bebidas&quot;</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>💡 Los índices en Java empiezan en <strong>0</strong>, no en 1. El primer elemento es <code>[0]</code>, el segundo es <code>[1]</code>, etc.</p>
+</blockquote>
+<h3 id="recorrer-un-array-con-for">Recorrer un array con <code>for</code><a class="headerlink" href="#recorrer-un-array-con-for" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">menu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;Espresso&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Latte&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Cappuccino&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Matcha Latte&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Chai&quot;</span><span class="p">};</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=== MENÚ DEL MICHI CAFÉ ===&quot;</span><span class="p">);</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">menu</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">((</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;. &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">menu</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="p">}</span>
+</code></pre></div>
+<p>Salida:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>=== MENÚ DEL MICHI CAFÉ ===
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>1. Espresso
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>2. Latte
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>3. Cappuccino
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>4. Matcha Latte
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>5. Chai
+</code></pre></div></p>
+<h3 id="el-for-each-forma-mas-elegante-de-recorrer-listas">El <code>for-each</code>: forma más elegante de recorrer listas<a class="headerlink" href="#el-for-each-forma-mas-elegante-de-recorrer-listas" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">menu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;Espresso&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Latte&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Cappuccino&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Matcha Latte&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Chai&quot;</span><span class="p">};</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">bebida</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">menu</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;☕ &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bebida</span><span class="p">);</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="p">}</span>
+</code></pre></div>
+<p>Esto se lee como: "Para cada <code>bebida</code> en <code>menu</code>, haz esto..."</p>
+<hr />
+<h2 id="metodos-las-habilidades-del-gatito">💡 Métodos: las habilidades del gatito<a class="headerlink" href="#metodos-las-habilidades-del-gatito" title="Permanent link">&para;</a></h2>
+<p>Un <strong>método</strong> es un bloque de código con nombre que hace una tarea específica. Puedes llamarlo (usarlo) cuando lo necesites.</p>
+<h3 id="analogia_5">Analogía 🐾<a class="headerlink" href="#analogia_5" title="Permanent link">&para;</a></h3>
+<p>El gatito barista sabe preparar café. Esa habilidad se llama <code>prepararCafe()</code>. Cada vez que alguien pide un café, el gatito usa esa habilidad. No tiene que aprender a hacerlo de nuevo cada vez.</p>
+<h3 id="crear-y-usar-un-metodo">Crear y usar un método<a class="headerlink" href="#crear-y-usar-un-metodo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MichiBarista</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">    </span><span class="c1">// Este método calcula el total de un pedido</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">calcularTotal</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cantidad</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">precioPorUnidad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">precioPorUnidad</span><span class="p">;</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">    </span><span class="c1">// Este método imprime un recibo</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">imprimirRecibo</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">cliente</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">bebida</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=============================&quot;</span><span class="p">);</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  RECIBO - MICHI CAFÉ 🐱☕  &quot;</span><span class="p">);</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=============================&quot;</span><span class="p">);</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Cliente: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cliente</span><span class="p">);</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Bebida:  &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bebida</span><span class="p">);</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Total:   $&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">total</span><span class="p">);</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=============================&quot;</span><span class="p">);</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;¡Gracias! Vuelve pronto 🐾&quot;</span><span class="p">);</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">        </span><span class="c1">// Usamos los métodos que creamos</span>
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calcularTotal</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">45.50</span><span class="p">);</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="w">        </span><span class="n">imprimirRecibo</span><span class="p">(</span><span class="s">&quot;Sofía&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Latte de vainilla&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">);</span>
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="p">}</span>
+</code></pre></div>
+<p>Salida:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>=============================
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>  RECIBO - MICHI CAFÉ 🐱☕  
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>=============================
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>Cliente: Sofía
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>Bebida:  Latte de vainilla
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>Total:   $91.0
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>=============================
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>¡Gracias! Vuelve pronto 🐾
+</code></pre></div></p>
+<h3 id="anatomia-de-un-metodo">Anatomía de un método<a class="headerlink" href="#anatomia-de-un-metodo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">calcularTotal</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cantidad</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">precio</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="c1">//  ↑       ↑      ↑               ↑                ↑</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1">// acceso  tipo  nombre         parámetro 1      parámetro 2</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1">// (quién  de    del            (lo que recibe)</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1">//  puede  retorno método</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="c1">//  usarlo)</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">precio</span><span class="p">;</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="c1">//  ↑</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="c1">//  devuelve el resultado</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Significado</th>
+<th>Analogía</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public</code></td>
+<td>Cualquiera puede usar este método</td>
+<td>La habilidad es pública, todos la conocen</td>
+</tr>
+<tr>
+<td><code>static</code></td>
+<td>No necesita crear un objeto para usarlo</td>
+<td>El gatito puede hacerlo solo</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>El tipo de dato que devuelve</td>
+<td>El resultado es un número con decimales</td>
+</tr>
+<tr>
+<td><code>calcularTotal</code></td>
+<td>El nombre del método</td>
+<td>El nombre de la habilidad</td>
+</tr>
+<tr>
+<td><code>(int cantidad, double precio)</code></td>
+<td>Los datos que necesita para trabajar</td>
+<td>Los ingredientes que necesita</td>
+</tr>
+<tr>
+<td><code>return</code></td>
+<td>Lo que devuelve al terminar</td>
+<td>El resultado que entrega</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="comentarios-las-notas-del-gatito">💡 Comentarios: las notas del gatito<a class="headerlink" href="#comentarios-las-notas-del-gatito" title="Permanent link">&para;</a></h2>
+<p>Los comentarios son texto en el código que Java ignora. Sirven para explicar qué hace el código.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1">// Esto es un comentario de una línea</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="cm">/*</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="cm">   Esto es un comentario</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="cm">   de varias líneas</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="cm">*/</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="cm">/**</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="cm"> * Este es un comentario de documentación (Javadoc)</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="cm"> * Se usa para explicar métodos y clases</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="cm"> * @param cantidad el número de bebidas</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="cm"> * @return el precio total</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="cm"> */</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">calcularTotal</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cantidad</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">precio</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">precio</span><span class="p">;</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>💡 Comentar tu código es como dejar notas en la receta del café. Cuando alguien más (o tú mismo en el futuro) lea el código, entenderá qué hace cada parte.</p>
+</blockquote>
+<hr />
+<h2 id="ejercicios-del-modulo-2">🧪 Ejercicios del Módulo 2<a class="headerlink" href="#ejercicios-del-modulo-2" title="Permanent link">&para;</a></h2>
+<h3 id="ejercicio-1-el-pedido-completo">Ejercicio 1: El pedido completo<a class="headerlink" href="#ejercicio-1-el-pedido-completo" title="Permanent link">&para;</a></h3>
+<p>Crea un programa que:
+1. Guarde el nombre del cliente, la bebida pedida, la cantidad y el precio unitario
+2. Calcule el total
+3. Si el total es mayor a $100, aplique un 5% de descuento
+4. Imprima el recibo completo</p>
+<h3 id="ejercicio-2-el-menu-del-dia">Ejercicio 2: El menú del día<a class="headerlink" href="#ejercicio-2-el-menu-del-dia" title="Permanent link">&para;</a></h3>
+<p>Crea un array con 5 bebidas del Michi Café y sus precios.
+Recorre el array e imprime el menú numerado.</p>
+<h3 id="ejercicio-3-el-contador-de-pedidos">Ejercicio 3: El contador de pedidos<a class="headerlink" href="#ejercicio-3-el-contador-de-pedidos" title="Permanent link">&para;</a></h3>
+<p>Usa un ciclo <code>while</code> que simule la atención de pedidos.
+El café atiende pedidos hasta que se acaben los ingredientes (simula con un contador que llegue a 10).</p>
+<h3 id="solucion-del-ejercicio-1">Solución del Ejercicio 1<a class="headerlink" href="#solucion-del-ejercicio-1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EjercicioUno</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">        </span><span class="c1">// Datos del pedido</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Carlos&quot;</span><span class="p">;</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">bebida</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Matcha Latte&quot;</span><span class="p">;</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">precioUnitario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">55.0</span><span class="p">;</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">        </span><span class="c1">// Calcular total</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">precioUnitario</span><span class="p">;</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="w">        </span><span class="c1">// Aplicar descuento si aplica</span>
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">total</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">descuento</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.05</span><span class="p">;</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="w">            </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">descuento</span><span class="p">;</span>
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Descuento del 5% aplicado 🎉&quot;</span><span class="p">);</span>
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="w">        </span><span class="c1">// Imprimir recibo</span>
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=== RECIBO MICHI CAFÉ ===&quot;</span><span class="p">);</span>
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Cliente:  &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cliente</span><span class="p">);</span>
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Bebida:   &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bebida</span><span class="p">);</span>
+<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Cantidad: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cantidad</span><span class="p">);</span>
+<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Total:    $&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">total</span><span class="p">);</span>
+<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="resumen-del-modulo-2">✅ Resumen del Módulo 2<a class="headerlink" href="#resumen-del-modulo-2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>¿Qué es?</th>
+<th>Analogía del Michi Café</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Variable</td>
+<td>Espacio para guardar un dato</td>
+<td>Anotación en la libretita del mesero</td>
+</tr>
+<tr>
+<td>Tipos de datos</td>
+<td>El tipo de información que guardamos</td>
+<td>Texto, número, precio, sí/no</td>
+</tr>
+<tr>
+<td>Operadores</td>
+<td>Operaciones matemáticas y comparaciones</td>
+<td>Las cuentas del cajero</td>
+</tr>
+<tr>
+<td><code>if / else</code></td>
+<td>Tomar decisiones según una condición</td>
+<td>Aplicar o no el descuento</td>
+</tr>
+<tr>
+<td><code>switch</code></td>
+<td>Elegir entre muchas opciones</td>
+<td>Buscar el precio en el menú</td>
+</tr>
+<tr>
+<td><code>for</code></td>
+<td>Repetir un número conocido de veces</td>
+<td>Preparar N cafés</td>
+</tr>
+<tr>
+<td><code>while</code></td>
+<td>Repetir mientras algo sea verdad</td>
+<td>Atender mientras el café esté abierto</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>Lista de valores del mismo tipo</td>
+<td>El menú de bebidas</td>
+</tr>
+<tr>
+<td>Método</td>
+<td>Bloque de código reutilizable</td>
+<td>Una habilidad del gatito</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="siguiente-modulo">➡️ Siguiente Módulo<a class="headerlink" href="#siguiente-modulo" title="Permanent link">&para;</a></h2>
+<p>En el <strong>Módulo 03</strong> aprenderemos <strong>Programación Orientada a Objetos (POO)</strong>: cómo crear "moldes" para nuestros gatitos y objetos del café. Aprenderemos clases, objetos, atributos y métodos de una forma que tiene mucho sentido con la analogía del Michi Café.</p>
+<blockquote>
+<p>🐾 "Un gatito que sabe Java es un gatito imparable."</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.indexes", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

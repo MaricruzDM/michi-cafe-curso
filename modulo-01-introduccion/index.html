@@ -1,0 +1,2356 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Curso de microservicios con Java para no programadores">
+      
+      
+        <meta name="author" content="Michi Café">
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../modulo-02-java-desde-cero/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Módulo 01 — Introducción - ☕🐱 Michi Café — Java + Spring Boot + MongoDB</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modulo-01-introduccion-que-es-programar" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-header__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Módulo 01 — Introducción
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="brown" data-md-color-accent="orange"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="☕🐱 Michi Café — Java + Spring Boot + MongoDB" class="md-nav__button md-logo" aria-label="☕🐱 Michi Café — Java + Spring Boot + MongoDB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ☕🐱 Michi Café — Java + Spring Boot + MongoDB
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐣 Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐣 Fundamentos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 01 — Introducción
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 01 — Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conociendo-el-michi-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐱 Conociendo el Michi Café
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bienvenida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Bienvenida
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-programar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es programar?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es programar?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Java?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Java?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué Java?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Spring Boot?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Spring Boot?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-que-usamos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versión que usamos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es MongoDB?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es MongoDB?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-son-los-microservicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué son los Microservicios?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué son los Microservicios?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primero-que-es-una-aplicacion-monolitica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primero: ¿qué es una aplicación monolítica?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ahora-que-son-los-microservicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ahora: ¿qué son los microservicios?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-se-conecta-todo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Cómo se conecta todo?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-intellij-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es IntelliJ IDEA?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-postman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Postman?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Postman?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Docker?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Docker?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-panorama-completo-que-vamos-a-construir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 El panorama completo: ¿qué vamos a construir?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-de-comprension-modulo-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Ejercicio de comprensión — Módulo 01
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-del-modulo-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Resumen del Módulo 01
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente módulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-02-java-desde-cero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 02 — Java desde Cero
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-03-poo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 03 — POO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ☕ Spring Boot y APIs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ☕ Spring Boot y APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-04-spring-boot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 04 — Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-05-apis-rest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 05 — APIs REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗄️ Base de Datos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🗄️ Base de Datos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-06-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 06 — MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-07-spring-mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 07 — Spring + MongoDB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏗️ Microservicios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🏗️ Microservicios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-08-microservicios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 08 — ¿Qué son?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-09-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 09 — Servicio Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-10-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 10 — Servicio Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-11-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 11 — Servicio Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-12-comunicacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 12 — Comunicación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-13-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 13 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🚀 Producción
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🚀 Producción
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-14-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 14 — Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modulo-15-proyecto-final/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 15 — Proyecto Final
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Proyecto Guiado
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🛠️ Proyecto Guiado
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-01-instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P01 — Instalación del entorno
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-02-primer-proyecto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P02 — Primer proyecto Spring Boot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-03-servicio-bebidas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P03 — Servicio de Bebidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-04-servicio-clientes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P04 — Servicio de Clientes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-05-servicio-pedidos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P05 — Servicio de Pedidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-06-api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P06 — API Gateway
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proyecto-07-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    P07 — Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conociendo-el-michi-cafe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🐱 Conociendo el Michi Café
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bienvenida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Bienvenida
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-programar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es programar?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es programar?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Java?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Java?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Por qué Java?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Spring Boot?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Spring Boot?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-que-usamos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versión que usamos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es MongoDB?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es MongoDB?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-son-los-microservicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué son los Microservicios?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué son los Microservicios?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primero-que-es-una-aplicacion-monolitica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primero: ¿qué es una aplicación monolítica?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ahora-que-son-los-microservicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ahora: ¿qué son los microservicios?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-se-conecta-todo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ¿Cómo se conecta todo?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-intellij-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es IntelliJ IDEA?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-postman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Postman?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Postman?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-es-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 ¿Qué es Docker?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 ¿Qué es Docker?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogia_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analogía 🐾
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-panorama-completo-que-vamos-a-construir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 El panorama completo: ¿qué vamos a construir?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-de-comprension-modulo-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧪 Ejercicio de comprensión — Módulo 01
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen-del-modulo-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Resumen del Módulo 01
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siguiente-modulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ➡️ Siguiente módulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="modulo-01-introduccion-que-es-programar">Módulo 01 — Introducción: ¿Qué es programar?<a class="headerlink" href="#modulo-01-introduccion-que-es-programar" title="Permanent link">&para;</a></h1>
+<h2 id="conociendo-el-michi-cafe">🐱 Conociendo el Michi Café<a class="headerlink" href="#conociendo-el-michi-cafe" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="bienvenida">🏠 Bienvenida<a class="headerlink" href="#bienvenida" title="Permanent link">&para;</a></h2>
+<p>Imagina que vas a abrir una cafetería temática de gatitos llamada <strong>Michi Café</strong>.</p>
+<p>En este café:
+- Los clientes llegan, ven el menú y piden su bebida favorita
+- Los meseros toman los pedidos y los llevan a la cocina
+- La cocina prepara cada orden
+- La caja registra los pagos y acumula puntos de fidelidad
+- El dueño puede ver reportes de cuánto se vendió</p>
+<p>Ahora imagina que quieres que <strong>todo eso funcione de forma automática</strong>, sin que tengas que estar presente todo el tiempo. Quieres que una computadora lo haga por ti.</p>
+<p><strong>Eso es exactamente lo que hace un programa de computadora.</strong></p>
+<hr />
+<h2 id="que-es-programar">💡 ¿Qué es programar?<a class="headerlink" href="#que-es-programar" title="Permanent link">&para;</a></h2>
+<p>Programar es darle instrucciones a una computadora para que haga algo.</p>
+<p>Pero las computadoras no entienden español ni inglés como nosotros.
+Necesitan instrucciones muy precisas, escritas en un <strong>lenguaje de programación</strong>.</p>
+<h3 id="analogia">Analogía 🐾<a class="headerlink" href="#analogia" title="Permanent link">&para;</a></h3>
+<p>Imagina que contratas a un <strong>gatito robot</strong> para ser mesero.
+Este gatito es muy obediente pero necesita instrucciones <strong>exactas</strong>. No puede adivinar nada.</p>
+<p>Si le dices:</p>
+<blockquote>
+<p>"Atiende al cliente"</p>
+</blockquote>
+<p>El gatito robot no sabe qué hacer. ¿Saludarlo? ¿Traerle agua? ¿Preguntarle qué quiere?</p>
+<p>Pero si le dices:</p>
+<blockquote>
+<ol>
+<li>Camina hacia la mesa número 3</li>
+<li>Di "Bienvenido al Michi Café, ¿qué desea ordenar?"</li>
+<li>Escucha la respuesta</li>
+<li>Escribe el pedido en tu libreta</li>
+<li>Lleva la libreta a la cocina</li>
+</ol>
+</blockquote>
+<p>¡Ahora sí puede hacerlo! Eso es un <strong>programa</strong>: una lista de instrucciones precisas y ordenadas.</p>
+<hr />
+<h2 id="que-es-java">💡 ¿Qué es Java?<a class="headerlink" href="#que-es-java" title="Permanent link">&para;</a></h2>
+<p>Java es el lenguaje de programación que usaremos en este curso.</p>
+<p>Es como el idioma en el que le daremos instrucciones a nuestra computadora.</p>
+<h3 id="por-que-java">¿Por qué Java?<a class="headerlink" href="#por-que-java" title="Permanent link">&para;</a></h3>
+<p>Java es como el <strong>idioma oficial de las grandes empresas</strong>:</p>
+<ul>
+<li>Lo usan bancos, tiendas en línea, aplicaciones empresariales, Netflix, Uber, Amazon</li>
+<li>Lleva más de 25 años en uso y sigue siendo uno de los más populares del mundo</li>
+<li>Es muy seguro y estable: difícil de romper accidentalmente</li>
+<li>Funciona en Windows, Mac y Linux sin cambios</li>
+</ul>
+<p>En el Michi Café, Java sería el <strong>manual de operaciones oficial</strong> que todos los
+empleados siguen. Está bien escrito, es claro y funciona en cualquier sucursal.</p>
+<hr />
+<h2 id="que-es-spring-boot">💡 ¿Qué es Spring Boot?<a class="headerlink" href="#que-es-spring-boot" title="Permanent link">&para;</a></h2>
+<p>Spring Boot es una herramienta que hace más fácil trabajar con Java para crear
+aplicaciones que respondan a peticiones de internet (servidores web).</p>
+<h3 id="analogia_1">Analogía 🐾<a class="headerlink" href="#analogia_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Java solo</strong> es como construir el café desde los cimientos: poner ladrillos,
+  instalar tuberías, cablear electricidad. Puedes hacerlo, pero tarda mucho.</p>
+</li>
+<li>
+<p><strong>Spring Boot</strong> es como comprar una <strong>franquicia del Michi Café</strong>: ya viene con
+  el diseño, los equipos, el manual de operaciones y los uniformes. Tú solo pones
+  tu menú y abres las puertas.</p>
+</li>
+</ul>
+<p>Spring Boot se encarga de todas las partes complicadas y repetitivas para que tú
+te concentres en la lógica de tu negocio.</p>
+<h3 id="version-que-usamos">Versión que usamos<a class="headerlink" href="#version-que-usamos" title="Permanent link">&para;</a></h3>
+<p>En este curso usamos <strong>Spring Boot 4.1.0</strong> con <strong>Java 17</strong>.</p>
+<blockquote>
+<p>💡 Spring Boot 4.1.0 requiere Java 17 como mínimo. Nosotros usamos Java 17
+porque es la versión LTS (Long Term Support) más reciente, la que más empresas
+están adoptando actualmente.</p>
+</blockquote>
+<hr />
+<h2 id="que-es-mongodb">💡 ¿Qué es MongoDB?<a class="headerlink" href="#que-es-mongodb" title="Permanent link">&para;</a></h2>
+<p>MongoDB es una <strong>base de datos</strong>. Una base de datos es donde guardamos información
+de forma organizada y permanente para poder consultarla después.</p>
+<h3 id="analogia_2">Analogía 🐾<a class="headerlink" href="#analogia_2" title="Permanent link">&para;</a></h3>
+<p>En el Michi Café, la base de datos es el <strong>libro de registros</strong> donde se anota:
+- Qué clientes han venido y cuántos puntos tienen
+- Qué pedidos se han hecho y cuál es su estado
+- Qué bebidas hay en el menú y cuáles están disponibles</p>
+<p>Sin ese libro, cada vez que un cliente regresa tendrías que preguntarle todo de nuevo.
+Con el libro puedes decirle:</p>
+<blockquote>
+<p>"¡Hola Sofía! ¿Quieres tu Latte de vainilla de siempre?"</p>
+</blockquote>
+<p>MongoDB guarda la información en un formato llamado <strong>documentos</strong> que se parecen
+mucho a las fichas de un archivero. Cada ficha tiene campos como nombre, pedido, fecha, etc.</p>
+<hr />
+<h2 id="que-son-los-microservicios">💡 ¿Qué son los Microservicios?<a class="headerlink" href="#que-son-los-microservicios" title="Permanent link">&para;</a></h2>
+<p>Esta es una de las partes más importantes del curso.</p>
+<h3 id="primero-que-es-una-aplicacion-monolitica">Primero: ¿qué es una aplicación monolítica?<a class="headerlink" href="#primero-que-es-una-aplicacion-monolitica" title="Permanent link">&para;</a></h3>
+<p>Imagina que el Michi Café tiene <strong>un solo empleado</strong> que hace absolutamente todo:
+- Toma el pedido
+- Prepara el café
+- Cobra en caja
+- Hace el inventario
+- Atiende el teléfono
+- Limpia las mesas</p>
+<p>¿Qué pasa si ese empleado se enferma? <strong>Todo el café se detiene.</strong></p>
+<p>Eso es una aplicación <strong>monolítica</strong>: todo el código en un solo programa.
+Si una parte falla, todo falla.</p>
+<h3 id="ahora-que-son-los-microservicios">Ahora: ¿qué son los microservicios?<a class="headerlink" href="#ahora-que-son-los-microservicios" title="Permanent link">&para;</a></h3>
+<p>La solución es <strong>dividir el trabajo en áreas independientes</strong>:
+- El área de pedidos solo toma y gestiona pedidos
+- El área de cocina solo prepara bebidas
+- El área de caja solo cobra y gestiona puntos
+- El área de inventario solo controla el stock</p>
+<p>Si la caja tiene un problema, la cocina sigue trabajando.
+Si la cocina está saturada, puedes agregar más cocineros sin tocar la caja.</p>
+<p><strong>Eso son los microservicios</strong>: dividir una aplicación grande en partes pequeñas
+e independientes, donde cada parte hace una sola cosa y la hace muy bien.</p>
+<h3 id="como-se-conecta-todo">¿Cómo se conecta todo?<a class="headerlink" href="#como-se-conecta-todo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[Aplicación del cliente / Navegador / App móvil]
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                    |
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                    ▼
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>            [API Gateway]         ← La puerta principal del Michi Café
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                    |
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        ____________|____________
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>       |             |           |
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>       ▼             ▼           ▼
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  [Bebidas]     [Clientes]   [Pedidos]   ← Microservicios (áreas del café)
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>       |             |           |
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>       ▼             ▼           ▼
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>  [MongoDB]     [MongoDB]   [MongoDB]    ← Cada área tiene su propio libro
+</code></pre></div>
+<p>Cada microservicio:
+- Tiene su propia base de datos independiente
+- Funciona aunque los otros fallen
+- Puede actualizarse sin afectar a los demás
+- Puede escalar de forma independiente (si hay muchos pedidos, solo agrandamos ese servicio)</p>
+<hr />
+<h2 id="que-es-intellij-idea">💡 ¿Qué es IntelliJ IDEA?<a class="headerlink" href="#que-es-intellij-idea" title="Permanent link">&para;</a></h2>
+<p>IntelliJ IDEA es el programa donde vamos a escribir nuestro código.
+Se llama <strong>IDE</strong> (Integrated Development Environment — Entorno de Desarrollo Integrado).</p>
+<p>Piénsalo como el <strong>cuaderno de recetas</strong> del Michi Café, pero inteligente:
+- Te avisa cuando cometes un error antes de que lo ejecutes
+- Te sugiere cómo completar lo que estás escribiendo
+- Te ayuda a organizar todos los archivos del proyecto
+- Tiene colores para que el código sea más fácil de leer</p>
+<p>Usamos la versión <strong>Community</strong>, que es completamente <strong>gratuita</strong>.</p>
+<hr />
+<h2 id="que-es-postman">💡 ¿Qué es Postman?<a class="headerlink" href="#que-es-postman" title="Permanent link">&para;</a></h2>
+<p>Postman es una herramienta que nos permite <strong>probar nuestras APIs</strong> sin necesidad
+de construir una interfaz visual (pantalla de usuario).</p>
+<h3 id="analogia_3">Analogía 🐾<a class="headerlink" href="#analogia_3" title="Permanent link">&para;</a></h3>
+<p>Es como el <strong>inspector de calidad</strong> del Michi Café. Antes de abrir al público,
+el inspector llega, hace pedidos de prueba y verifica que todo funciona correctamente.</p>
+<p>Con Postman puedes enviar peticiones a tu servidor y ver exactamente qué responde,
+sin necesidad de tener una aplicación web o móvil construida.</p>
+<hr />
+<h2 id="que-es-docker">💡 ¿Qué es Docker?<a class="headerlink" href="#que-es-docker" title="Permanent link">&para;</a></h2>
+<p>Docker es una herramienta que empaqueta tu aplicación junto con todo lo que necesita
+para funcionar, en una unidad llamada <strong>contenedor</strong>.</p>
+<h3 id="analogia_4">Analogía 🐾<a class="headerlink" href="#analogia_4" title="Permanent link">&para;</a></h3>
+<p>Es como meter <strong>toda la sucursal del Michi Café en una caja de transporte</strong>:
+el local armado, los equipos instalados, la configuración lista.
+Llegas a cualquier servidor, abres la caja, y el café está listo para operar.</p>
+<hr />
+<h2 id="el-panorama-completo-que-vamos-a-construir">💡 El panorama completo: ¿qué vamos a construir?<a class="headerlink" href="#el-panorama-completo-que-vamos-a-construir" title="Permanent link">&para;</a></h2>
+<p>Al final del curso tendrás corriendo este sistema:</p>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Tecnología</th>
+<th>Puerto</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API Gateway</td>
+<td>Spring Cloud Gateway</td>
+<td>8080</td>
+<td>Puerta de entrada única</td>
+</tr>
+<tr>
+<td>Servicio Bebidas</td>
+<td>Spring Boot 4.1.0 + MongoDB</td>
+<td>8081</td>
+<td>Gestiona el menú</td>
+</tr>
+<tr>
+<td>Servicio Clientes</td>
+<td>Spring Boot 4.1.0 + MongoDB</td>
+<td>8082</td>
+<td>Gestiona clientes y puntos</td>
+</tr>
+<tr>
+<td>Servicio Pedidos</td>
+<td>Spring Boot 4.1.0 + MongoDB</td>
+<td>8083</td>
+<td>Gestiona pedidos</td>
+</tr>
+<tr>
+<td>Base de datos</td>
+<td>MongoDB 7</td>
+<td>27017</td>
+<td>Almacena toda la información</td>
+</tr>
+<tr>
+<td>Contenedores</td>
+<td>Docker + Docker Compose</td>
+<td>—</td>
+<td>Empaqueta todo</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ejercicio-de-comprension-modulo-01">🧪 Ejercicio de comprensión — Módulo 01<a class="headerlink" href="#ejercicio-de-comprension-modulo-01" title="Permanent link">&para;</a></h2>
+<p>Antes de escribir una sola línea de código, hagamos un ejercicio mental.
+<strong>Piensa en el Michi Café y responde:</strong></p>
+<ol>
+<li>¿Qué información necesitarías guardar sobre un cliente?</li>
+<li>
+<p>Ejemplo: nombre, correo, bebida favorita, puntos acumulados...</p>
+</li>
+<li>
+<p>¿Qué pasos sigue un pedido desde que el cliente lo hace hasta que lo recibe?</p>
+</li>
+<li>
+<p>Ejemplo: cliente pide → mesero anota → cocina prepara → mesero entrega → caja cobra</p>
+</li>
+<li>
+<p>¿Qué áreas del café podrían funcionar de forma independiente si otra falla?</p>
+</li>
+</ol>
+<p>Estas respuestas te ayudarán a entender mejor la arquitectura que vamos a construir.</p>
+<hr />
+<h2 id="resumen-del-modulo-01">✅ Resumen del Módulo 01<a class="headerlink" href="#resumen-del-modulo-01" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concepto</th>
+<th>¿Qué es?</th>
+<th>En el Michi Café</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Programar</td>
+<td>Dar instrucciones precisas a una computadora</td>
+<td>El manual del gatito robot</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>Lenguaje de programación empresarial</td>
+<td>El idioma oficial del café</td>
+</tr>
+<tr>
+<td>Spring Boot 4.1.0</td>
+<td>Framework que facilita crear servidores con Java</td>
+<td>La franquicia lista para abrir</td>
+</tr>
+<tr>
+<td>MongoDB</td>
+<td>Base de datos orientada a documentos</td>
+<td>El libro de registros del café</td>
+</tr>
+<tr>
+<td>Microservicios</td>
+<td>App dividida en partes independientes</td>
+<td>Las áreas especializadas del café</td>
+</tr>
+<tr>
+<td>IntelliJ IDEA</td>
+<td>Editor de código inteligente</td>
+<td>El cuaderno de recetas inteligente</td>
+</tr>
+<tr>
+<td>Postman</td>
+<td>Herramienta para probar APIs</td>
+<td>El inspector de calidad</td>
+</tr>
+<tr>
+<td>Docker</td>
+<td>Empaqueta la app con todo lo que necesita</td>
+<td>La caja de transporte de la sucursal</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="siguiente-modulo">➡️ Siguiente módulo<a class="headerlink" href="#siguiente-modulo" title="Permanent link">&para;</a></h2>
+<p>En el <strong>Módulo 02</strong> aprenderemos Java desde cero: variables, tipos de datos,
+condiciones y ciclos. Todo con ejemplos del Michi Café.</p>
+<blockquote>
+<p>🐾 "El viaje de mil líneas de código comienza con entender para qué sirve cada una."</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.indexes", "toc.follow", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
