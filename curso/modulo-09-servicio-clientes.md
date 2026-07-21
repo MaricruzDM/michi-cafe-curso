@@ -31,7 +31,7 @@ Ve a **https://start.spring.io** y configura:
 |-------|-------|
 | Project | Maven |
 | Language | Java |
-| Spring Boot | 3.2.x |
+| Spring Boot | 4.1.0 |
 | Group | `com.michicafe` |
 | Artifact | `servicio-clientes` |
 | Packaging | Jar |

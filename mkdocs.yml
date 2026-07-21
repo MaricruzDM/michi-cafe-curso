@@ -65,3 +65,6 @@ nav:
   - "🚀 Producción":
     - Módulo 14 — Docker: modulo-14-docker.md
     - Módulo 15 — Proyecto Final: modulo-15-proyecto-final.md
+  - "🛠️ Proyecto Guiado":
+    - P01 — Instalación del entorno: proyecto-01-instalacion.md
+    - P02 — Primer proyecto Spring Boot: proyecto-02-primer-proyecto.md
