@@ -68,3 +68,8 @@ nav:
   - "🛠️ Proyecto Guiado":
     - P01 — Instalación del entorno: proyecto-01-instalacion.md
     - P02 — Primer proyecto Spring Boot: proyecto-02-primer-proyecto.md
+    - P03 — Servicio de Bebidas: proyecto-03-servicio-bebidas.md
+    - P04 — Servicio de Clientes: proyecto-04-servicio-clientes.md
+    - P05 — Servicio de Pedidos: proyecto-05-servicio-pedidos.md
+    - P06 — API Gateway: proyecto-06-api-gateway.md
+    - P07 — Docker Compose: proyecto-07-docker.md
