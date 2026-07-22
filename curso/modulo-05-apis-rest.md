@@ -600,6 +600,6 @@ Que devuelva todas las bebidas cuyo nombre contenga el texto buscado (sin import
 
 ## ➡️ Siguiente Módulo
 
-En el **Módulo 06** aprenderemos **MongoDB**: cómo funciona esta base de datos, qué son los documentos y colecciones, y cómo instalarla. Dejaremos de usar datos en memoria y empezaremos a guardar información de verdad.
+En el **[Módulo 06 — MongoDB](modulo-06-mongodb.md)** aprenderemos cómo funciona esta base de datos, qué son los documentos y colecciones, y cómo instalarla.
 
 > 🐾 "Una buena API es como un buen mesero: sabe exactamente qué preguntar, qué hacer con la respuesta y cómo decirte si algo salió mal."

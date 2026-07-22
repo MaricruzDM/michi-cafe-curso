@@ -848,6 +848,6 @@ Simula un turno del Michi Café:
 
 ## ➡️ Siguiente Módulo
 
-En el **Módulo 04** vamos a levantar nuestro primer servidor con **Spring Boot**. Vamos a abrir el Michi Café al mundo: cualquier persona podrá hacer una petición y recibir una respuesta.
+En el **[Módulo 04 — Spring Boot](modulo-04-spring-boot.md)** vamos a levantar nuestro primer servidor. Cualquier persona podrá hacer una petición y recibir una respuesta.
 
 > 🐾 "Un objeto bien diseñado es como un buen gatito: sabe lo que tiene que hacer y lo hace bien."

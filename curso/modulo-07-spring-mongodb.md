@@ -48,7 +48,7 @@ Abre el archivo `pom.xml` y agrega la dependencia de Spring Data MongoDB:
     <!-- Spring Web (ya lo teníamos) -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
+        <artifactId>spring-boot-starter-webmvc</artifactId>
     </dependency>
 
     <!-- Spring Data MongoDB (nuevo) -->
@@ -657,6 +657,6 @@ Expónla en el controller como: `GET /api/bebidas/ofertas?precioMax=50`
 
 ## ➡️ Siguiente Módulo
 
-En el **Módulo 08** aprenderemos qué son los **microservicios** en profundidad: cómo dividir nuestra aplicación en servicios independientes, por qué es mejor que tener todo junto, y cómo planificar la arquitectura del Michi Café completo.
+En el **[Módulo 08 — Microservicios](modulo-08-microservicios.md)** aprenderemos qué son los microservicios y cómo planificar la arquitectura del Michi Café completo.
 
 > 🐾 "Cuando Spring Boot y MongoDB trabajan juntos, el Michi Café nunca olvida a sus clientes ni sus pedidos."

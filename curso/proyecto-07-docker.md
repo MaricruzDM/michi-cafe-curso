@@ -1,7 +1,7 @@
-﻿# Proyecto P07 — Docker: Todo el Michi Cafe en un solo comando
+# Proyecto P07 � Docker: Todo el Michi Cafe en un solo comando
 ## Empaquetando y levantando todo con Docker Compose
 
-> 📚 Referencia teórica: [Módulo 14 — Docker](modulo-14-docker.md)
+> ?? Referencia te�rica: [M�dulo 14 � Docker](modulo-14-docker.md)
 
 ---
 
@@ -30,11 +30,11 @@ Todos los proyectos deben estar en una carpeta raiz llamada `michi-cafe`:
 
 ```
 C:\Proyectos\michi-cafe\
-├── docker-compose.yml       ← el archivo que levanta todo
-├── api-gateway\
-├── servicio-bebidas\
-├── servicio-clientes\
-└── servicio-pedidos\
++-- docker-compose.yml       ? el archivo que levanta todo
++-- api-gateway\
++-- servicio-bebidas\
++-- servicio-clientes\
++-- servicio-pedidos\
 ```
 
 ### Mover los proyectos a la carpeta raiz
@@ -52,20 +52,20 @@ Si tus proyectos estan en `C:\Proyectos\` separados, crealos dentro de una carpe
 
 Un Dockerfile son las instrucciones para empaquetar un servicio en una imagen Docker.
 
-### 1.1 — Abrir la carpeta en el explorador
+### 1.1 � Abrir la carpeta en el explorador
 
 1. Ve a `C:\Proyectos\michi-cafe\servicio-bebidas\`
 2. Verifica que no hay un archivo llamado `Dockerfile` (sin extension)
 
-### 1.2 — Crear el Dockerfile en IntelliJ
+### 1.2 � Crear el Dockerfile en IntelliJ
 
 1. Abre el proyecto `servicio-bebidas` en IntelliJ
 2. Haz clic derecho en la raiz del proyecto (el nombre del proyecto arriba en el panel)
-3. **New** → **File**
+3. **New** ? **File**
 4. Escribe exactamente: `Dockerfile` (sin extension, con D mayuscula)
 5. Presiona Enter
 
-### 1.3 — Escribir el Dockerfile
+### 1.3 � Escribir el Dockerfile
 
 ```dockerfile
 # Etapa 1: compilar el proyecto con Maven
@@ -91,7 +91,7 @@ Guarda con **Ctrl + S**.
 ## Paso 2: Dockerfile para servicio-clientes
 
 1. Abre el proyecto `servicio-clientes` en IntelliJ
-2. Clic derecho en la raiz → **New** → **File** → `Dockerfile` → Enter
+2. Clic derecho en la raiz ? **New** ? **File** ? `Dockerfile` ? Enter
 3. Escribe:
 
 ```dockerfile
@@ -116,7 +116,7 @@ Guarda con **Ctrl + S**.
 ## Paso 3: Dockerfile para servicio-pedidos
 
 1. Abre el proyecto `servicio-pedidos` en IntelliJ
-2. Clic derecho en la raiz → **New** → **File** → `Dockerfile` → Enter
+2. Clic derecho en la raiz ? **New** ? **File** ? `Dockerfile` ? Enter
 3. Escribe:
 
 ```dockerfile
@@ -141,7 +141,7 @@ Guarda con **Ctrl + S**.
 ## Paso 4: Dockerfile para api-gateway
 
 1. Abre el proyecto `api-gateway` en IntelliJ
-2. Clic derecho en la raiz → **New** → **File** → `Dockerfile` → Enter
+2. Clic derecho en la raiz ? **New** ? **File** ? `Dockerfile` ? Enter
 3. Escribe:
 
 ```dockerfile
@@ -167,13 +167,13 @@ Guarda con **Ctrl + S**.
 
 Este es el archivo mas importante. Describe como levantar todos los servicios juntos.
 
-### 5.1 — Crear el archivo
+### 5.1 � Crear el archivo
 
 1. Abre el explorador de archivos y ve a `C:\Proyectos\michi-cafe\`
-2. Haz clic derecho en un espacio vacio → **Nuevo** → **Documento de texto**
+2. Haz clic derecho en un espacio vacio ? **Nuevo** ? **Documento de texto**
 3. Nombra el archivo: `docker-compose.yml`
    > IMPORTANTE: debe quedar `docker-compose.yml` no `docker-compose.yml.txt`
-   > Si Windows agrega .txt al final: Ve a Ver → marca "Extensiones de nombre de archivo" y quita el .txt
+   > Si Windows agrega .txt al final: Ve a Ver ? marca "Extensiones de nombre de archivo" y quita el .txt
 
 4. Abre el archivo con IntelliJ o con el Bloc de notas
 5. Escribe exactamente esto:
@@ -285,8 +285,8 @@ logging.level.com.michicafe=INFO
 ```
 
 La sintaxis `${VARIABLE:valor_por_defecto}` significa:
-- Si la variable de entorno existe (cuando corre en Docker) → usa la variable
-- Si no existe (cuando corre en IntelliJ) → usa el valor por defecto
+- Si la variable de entorno existe (cuando corre en Docker) ? usa la variable
+- Si no existe (cuando corre en IntelliJ) ? usa el valor por defecto
 
 Aplica el mismo patron a `servicio-clientes` y `servicio-pedidos`.
 
@@ -294,9 +294,9 @@ Aplica el mismo patron a `servicio-clientes` y `servicio-pedidos`.
 
 ## Paso 7: Levantar todo con Docker Compose
 
-### 7.1 — Abrir la terminal en la carpeta correcta
+### 7.1 � Abrir la terminal en la carpeta correcta
 
-1. Presiona **Windows + R** → escribe `cmd` → Enter
+1. Presiona **Windows + R** ? escribe `cmd` ? Enter
 2. Navega a la carpeta del proyecto:
    ```
    cd C:\Proyectos\michi-cafe
@@ -307,7 +307,7 @@ Aplica el mismo patron a `servicio-clientes` y `servicio-pedidos`.
    ```
    Debes ver: `docker-compose.yml`, `api-gateway`, `servicio-bebidas`, etc.
 
-### 7.2 — Construir y levantar todo
+### 7.2 � Construir y levantar todo
 
 Escribe este comando y presiona Enter:
 
@@ -329,7 +329,7 @@ michi-pedidos   | Started PedidosApplication in X seconds
 michi-gateway   | Started ApiGatewayApplication in X seconds
 ```
 
-### 7.3 — Verificar que todo esta corriendo
+### 7.3 � Verificar que todo esta corriendo
 
 Abre una nueva terminal y escribe:
 
@@ -355,13 +355,13 @@ michi-mongodb     Up        0.0.0.0:27017->27017/tcp
 Con todo corriendo en Docker, haz estas pruebas en Postman.
 Todo debe funcionar igual que antes pero ahora corre en contenedores.
 
-### Prueba 1 — Ver el menu
+### Prueba 1 � Ver el menu
 
 ```
 GET http://localhost:8080/api/bebidas
 ```
 
-### Prueba 2 — Registrar un cliente nuevo
+### Prueba 2 � Registrar un cliente nuevo
 
 ```
 POST http://localhost:8080/api/clientes
@@ -374,7 +374,7 @@ Body:
 }
 ```
 
-### Prueba 3 — Hacer un pedido completo
+### Prueba 3 � Hacer un pedido completo
 
 ```
 POST http://localhost:8080/api/pedidos
@@ -391,7 +391,7 @@ Body:
 }
 ```
 
-### Prueba 4 — Entregar el pedido y verificar puntos
+### Prueba 4 � Entregar el pedido y verificar puntos
 
 ```
 PATCH http://localhost:8080/api/pedidos/PEGA_ID_PEDIDO/estado?valor=entregado
@@ -446,7 +446,7 @@ docker compose down -v
    Puerto 8081     Puerto 8082     Puerto 8083
   Svc Bebidas     Svc Clientes    Svc Pedidos
         |               |               |
-        └───────────────┴───────────────┘
+        +-------------------------------+
                         |
                    Puerto 27017
                     MongoDB
@@ -455,7 +455,7 @@ docker compose down -v
 
 ---
 
-## Felicidades — El Michi Cafe esta completo!
+## Felicidades � El Michi Cafe esta completo!
 
 Construiste desde cero un sistema de microservicios completo:
 
@@ -476,6 +476,6 @@ Construiste desde cero un sistema de microservicios completo:
 | API Gateway | Modulo 13, Proyecto P06 |
 | Docker | Modulo 14, Proyecto P07 |
 
-> 🐾 "Empezaste sin saber que era una variable. Terminaste con un sistema de
+> ?? "Empezaste sin saber que era una variable. Terminaste con un sistema de
 > microservicios corriendo en Docker. Eso es mucho. Bienvenido al mundo
 > del desarrollo de software."

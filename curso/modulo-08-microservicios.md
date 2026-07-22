@@ -304,6 +304,6 @@ Este ejercicio te ayudará a pensar como un arquitecto de software.
 
 ## ➡️ Siguiente Módulo
 
-En el **Módulo 09** construiremos el primer microservicio real: el **Servicio de Clientes**. Será un proyecto Spring Boot independiente con su propia base de datos MongoDB.
+En el **[Módulo 09 — Servicio Clientes](modulo-09-servicio-clientes.md)** construiremos el primer microservicio real con su propia base de datos MongoDB.
 
 > 🐾 "Divide y vencerás. En el Michi Café, cada gatito hace lo suyo y lo hace perfecto."

@@ -53,7 +53,7 @@ Si has visto tutoriales más viejos, notarás diferencias. Las principales:
 | Java 8 o 11 | Java 17 mínimo |
 | `javax.*` en los imports | `jakarta.*` en los imports |
 | Spring Fox para Swagger | SpringDoc OpenAPI |
-| `spring-boot-starter-web` (Spring MVC) | Sigue igual ✅ |
+| `spring-boot-starter-webmvc` (Spring MVC) | Sigue igual ✅ |
 
 > 💡 El cambio de `javax` a `jakarta` es el más importante. Si ves código antiguo
 > con `import javax.persistence.*` o `import javax.validation.*`, en Spring Boot 4.1.0
@@ -83,7 +83,7 @@ Maven es el sistema de compras del Michi Café:
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>    <!-- La marca -->
-    <artifactId>spring-boot-starter-web</artifactId> <!-- El producto -->
+    <artifactId>spring-boot-starter-webmvc</artifactId> <!-- El producto -->
 </dependency>
 ```
 
@@ -106,7 +106,7 @@ Estos son los "ingredientes" que vamos a pedir en nuestra lista de compras:
 
 | Dependencia (artifactId) | ¿Para qué sirve? |
 |--------------------------|-----------------|
-| `spring-boot-starter-web` | Crear APIs REST (controladores, peticiones HTTP) |
+| `spring-boot-starter-webmvc` | Crear APIs REST (controladores, peticiones HTTP) |
 | `spring-boot-starter-data-mongodb` | Conectar con MongoDB |
 | `spring-boot-starter-validation` | Validar datos de entrada |
 | `spring-boot-starter-actuator` | Endpoints de salud y métricas |
@@ -490,7 +490,6 @@ return ResponseEntity.noContent().build();
 
 ## ➡️ Siguiente módulo
 
-En el **Módulo 05** aprenderemos las operaciones REST completas: GET, POST, PUT,
-PATCH y DELETE. El Michi Café podrá recibir pedidos nuevos, actualizarlos y cancelarlos.
+En el **[Módulo 05 — APIs REST](modulo-05-apis-rest.md)** aprenderemos las operaciones REST completas: GET, POST, PUT, PATCH y DELETE.
 
 > 🐾 "Un servidor bien configurado es como un café bien organizado: siempre listo para atender."

@@ -570,6 +570,6 @@ public class EjercicioUno {
 
 ## ➡️ Siguiente Módulo
 
-En el **Módulo 03** aprenderemos **Programación Orientada a Objetos (POO)**: cómo crear "moldes" para nuestros gatitos y objetos del café. Aprenderemos clases, objetos, atributos y métodos de una forma que tiene mucho sentido con la analogía del Michi Café.
+En el **[Módulo 03 — POO](modulo-03-poo.md)** aprenderemos Programación Orientada a Objetos: clases, objetos, herencia y polimorfismo con la analogía del Michi Café.
 
 > 🐾 "Un gatito que sabe Java es un gatito imparable."

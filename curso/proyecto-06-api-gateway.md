@@ -1,7 +1,7 @@
-﻿# Proyecto P06 — API Gateway
+# Proyecto P06 — API Gateway
 ## La puerta única de entrada al Michi Café
 
-> 📚 Referencias teóricas:
+> ?? Referencias teóricas:
 > - [Módulo 13 — API Gateway](modulo-13-api-gateway.md)
 > - [Módulo 04 — Spring Boot](modulo-04-spring-boot.md)
 
@@ -12,9 +12,9 @@
 El **API Gateway** es una pieza que recibe TODAS las peticiones en el puerto 8080
 y las redirige al microservicio correcto:
 
-- `/api/bebidas/**` → servicio-bebidas en 8081
-- `/api/clientes/**` → servicio-clientes en 8082
-- `/api/pedidos/**` → servicio-pedidos en 8083
+- `/api/bebidas/**` ? servicio-bebidas en 8081
+- `/api/clientes/**` ? servicio-clientes en 8082
+- `/api/pedidos/**` ? servicio-pedidos en 8083
 
 Ventaja: desde afuera solo existe un puerto. Los microservicios quedan ocultos.
 
@@ -45,13 +45,13 @@ Ventaja: desde afuera solo existe un puerto. Los microservicios quedan ocultos.
 > IMPORTANTE: NO agregues Spring Web. Gateway usa un motor distinto (WebFlux)
 > que es incompatible con Spring Web. Si los agregas juntos el proyecto no arranca.
 
-4. Clic en **GENERATE** → extrae en `C:\Proyectos\api-gateway`
+4. Clic en **GENERATE** ? extrae en `C:\Proyectos\api-gateway`
 
 ---
 
 ## Paso 2: Abrir en IntelliJ
 
-1. IntelliJ → **Open** → selecciona `C:\Proyectos\api-gateway` → **OK**
+1. IntelliJ ? **Open** ? selecciona `C:\Proyectos\api-gateway` ? **OK**
 2. Espera que carguen las dependencias
 
 ---
@@ -63,11 +63,11 @@ Vamos a RENOMBRAR el archivo de configuración.
 
 ### 3.1 — Renombrar application.properties a application.yml
 
-1. En el panel izquierdo expande `src → main → resources`
+1. En el panel izquierdo expande `src ? main ? resources`
 2. Haz clic derecho sobre `application.properties`
-3. Selecciona **Refactor → Rename**
+3. Selecciona **Refactor ? Rename**
 4. Borra `application.properties` y escribe: `application.yml`
-5. Presiona **Enter** → clic en **Refactor**
+5. Presiona **Enter** ? clic en **Refactor**
 
 ### 3.2 — Escribir la configuracion
 
@@ -123,13 +123,13 @@ Vamos a crear un filtro que registre en consola cada peticion que pase por el Ga
 
 ### 4.1 — Crear el paquete filter
 
-1. Clic derecho sobre `com.michicafe.gateway` → **New** → **Package**
-2. Escribe: `filter` → Enter
+1. Clic derecho sobre `com.michicafe.gateway` ? **New** ? **Package**
+2. Escribe: `filter` ? Enter
 
 ### 4.2 — Crear la clase LoggingFilter
 
-1. Clic derecho sobre `filter` → **New** → **Java Class**
-2. Escribe: `LoggingFilter` → **Class** → Enter
+1. Clic derecho sobre `filter` ? **New** ? **Java Class**
+2. Escribe: `LoggingFilter` ? **Class** ? Enter
 
 ```java
 package com.michicafe.gateway.filter;
@@ -153,11 +153,11 @@ public class LoggingFilter implements GlobalFilter, Ordered {
         String metodo = exchange.getRequest().getMethod().toString();
         String ruta   = exchange.getRequest().getPath().toString();
 
-        log.info("🐾 Gateway recibio: {} {}", metodo, ruta);
+        log.info("?? Gateway recibio: {} {}", metodo, ruta);
 
         return chain.filter(exchange).then(Mono.fromRunnable(() -> {
             int codigo = exchange.getResponse().getStatusCode().value();
-            log.info("✅ Respuesta: {} {} → {}", metodo, ruta, codigo);
+            log.info("? Respuesta: {} {} ? {}", metodo, ruta, codigo);
         }));
     }
 
@@ -225,7 +225,7 @@ GET http://localhost:8080/api/pedidos
 
 ```
 POST http://localhost:8080/api/pedidos
-Body → raw → JSON:
+Body ? raw ? JSON:
 ```
 ```json
 {
@@ -243,10 +243,10 @@ El Gateway lo redirige a `http://localhost:8083/api/pedidos` automaticamente.
 
 En la consola de IntelliJ del Gateway veras:
 ```
-🐾 Gateway recibio: GET /api/bebidas
-✅ Respuesta: GET /api/bebidas → 200
-🐾 Gateway recibio: POST /api/pedidos
-✅ Respuesta: POST /api/pedidos → 201
+?? Gateway recibio: GET /api/bebidas
+? Respuesta: GET /api/bebidas ? 200
+?? Gateway recibio: POST /api/pedidos
+? Respuesta: POST /api/pedidos ? 201
 ```
 
 ---
@@ -275,19 +275,18 @@ Respuesta:
 
 ```
 api-gateway/
-└── src/main/java/com/michicafe/gateway/
-    ├── ApiGatewayApplication.java
-    └── filter/
-        └── LoggingFilter.java
-└── src/main/resources/
-    └── application.yml
++-- src/main/java/com/michicafe/gateway/
+    +-- ApiGatewayApplication.java
+    +-- filter/
+        +-- LoggingFilter.java
++-- src/main/resources/
+    +-- application.yml
 ```
 
 ---
 
-## Siguiente paso
+## ➡️ Siguiente paso
 
-En el **[Proyecto P07 — Docker](proyecto-07-docker.md)** vamos a empaquetar
-todos los servicios en contenedores Docker y levantarlos todos con un solo comando.
+En el **[Proyecto P07 — Docker Compose](proyecto-07-docker.md)** vamos a empaquetar todos los servicios en contenedores Docker y levantarlos todos con un solo comando.
 
-> 🐾 "Una sola puerta para todo el Michi Cafe. Mucho mas ordenado."
+> 🐾 "Una sola puerta para todo el Michi Café. Mucho más ordenado."

@@ -266,7 +266,6 @@ Estas respuestas te ayudarán a entender mejor la arquitectura que vamos a const
 
 ## ➡️ Siguiente módulo
 
-En el **Módulo 02** aprenderemos Java desde cero: variables, tipos de datos,
-condiciones y ciclos. Todo con ejemplos del Michi Café.
+En el **[Módulo 02 — Java desde Cero](modulo-02-java-desde-cero.md)** aprenderemos variables, tipos de datos, condiciones y ciclos. Todo con ejemplos del Michi Café.
 
 > 🐾 "El viaje de mil líneas de código comienza con entender para qué sirve cada una."

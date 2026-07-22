@@ -453,6 +453,6 @@ Es como el sistema de teléfonos internos del Michi Café:
 
 ## ➡️ Siguiente Módulo
 
-En el **Módulo 15** construiremos el **Proyecto Final**: el Michi Café completo en producción. Integraremos todo lo aprendido, haremos pruebas end-to-end y veremos cómo desplegar el sistema completo.
+En el **[Módulo 15 — Proyecto Final](modulo-15-proyecto-final.md)** construiremos el Michi Café completo en producción integrando todo lo aprendido.
 
 > 🐾 "Con Docker, el Michi Café puede abrir sucursales en cualquier servidor del mundo en cuestión de segundos."

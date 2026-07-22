@@ -436,6 +436,6 @@ Piensa: ¿qué campos necesita cada documento? ¿Qué tipo de dato tiene cada ca
 
 ## ➡️ Siguiente Módulo
 
-En el **Módulo 07** conectaremos Spring Boot con MongoDB usando **Spring Data MongoDB**. Vamos a reemplazar nuestro `HashMap` de prueba por una base de datos real. El Michi Café tendrá memoria permanente.
+En el **[Módulo 07 — Spring + MongoDB](modulo-07-spring-mongodb.md)** conectaremos Spring Boot con MongoDB. El Michi Café tendrá memoria permanente.
 
 > 🐾 "Una base de datos bien diseñada es como un archivero bien organizado: encontrar cualquier cosa es cuestión de segundos."

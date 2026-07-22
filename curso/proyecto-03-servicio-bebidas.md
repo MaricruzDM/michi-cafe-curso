@@ -1089,11 +1089,9 @@ servicio-bebidas/
 
 ## ➡️ Siguiente paso
 
-En el **[Proyecto P04 — Servicio de Clientes](proyecto-04-servicio-clientes.md)**
-construirás el segundo microservicio: la API para registrar clientes y gestionar
-sus puntos de fidelidad.
+En el **[Proyecto P04 — Servicio de Clientes](proyecto-04-servicio-clientes.md)** construirás el segundo microservicio: la gestión de clientes con registro, puntos de fidelidad y validación de correos duplicados.
 
-> 🐾 "El menú del Michi Café ya vive en MongoDB. Ahora toca registrar a sus clientes."
+> 🐾 "El menú del Michi Café ya está en línea. Ahora le damos la bienvenida a los clientes."
 
 # Proyecto P03 — Servicio de Bebidas
 ## Construyendo el primer microservicio real del Michi Café

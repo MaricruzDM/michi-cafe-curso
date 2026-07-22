@@ -1,14 +1,14 @@
-﻿# Proyecto P05 — Servicio de Pedidos
+# Proyecto P05 — Servicio de Pedidos
 ## El corazón del Michi Café
 
-> 📚 Referencias teóricas:
+> ?? Referencias teóricas:
 > - [Módulo 05 — APIs REST](modulo-05-apis-rest.md)
 > - [Módulo 07 — Spring + MongoDB](modulo-07-spring-mongodb.md)
 > - [Módulo 12 — Comunicación entre servicios](modulo-12-comunicacion.md)
 
 ---
 
-## 🏠 ¿Qué vamos a construir?
+## ?? ¿Qué vamos a construir?
 
 El **Servicio de Pedidos** conecta clientes con bebidas. Cuando un cliente hace un pedido:
 1. Verifica que el cliente exista (llama al Servicio de Clientes en 8082)
@@ -17,13 +17,13 @@ El **Servicio de Pedidos** conecta clientes con bebidas. Cuando un cliente hace 
 4. Guarda el pedido en su propia base de datos MongoDB
 5. Al marcar como entregado, agrega puntos al cliente automáticamente
 
-**⚠️ Importante:** Los servicios de Bebidas (8081) y Clientes (8082) deben estar corriendo.
+**?? Importante:** Los servicios de Bebidas (8081) y Clientes (8082) deben estar corriendo.
 
 **Tiempo estimado:** 90-120 minutos
 
 ---
 
-## 🛠️ Paso 1: Crear el proyecto en Spring Initializr
+## ??? Paso 1: Crear el proyecto en Spring Initializr
 
 1. Ve a **https://start.spring.io**
 2. Configura:
@@ -40,18 +40,18 @@ El **Servicio de Pedidos** conecta clientes con bebidas. Cuando un cliente hace 
 | Java | 17 |
 
 3. Dependencias: **Spring Web**, **Spring Data MongoDB**, **Spring Boot Actuator**
-4. Clic en **GENERATE** → extrae en `C:\Proyectos\servicio-pedidos`
+4. Clic en **GENERATE** ? extrae en `C:\Proyectos\servicio-pedidos`
 
 ---
 
-## 🛠️ Paso 2: Abrir en IntelliJ y configurar
+## ??? Paso 2: Abrir en IntelliJ y configurar
 
-1. IntelliJ → **Open** → selecciona `C:\Proyectos\servicio-pedidos` → **OK**
+1. IntelliJ ? **Open** ? selecciona `C:\Proyectos\servicio-pedidos` ? **OK**
 2. Espera que carguen las dependencias
 
 ### Configurar application.properties
 
-Expande `src → main → resources` → doble clic en `application.properties`:
+Expande `src ? main ? resources` ? doble clic en `application.properties`:
 
 ```properties
 server.port=8083
@@ -72,12 +72,12 @@ Guarda con **Ctrl + S**.
 
 ---
 
-## 🛠️ Paso 3: Crear RestTemplateConfig
+## ??? Paso 3: Crear RestTemplateConfig
 
 `RestTemplate` permite hacer llamadas HTTP a otros servicios.
 
-1. Clic derecho sobre `com.michicafe.pedidos` → **New** → **Package** → escribe `config` → Enter
-2. Clic derecho sobre `config` → **New** → **Java Class** → escribe `RestTemplateConfig` → **Class** → Enter
+1. Clic derecho sobre `com.michicafe.pedidos` ? **New** ? **Package** ? escribe `config` ? Enter
+2. Clic derecho sobre `config` ? **New** ? **Java Class** ? escribe `RestTemplateConfig` ? **Class** ? Enter
 
 ```java
 package com.michicafe.pedidos.config;
@@ -100,10 +100,10 @@ public class RestTemplateConfig {
 
 ---
 
-## 🛠️ Paso 4: Crear el modelo ItemPedido
+## ??? Paso 4: Crear el modelo ItemPedido
 
-1. Clic derecho sobre `com.michicafe.pedidos` → **New** → **Package** → `model` → Enter
-2. Clic derecho sobre `model` → **New** → **Java Class** → `ItemPedido` → **Class** → Enter
+1. Clic derecho sobre `com.michicafe.pedidos` ? **New** ? **Package** ? `model` ? Enter
+2. Clic derecho sobre `model` ? **New** ? **Java Class** ? `ItemPedido` ? **Class** ? Enter
 
 ```java
 package com.michicafe.pedidos.model;
@@ -143,9 +143,9 @@ public class ItemPedido {
 
 ---
 
-## 🛠️ Paso 5: Crear el modelo Pedido
+## ??? Paso 5: Crear el modelo Pedido
 
-1. Clic derecho sobre `model` → **New** → **Java Class** → `Pedido` → **Class** → Enter
+1. Clic derecho sobre `model` ? **New** ? **Java Class** ? `Pedido` ? **Class** ? Enter
 
 ```java
 package com.michicafe.pedidos.model;
@@ -164,7 +164,7 @@ public class Pedido {
     private String clienteNombre;
     private List<ItemPedido> items;
     private double total;
-    private String estado;   // pendiente → preparando → listo → entregado / cancelado
+    private String estado;   // pendiente ? preparando ? listo ? entregado / cancelado
     private boolean paraLlevar;
     private String notas;
     private LocalDateTime fecha;
@@ -197,11 +197,11 @@ public class Pedido {
 
 ---
 
-## 🛠️ Paso 6: Crear el DTO SolicitudPedido
+## ??? Paso 6: Crear el DTO SolicitudPedido
 
 Un DTO es una clase que solo sirve para recibir datos del cliente.
 
-1. Clic derecho sobre `model` → **New** → **Java Class** → `SolicitudPedido` → **Class** → Enter
+1. Clic derecho sobre `model` ? **New** ? **Java Class** ? `SolicitudPedido` ? **Class** ? Enter
 
 ```java
 package com.michicafe.pedidos.model;
@@ -241,11 +241,11 @@ public class SolicitudPedido {
 
 ---
 
-## 🛠️ Paso 7: Crear el Repository
+## ??? Paso 7: Crear el Repository
 
-1. Clic derecho sobre `com.michicafe.pedidos` → **New** → **Package** → `repository` → Enter
-2. Clic derecho sobre `repository` → **New** → **Java Class** → `PedidoRepository`
-3. ⚠️ Selecciona **Interface** (no Class) → Enter
+1. Clic derecho sobre `com.michicafe.pedidos` ? **New** ? **Package** ? `repository` ? Enter
+2. Clic derecho sobre `repository` ? **New** ? **Java Class** ? `PedidoRepository`
+3. ?? Selecciona **Interface** (no Class) ? Enter
 
 ```java
 package com.michicafe.pedidos.repository;
@@ -270,10 +270,10 @@ public interface PedidoRepository extends MongoRepository<Pedido, String> {
 
 ---
 
-## 🛠️ Paso 8: Crear el Service
+## ??? Paso 8: Crear el Service
 
-1. Clic derecho sobre `com.michicafe.pedidos` → **New** → **Package** → `service` → Enter
-2. Clic derecho sobre `service` → **New** → **Java Class** → `PedidoService` → **Class** → Enter
+1. Clic derecho sobre `com.michicafe.pedidos` ? **New** ? **Package** ? `service` ? Enter
+2. Clic derecho sobre `service` ? **New** ? **Java Class** ? `PedidoService` ? **Class** ? Enter
 
 ```java
 package com.michicafe.pedidos.service;
@@ -372,9 +372,9 @@ public class PedidoService {
                     restTemplate.patchForObject(
                         clienteUrl + "/api/clientes/" + pedido.getClienteId()
                         + "/puntos?cantidad=" + puntos, null, Map.class);
-                    System.out.println("✅ " + puntos + " puntos → " + pedido.getClienteNombre());
+                    System.out.println("? " + puntos + " puntos ? " + pedido.getClienteNombre());
                 } catch (Exception e) {
-                    System.out.println("⚠️ No se agregaron puntos: " + e.getMessage());
+                    System.out.println("?? No se agregaron puntos: " + e.getMessage());
                 }
             }
             return pedidoRepository.save(pedido);
@@ -397,10 +397,10 @@ public class PedidoService {
 
 ---
 
-## 🛠️ Paso 9: Crear el Controller
+## ??? Paso 9: Crear el Controller
 
-1. Clic derecho sobre `com.michicafe.pedidos` → **New** → **Package** → `controller` → Enter
-2. Clic derecho sobre `controller` → **New** → **Java Class** → `PedidoController` → **Class** → Enter
+1. Clic derecho sobre `com.michicafe.pedidos` ? **New** ? **Package** ? `controller` ? Enter
+2. Clic derecho sobre `controller` ? **New** ? **Java Class** ? `PedidoController` ? **Class** ? Enter
 
 ```java
 package com.michicafe.pedidos.controller;
@@ -484,27 +484,27 @@ public class PedidoController {
 
 ---
 
-## 🛠️ Paso 10: Ejecutar y probar
+## ??? Paso 10: Ejecutar y probar
 
 ### 10.1 — Arrancar los 3 servicios
 
 Debes tener los 3 servicios corriendo al mismo tiempo. En IntelliJ:
 
-1. Abre el proyecto `servicio-bebidas` → ejecuta `BebidasApplication` (puerto 8081)
-2. Abre el proyecto `servicio-clientes` → ejecuta `ServicioClientesApplication` (puerto 8082)
-3. Abre el proyecto `servicio-pedidos` → ejecuta `ServicioPedidosApplication` (puerto 8083)
+1. Abre el proyecto `servicio-bebidas` ? ejecuta `BebidasApplication` (puerto 8081)
+2. Abre el proyecto `servicio-clientes` ? ejecuta `ServicioClientesApplication` (puerto 8082)
+3. Abre el proyecto `servicio-pedidos` ? ejecuta `ServicioPedidosApplication` (puerto 8083)
 
-> 💡 El nombre exacto de la clase principal lo puedes ver en
-> `src → main → java → com.michicafe.pedidos` — busca el archivo que termina en `Application.java`.
-> IntelliJ también muestra un triángulo verde ▶ junto al método `main` para ejecutarlo.
+> ?? El nombre exacto de la clase principal lo puedes ver en
+> `src ? main ? java ? com.michicafe.pedidos` — busca el archivo que termina en `Application.java`.
+> IntelliJ también muestra un triángulo verde ? junto al método `main` para ejecutarlo.
 
-> 💡 IntelliJ permite tener múltiples proyectos abiertos en ventanas separadas.
-> Usa **File → Open** y elige "Open in new window" para abrir cada uno.
+> ?? IntelliJ permite tener múltiples proyectos abiertos en ventanas separadas.
+> Usa **File ? Open** y elige "Open in new window" para abrir cada uno.
 
 Verifica que los 3 están corriendo:
-- `http://localhost:8081/api/bebidas` → responde con el menú
-- `http://localhost:8082/api/clientes` → responde con los clientes
-- `http://localhost:8083/api/pedidos` → responde con lista vacía `[]`
+- `http://localhost:8081/api/bebidas` ? responde con el menú
+- `http://localhost:8082/api/clientes` ? responde con los clientes
+- `http://localhost:8083/api/pedidos` ? responde con lista vacía `[]`
 
 ### 10.2 — Obtener IDs necesarios
 
@@ -527,7 +527,7 @@ Copia el `id` del Latte de vainilla y del Matcha Latte.
 ```
 Método:  POST
 URL:     http://localhost:8083/api/pedidos
-Body → raw → JSON:
+Body ? raw ? JSON:
 ```
 
 ```json
@@ -587,7 +587,7 @@ PATCH http://localhost:8083/api/pedidos/PEGA_ID_PEDIDO/estado?valor=entregado
 
 En la consola del servicio-pedidos verás:
 ```
-✅ 15 puntos → Sofía Martínez
+? 15 puntos ? Sofía Martínez
 ```
 
 ### 10.5 — Verificar los puntos de Sofía
@@ -628,25 +628,23 @@ Respuesta esperada (400 Bad Request):
 
 ---
 
-## 🎉 ¡Felicidades!
+## ?? ¡Felicidades!
 
 Construiste el Servicio de Pedidos: el microservicio más complejo del Michi Café.
 
 ### ¿Qué construiste?
-- ✅ Proyecto Spring Boot 4.1.0 en puerto 8083
-- ✅ Modelos `Pedido`, `ItemPedido` y `SolicitudPedido`
-- ✅ Repository con búsquedas por cliente y estado
-- ✅ Service que llama a los otros 2 microservicios con RestTemplate
-- ✅ Controller con endpoints GET, POST y PATCH
-- ✅ Validación de cliente y bebidas antes de crear el pedido
-- ✅ Asignación automática de puntos al entregar
+- ? Proyecto Spring Boot 4.1.0 en puerto 8083
+- ? Modelos `Pedido`, `ItemPedido` y `SolicitudPedido`
+- ? Repository con búsquedas por cliente y estado
+- ? Service que llama a los otros 2 microservicios con RestTemplate
+- ? Controller con endpoints GET, POST y PATCH
+- ? Validación de cliente y bebidas antes de crear el pedido
+- ? Asignación automática de puntos al entregar
 
 ---
 
 ## ➡️ Siguiente paso
 
-En el **[Proyecto P06 — API Gateway](proyecto-06-api-gateway.md)** crearás
-la puerta de entrada única del Michi Café: un solo puerto (8080) que enruta
-todas las peticiones al servicio correcto.
+En el **[Proyecto P06 — API Gateway](proyecto-06-api-gateway.md)** crearás la puerta de entrada única del Michi Café: un solo puerto (8080) que enruta todas las peticiones al servicio correcto.
 
 > 🐾 "El pedido llegó, se preparó y se entregó. El Michi Café ya funciona de verdad."
